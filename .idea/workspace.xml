@@ -2,7 +2,9 @@
 <project version="4">
   <component name="AndroidLayouts">
     <shared>
-      <config />
+      <config>
+        <device id="Nexus 5X" />
+      </config>
     </shared>
   </component>
   <component name="ChangeListManager">
@@ -18,6 +20,13 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="ProjectId" id="25ScocyVktYe6Hxpoz6fVwZ2E6S" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -27,7 +36,18 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android.sdk.path" value="F:/AS_SDK" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable/login" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+  </component>
+  <component name="RecentsManager">
+    <key name="android.template.1135084625">
+      <recent name="com.example.moodiary" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\HCMUS\MobileDev\19KTPM3_MobileApp_FinalProject\app\src\main\res\drawable" />
+      <recent name="E:\HCMUS\MobileDev\19KTPM3_MobileApp_FinalProject\app\src\main\res\drawable\login" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
@@ -37,7 +57,7 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="Moodiary.app" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
@@ -105,5 +125,27 @@
       <updated>1645524104092</updated>
     </task>
     <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="346" y="154" key="AndroidCreateResourceDirectoryDialog" timestamp="1645710834775">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state x="346" y="154" key="AndroidCreateResourceDirectoryDialog/0.0.1536.816@0.0.1536.816" timestamp="1645710834775" />
+    <state x="586" y="151" key="AndroidCreateXmlResourceDialog" timestamp="1645697382149">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state x="586" y="151" key="AndroidCreateXmlResourceDialog/0.0.1536.816@0.0.1536.816" timestamp="1645697382149" />
+    <state x="496" y="88" key="FileChooserDialogImpl" timestamp="1645699255100">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state x="496" y="88" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1645699255100" />
+    <state x="542" y="171" key="chooseDestDirectoryDialog" timestamp="1645706133990">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state x="542" y="171" key="chooseDestDirectoryDialog/0.0.1536.816@0.0.1536.816" timestamp="1645706133990" />
+    <state x="347" y="-1" width="840" height="1034" key="search.everywhere.popup" timestamp="1645698084489">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state x="347" y="-1" width="840" height="1034" key="search.everywhere.popup/0.0.1536.816@0.0.1536.816" timestamp="1645698084489" />
   </component>
 </project>
