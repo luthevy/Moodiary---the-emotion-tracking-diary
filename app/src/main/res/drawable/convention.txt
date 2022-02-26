@@ -1,0 +1,7 @@
+navigation_ : for bottom navigation
+mood_ : for moods
+goal_ : for goals
+activity_ : for activities
+
+start with letter : default
+start with number (00... xx) : customized, ask users to enter the name of such activity/mood themselves
