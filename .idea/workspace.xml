@@ -20,10 +20,23 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>
@@ -45,11 +58,18 @@
       <recent name="com.example.moodiary" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\HCMUS\MobileDev\19KTPM3_MobileApp_FinalProject\app\src\main\res\drawable-v24" />
+      <recent name="E:\HCMUS\MobileDev\19KTPM3_MobileApp_FinalProject\app" />
       <recent name="E:\HCMUS\MobileDev\19KTPM3_MobileApp_FinalProject\app\src\main\res\drawable" />
       <recent name="E:\HCMUS\MobileDev\19KTPM3_MobileApp_FinalProject\app\src\main\res\drawable\login" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradle signingReport" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -112,6 +132,30 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="19KTPM3_MobileApp_FinalProject [signingReport]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="signingReport" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.19KTPM3_MobileApp_FinalProject [signingReport]" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -127,22 +171,54 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="947" y="49" key="#com.intellij.ide.util.MemberChooser" timestamp="1645877396229">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state x="947" y="49" key="#com.intellij.ide.util.MemberChooser/0.0.1536.816@0.0.1536.816" timestamp="1645877396229" />
+    <state x="93" y="93" width="1350" height="630" key="AVDManager" timestamp="1645900212927">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state x="93" y="93" width="1350" height="630" key="AVDManager/0.0.1536.816@0.0.1536.816" timestamp="1645900212927" />
     <state x="346" y="154" key="AndroidCreateResourceDirectoryDialog" timestamp="1645710834775">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
     <state x="346" y="154" key="AndroidCreateResourceDirectoryDialog/0.0.1536.816@0.0.1536.816" timestamp="1645710834775" />
-    <state x="586" y="151" key="AndroidCreateXmlResourceDialog" timestamp="1645697382149">
+    <state x="346" y="154" key="AndroidCreateResourceFileDialog" timestamp="1645867110471">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="586" y="151" key="AndroidCreateXmlResourceDialog/0.0.1536.816@0.0.1536.816" timestamp="1645697382149" />
-    <state x="496" y="88" key="FileChooserDialogImpl" timestamp="1645699255100">
+    <state x="346" y="154" key="AndroidCreateResourceFileDialog/0.0.1536.816@0.0.1536.816" timestamp="1645867110471" />
+    <state x="586" y="151" key="AndroidCreateXmlResourceDialog" timestamp="1645870698807">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="496" y="88" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1645699255100" />
+    <state x="586" y="151" key="AndroidCreateXmlResourceDialog/0.0.1536.816@0.0.1536.816" timestamp="1645870698807" />
+    <state x="496" y="88" key="FileChooserDialogImpl" timestamp="1645872563021">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state x="496" y="88" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1645872563021" />
+    <state width="1480" height="445" key="GridCell.Tab.0.bottom" timestamp="1645866703066">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state width="1480" height="445" key="GridCell.Tab.0.bottom/0.0.1536.816@0.0.1536.816" timestamp="1645866703066" />
+    <state width="1480" height="445" key="GridCell.Tab.0.center" timestamp="1645866703066">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state width="1480" height="445" key="GridCell.Tab.0.center/0.0.1536.816@0.0.1536.816" timestamp="1645866703066" />
+    <state width="1480" height="445" key="GridCell.Tab.0.left" timestamp="1645866703066">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state width="1480" height="445" key="GridCell.Tab.0.left/0.0.1536.816@0.0.1536.816" timestamp="1645866703066" />
+    <state width="1480" height="445" key="GridCell.Tab.0.right" timestamp="1645866703066">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state width="1480" height="445" key="GridCell.Tab.0.right/0.0.1536.816@0.0.1536.816" timestamp="1645866703066" />
     <state x="542" y="171" key="chooseDestDirectoryDialog" timestamp="1645706133990">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
     <state x="542" y="171" key="chooseDestDirectoryDialog/0.0.1536.816@0.0.1536.816" timestamp="1645706133990" />
+    <state x="341" y="181" width="840" height="1034" key="run.anything.popup" timestamp="1645859389215">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state x="341" y="181" width="840" height="1034" key="run.anything.popup/0.0.1536.816@0.0.1536.816" timestamp="1645859389215" />
     <state x="347" y="-1" width="840" height="1034" key="search.everywhere.popup" timestamp="1645698084489">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
