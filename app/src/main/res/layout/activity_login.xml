@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:padding="20dp">
     <TextView
-        android:id="@+id/txtLogin"
+        android:id="@+id/txt_SigninTop"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
         android:paddingTop="20dp"
@@ -19,7 +19,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/lay_Username"
+        android:id="@+id/lay_SigninEmail"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:hint="@string/prompt_email"
         android:layout_width="match_parent"
@@ -27,13 +27,13 @@
         android:layout_marginTop="70dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtLogin"
+        app:layout_constraintTop_toBottomOf="@id/txt_SigninTop"
         app:startIconDrawable="@drawable/outline_account_circle_black_24dp"
         app:endIconMode="clear_text"
         app:endIconTint="@color/black">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtxtUsername"
+            android:id="@+id/edtxt_SigninEmail"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
 
@@ -48,7 +48,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/lay_Password"
+        android:id="@+id/lay_SigninPassword"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:hint="@string/prompt_password"
         android:layout_width="match_parent"
@@ -56,13 +56,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lay_Username"
+        app:layout_constraintTop_toBottomOf="@+id/lay_SigninEmail"
         app:startIconDrawable="@drawable/outline_lock_black_24dp"
         app:endIconMode="password_toggle"
         app:endIconTint="@color/black">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtxtPassword"
+            android:id="@+id/edtxt_SigninPassword"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:autofillHints="@string/prompt_password"
@@ -78,8 +78,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Remember me"
-        app:layout_constraintTop_toBottomOf="@+id/lay_Password"
-        app:layout_constraintRight_toRightOf="@id/lay_Password"
+        app:layout_constraintTop_toBottomOf="@+id/lay_SigninPassword"
+        app:layout_constraintRight_toRightOf="@id/lay_SigninPassword"
 
         android:layout_marginTop="10dp"
      />

@@ -2,9 +2,36 @@ package com.example.moodiary;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
+    private FirebaseUser fbaseUser;
+    private TextView userName;
+    private Button btnExit;
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        userName = findViewById(R.id.name);
+        btnExit = findViewById(R.id.btnLogout);
+        btnExit.setOnClickListener(view -> {
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+            finish();
+        });
+        fbaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (fbaseUser!=null) {
+            userName.setText(fbaseUser.getDisplayName());
+        }
+
+    }
 
 }

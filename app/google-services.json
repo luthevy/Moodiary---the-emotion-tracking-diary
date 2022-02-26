@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "240518068413",
+    "project_id": "moodiary-90956",
+    "storage_bucket": "moodiary-90956.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:240518068413:android:ffb01856e4beba3aa95fd4",
+        "android_client_info": {
+          "package_name": "com.example.moodiary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "240518068413-anrods11in4jbbv0o02rtu2e604c07bo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.moodiary",
+            "certificate_hash": "44cb7a7a50d2ac430acfe44264198e1e38145bf6"
+          }
+        },
+        {
+          "client_id": "240518068413-2esru0u7fkv8o9t8t9fqof5p1m2nsepe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1vry-LR_73nqJMhYLIXOyuFxkLnXxFy4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "240518068413-2esru0u7fkv8o9t8t9fqof5p1m2nsepe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
