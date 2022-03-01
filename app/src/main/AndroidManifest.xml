@@ -24,6 +24,9 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"/>
+        <activity
+            android:name=".ShowEntriesActivity"
+            android:exported="true"/>
 
     </application>
 

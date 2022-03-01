@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="Entries"
+        android:icon="@drawable/ic_baseline_event_note" />
+    <item
+        android:title="Calendar"
+        android:icon="@drawable/ic_baseline_calendar"/>
+    <item
+        android:title="Stats"
+        android:icon="@drawable/ic_baseline_bar_chart"/>
+    <item
+        android:title="Settings"
+        android:icon="@drawable/ic_baseline_settings"/>
+</menu>
