@@ -58,6 +58,7 @@ public class SignupActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful() && task.getResult()!=null) {
                         FirebaseUser fbaseUser = task.getResult().getUser();
+                        fbaseUser.sendEmailVerification();
                         if (fbaseUser!=null){
                             UserProfileChangeRequest request = new UserProfileChangeRequest.Builder().setDisplayName(name).build();
                             fbaseUser.updateProfile(request).addOnCompleteListener(task1 -> reload());

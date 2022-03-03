@@ -17,7 +17,6 @@
         android:textColor="@color/black"
         tools:ignore="MissingConstraints" />
 
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/lay_SigninEmail"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -69,8 +68,7 @@
             android:imeActionLabel="@string/action_sign_in_short"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
-            android:selectAllOnFocus="true"
- />
+            android:selectAllOnFocus="true"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -84,7 +82,6 @@
         app:layout_constraintRight_toRightOf="@+id/lay_SigninPassword"
         app:layout_constraintTop_toBottomOf="@+id/lay_SigninPassword"
         >
-
     </TextView>
 
     <Button
@@ -116,6 +113,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogin"
         app:layout_constraintVertical_bias="0.0" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
