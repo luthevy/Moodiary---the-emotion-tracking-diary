@@ -21,7 +21,7 @@ public class Resources {
             R.drawable.activity_sport,
             R.drawable.activity_study,
             R.drawable.activity_swim,
-            R.drawable.activity_tv,
+            R.drawable.activity_TV,
             R.drawable.activity_walk,
             R.drawable.activity_work
     };
