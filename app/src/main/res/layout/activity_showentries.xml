@@ -35,7 +35,7 @@
             android:layout_height="50dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="17dp"
-            android:src="@drawable/navigation_add" />
+            android:src="@drawable/ic_baseline_add_circle" />
 
     </RelativeLayout>
     <androidx.core.widget.NestedScrollView
@@ -68,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="@color/white"
+            android:background="@color/black"
             app:fabCradleRoundedCornerRadius="5dp"
             app:fabCradleMargin="0dp">
             <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -83,13 +83,49 @@
                 app:itemTextColor="@color/design_default_color_on_secondary"/>
         </com.google.android.material.bottomappbar.BottomAppBar>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <com.getbase.floatingactionbutton.FloatingActionsMenu
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_add_circle"
             app:maxImageSize="60dp"
-            android:backgroundTint="@color/white"
-            app:layout_anchor="@id/bottomAppBar"/>
+            app:fab_expandDirection="up"
+            app:fab_labelsPosition="right"
+            app:layout_anchor="@id/bottomAppBar"
+            app:layout_anchorGravity="center"
+            android:layout_marginBottom="10dp"
+            >
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_colorNormal="#4c4c4c"
+                app:fab_size="normal"
+                app:fab_title="Today"
+                app:fab_icon="@drawable/activity_tv"
+                />
+
+        </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+
+<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/fabMain"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/navigation_add"-->
+<!--            app:maxImageSize="60dp"-->
+<!--            app:tint="@null"-->
+<!--            app:layout_anchor="@id/bottomAppBar"/>-->
+
+<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/fabToday"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="99dp"-->
+<!--            android:src="@drawable/navigation_calendar"-->
+<!--            app:layout_anchor="@+id/fabMain"-->
+<!--            app:layout_anchorGravity="top|center"-->
+<!--            app:maxImageSize="40dp"-->
+<!--            app:tint="@null"-->
+<!--            app:fab_size="mini"-->
+<!--            android:layout_margin="30dp"/>-->
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

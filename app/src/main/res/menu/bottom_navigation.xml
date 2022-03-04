@@ -3,14 +3,14 @@
 
     <item
         android:title="Entries"
-        android:icon="@drawable/ic_baseline_event_note" />
+        android:icon="@drawable/navigation_entries" />
     <item
         android:title="Calendar"
-        android:icon="@drawable/ic_baseline_calendar"/>
+        android:icon="@drawable/navigation_calendar"/>
     <item
         android:title="Stats"
-        android:icon="@drawable/ic_baseline_bar_chart"/>
+        android:icon="@drawable/navigation_stats"/>
     <item
         android:title="Settings"
-        android:icon="@drawable/ic_baseline_settings"/>
+        android:icon="@drawable/navigation_setting"/>
 </menu>
