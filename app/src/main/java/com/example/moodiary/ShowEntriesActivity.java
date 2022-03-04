@@ -6,16 +6,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 
-import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ShowEntriesActivity extends ListActivity {
 
     String[] items={"hello","Ok"};
     Integer[] thumbnails={R.drawable.ic_baseline_add_circle,R.drawable.box};
     BottomNavigationView bottom_navigation_menu;
-//    FloatingActionButton fabMain, fabToday;
-//    Boolean isFabOpen=false;
+    FloatingActionButton fabMain, fabToday;
+    Boolean isFabOpen=false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,31 +25,32 @@ public class ShowEntriesActivity extends ListActivity {
         bottom_navigation_menu.setBackground(null);
         bottom_navigation_menu.setItemIconTintList(null);
 
-//        fabMain=(FloatingActionButton)findViewById(R.id.fabMain);
-//        fabToday=(FloatingActionButton)findViewById(R.id.fabToday);
-//
-//        fabMain.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if(!isFabOpen)
-//                    showFabMenu();
-//                else
-//                    closeFabMenu();
-//            }
-//        });
-//
+          fabMain=(FloatingActionButton)findViewById(R.id.fabMain);
+          fabToday=(FloatingActionButton)findViewById(R.id.fabToday);
+          fabToday.setVisibility(View.INVISIBLE);
+
+        fabMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!isFabOpen)
+                    showFabMenu();
+                else
+                    closeFabMenu();
+            }
+        });
+
         CustomEntriesList aa=new CustomEntriesList(this, R.layout.custom_row_entries, items, thumbnails);
         setListAdapter(aa);
     }
-//
-//    private void showFabMenu(){
-//        isFabOpen=true;
-//        fabToday.animate().translationY(-getResources().getDimension(R.dimen.standard_55));
-//
-//    }
-//
-//    private void closeFabMenu(){
-//        isFabOpen=false;
-//        fabToday.animate().translationY(0);
-//    }
+
+    private void showFabMenu(){
+        isFabOpen=true;
+        fabToday.setVisibility(View.VISIBLE);
+
+    }
+
+    private void closeFabMenu(){
+        isFabOpen=false;
+        fabToday.setVisibility(View.INVISIBLE);
+    }
 }
