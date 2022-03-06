@@ -4,16 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateEntryActivity"
+    tools:context=".EditEntryActivity"
     android:padding="10dp">
-
-    <TextView
-        android:id="@+id/textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Xin chào"
-        android:textColor="@color/black"
-        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/name"
@@ -21,15 +13,26 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:layout_marginStart="5dp"
         android:textStyle="bold"
-        app:layout_constraintLeft_toRightOf="@id/textview"/>
-    <Button
-        android:id="@+id/btnLogout"
+        tools:layout_editor_absoluteX="93dp"
+        tools:layout_editor_absoluteY="10dp" />
+
+    <EditText
+        android:id="@+id/editTextDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Logout"
-        app:layout_constraintTop_toBottomOf="@+id/textview">
+        android:ems="10"
+        android:inputType="date"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="36dp" />
 
-    </Button>
+    <EditText
+        android:id="@+id/editTextTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="time"
+        tools:layout_editor_absoluteX="174dp"
+        tools:layout_editor_absoluteY="91dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
