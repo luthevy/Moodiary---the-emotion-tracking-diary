@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:src="@drawable/ic_x_icon"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_marginTop="120dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageButton">
+
+        <TextView
+            android:id="@+id/Stitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How are you?"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageButton" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_below="@+id/linearLayout"
+            android:layout_marginTop="70dp"
+            >
+
+            <TextView
+                android:id="@+id/chooseDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choose Day"
+                android:layout_gravity="center"
+                android:drawableLeft="@drawable/ic_baseline_calendar"
+                android:drawableRight="@drawable/ic_baseline_arrow_drop_down"
+                android:textColor="@color/Green"
+                android:clickable="true"
+                android:layout_marginLeft="-10dp"/>
+
+            <TextView
+                android:id="@+id/chooseTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choose Time"
+                android:layout_gravity="center"
+                android:drawableLeft="@drawable/ic_baseline_clock"
+                android:drawableRight="@drawable/ic_baseline_arrow_drop_down"
+                android:textColor="@color/Green"
+                android:clickable="true"
+                android:layout_marginLeft="80dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/linearLayout"
+            android:layout_marginTop="70dp"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/chooseAmazing"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/mood_amazing"
+                    android:tint="@color/GreenYellow"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:text="Amazing"
+                    android:textColor="@color/GreenYellow"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/chooseHappy"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/mood_happy"
+                    android:tint="@color/Green"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:text="Happy"
+                    android:textColor="@color/Green"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/chooseOk"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/mood_ok"
+                    android:tint="@color/Aqua"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:text="Ok"
+                    android:textColor="@color/Aqua"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/chooseSad"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/mood_sad"
+                    android:tint="@color/Orange"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:text="Sad"
+                    android:textColor="@color/Orange"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/chooseAwful"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/mood_awful"
+                    android:tint="@color/Red"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:text="Awful"
+                    android:textColor="@color/Red"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom|center"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/btnNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/ic_baseline_chevron_right"
+            android:background="@drawable/circular_shape"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Continue"
+            android:textStyle="bold"
+            android:textColor="@color/LimeGreen"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom|right"
+        android:orientation="vertical"
+        android:layout_marginRight="10dp"
+        >
+
+        <ImageButton
+            android:id="@+id/btnEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerInside"
+            android:layout_marginRight="7dp"
+            app:srcCompat="@drawable/ic_baseline_edit"
+            android:background="@drawable/circular_shape_none"/>
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit mood"
+            android:textStyle="bold"
+            android:textColor="@color/LimeGreen"/>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
