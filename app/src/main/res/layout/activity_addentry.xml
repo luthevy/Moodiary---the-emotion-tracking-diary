@@ -8,7 +8,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -18,18 +22,15 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/backArrow"
+                android:src="@drawable/back_arrow"
                 app:tint="@color/LimeGreen"
                 android:layout_gravity="center"/>
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:id="@+id/chosenMood"
-                android:src="@drawable/mood_amazing"
                 app:tint="@color/LimeGreen" />
-
         </LinearLayout>
-
 
         <TextView
             android:layout_width="match_parent"
@@ -328,7 +329,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/edit_new_button"
+                    android:id="@+id/edit_new"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
@@ -345,7 +346,7 @@
                         <ImageView
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:src="@drawable/editNewButton"
+                            android:src="@drawable/edit_new"
                             app:tint="@color/LimeGreen"
                             android:layout_centerInParent="true"/>
                     </RelativeLayout>
@@ -365,7 +366,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -377,6 +377,7 @@
                 android:drawableTint="@color/Green"/>
 
             <EditText
+                android:id="@+id/edtxt_Notes"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:background="#F2F2F7"
@@ -403,11 +404,21 @@
                     android:textColor="@color/Green"/>
             </LinearLayout>
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:text="Tap to Add Photo..."
-                android:backgroundTint="@color/LimeGreen"/>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/btnAddPhoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:text="Tap to Add Photo..."
+                    android:backgroundTint="@color/LimeGreen"/>
+                <ImageView
+                    android:id="@+id/selectedImage"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_marginTop="5dp"/>
+            </RelativeLayout>
 
         </LinearLayout>
 
@@ -415,7 +426,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="100dp">
+            android:layout_marginTop="30dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -423,7 +434,7 @@
                 android:gravity="bottom|center"
                 android:orientation="vertical"
                 android:layout_marginLeft="150dp">
-                <ImageView
+                <ImageButton
                     android:id="@+id/btnSave"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -460,9 +471,6 @@
                     android:textStyle="bold"
                     android:textColor="@color/LimeGreen"/>
             </LinearLayout>
-
         </LinearLayout>
-
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -33,6 +33,9 @@
         <activity
             android:name=".InitiateMood"
             android:exported="true"/>
+        <activity
+            android:name=".AddEntryActivity"
+            android:exported="true"/>
     </application>
 
 </manifest>
