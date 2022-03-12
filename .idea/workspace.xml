@@ -14,7 +14,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[Nexus_5X_API_28]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -50,7 +50,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android.sdk.path" value="F:/AS_SDK" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="last_opened_file_path" value="D:/AndroidStudioProjects/WeatherForecast" />
+    <property name="last_opened_file_path" value="D:/Week05" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="RecentsManager">
@@ -58,9 +58,9 @@
       <recent name="com.example.moodiary" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\HCMUS\MobileDev\19KTPM3_MobileApp_FinalProject\app\src\main\res\drawable" />
       <recent name="E:\HCMUS\MobileDev\19KTPM3_MobileApp_FinalProject\app\src\main\res\drawable-v24" />
       <recent name="E:\HCMUS\MobileDev\19KTPM3_MobileApp_FinalProject\app" />
-      <recent name="E:\HCMUS\MobileDev\19KTPM3_MobileApp_FinalProject\app\src\main\res\drawable" />
       <recent name="E:\HCMUS\MobileDev\19KTPM3_MobileApp_FinalProject\app\src\main\res\drawable\login" />
     </key>
   </component>
@@ -191,26 +191,26 @@
       <screen x="0" y="0" width="1536" height="816" />
     </state>
     <state x="586" y="151" key="AndroidCreateXmlResourceDialog/0.0.1536.816@0.0.1536.816" timestamp="1645870698807" />
-    <state x="496" y="88" key="FileChooserDialogImpl" timestamp="1646158590245">
+    <state x="496" y="88" key="FileChooserDialogImpl" timestamp="1646833455171">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="496" y="88" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1646158590245" />
-    <state width="1480" height="445" key="GridCell.Tab.0.bottom" timestamp="1645866703066">
+    <state x="496" y="88" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1646833455171" />
+    <state width="1480" height="445" key="GridCell.Tab.0.bottom" timestamp="1646323200190">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1480" height="445" key="GridCell.Tab.0.bottom/0.0.1536.816@0.0.1536.816" timestamp="1645866703066" />
-    <state width="1480" height="445" key="GridCell.Tab.0.center" timestamp="1645866703066">
+    <state width="1480" height="445" key="GridCell.Tab.0.bottom/0.0.1536.816@0.0.1536.816" timestamp="1646323200190" />
+    <state width="1480" height="445" key="GridCell.Tab.0.center" timestamp="1646323200190">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1480" height="445" key="GridCell.Tab.0.center/0.0.1536.816@0.0.1536.816" timestamp="1645866703066" />
-    <state width="1480" height="445" key="GridCell.Tab.0.left" timestamp="1645866703066">
+    <state width="1480" height="445" key="GridCell.Tab.0.center/0.0.1536.816@0.0.1536.816" timestamp="1646323200190" />
+    <state width="1480" height="445" key="GridCell.Tab.0.left" timestamp="1646323200189">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1480" height="445" key="GridCell.Tab.0.left/0.0.1536.816@0.0.1536.816" timestamp="1645866703066" />
-    <state width="1480" height="445" key="GridCell.Tab.0.right" timestamp="1645866703066">
+    <state width="1480" height="445" key="GridCell.Tab.0.left/0.0.1536.816@0.0.1536.816" timestamp="1646323200189" />
+    <state width="1480" height="445" key="GridCell.Tab.0.right" timestamp="1646323200190">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1480" height="445" key="GridCell.Tab.0.right/0.0.1536.816@0.0.1536.816" timestamp="1645866703066" />
+    <state width="1480" height="445" key="GridCell.Tab.0.right/0.0.1536.816@0.0.1536.816" timestamp="1646323200190" />
     <state x="542" y="171" key="chooseDestDirectoryDialog" timestamp="1646042355242">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
