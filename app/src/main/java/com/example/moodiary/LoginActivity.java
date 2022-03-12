@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
     private void reload() {
-        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        startActivity(new Intent(getApplicationContext(), ShowEntriesActivity.class));
     }
 
     @Override

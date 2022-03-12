@@ -45,12 +45,12 @@ public class ForgotPwActivity extends AppCompatActivity {
         auth.sendPasswordResetEmail(email)
                 .addOnCompleteListener(task -> {
                     if(task.isSuccessful()){
+                        Toast.makeText(ForgotPwActivity.this, "Check your email", Toast.LENGTH_LONG).show();
                         startActivity(new Intent(ForgotPwActivity.this,LoginActivity.class));
                         finish();
-                        Toast.makeText(ForgotPwActivity.this, "Check your email", Toast.LENGTH_SHORT).show();
                     }
                     else{
-                        Toast.makeText(ForgotPwActivity.this, "Email not found", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ForgotPwActivity.this, "Email not found", Toast.LENGTH_LONG).show();
                     }
                 });
     }
