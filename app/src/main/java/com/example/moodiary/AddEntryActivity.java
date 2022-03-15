@@ -15,9 +15,17 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.ImageViewCompat;
+
+import com.google.android.gms.common.util.ArrayUtils;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+
+import org.jetbrains.annotations.NotNull;
 
 
 public class AddEntryActivity extends AppCompatActivity {
@@ -125,6 +133,31 @@ public class AddEntryActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(intent, 3);
+            }
+        });
+
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AddEntryToDatabase dtb = new AddEntryToDatabase();
+                 String listMood = "";
+                 for (int i=0; i<chooseStatus.length;i++){
+                     if(chooseStatus[i]==1)
+                         listMood += i+1 + " ";
+                 }
+
+                 Entry newEntry = new Entry(listMood, notes.getText().toString());
+                 dtb.add(newEntry).addOnSuccessListener(new OnSuccessListener<Void>() {
+                     @Override
+                     public void onSuccess(Void unused) {
+                         Toast.makeText(AddEntryActivity.this,"Add Success", Toast.LENGTH_SHORT).show();
+                     }
+                 }).addOnFailureListener(new OnFailureListener() {
+                     @Override
+                     public void onFailure(@NonNull @NotNull Exception e) {
+                         Toast.makeText(AddEntryActivity.this,"Add Unsuccess", Toast.LENGTH_SHORT).show();
+                     }
+                 });
             }
         });
     }
