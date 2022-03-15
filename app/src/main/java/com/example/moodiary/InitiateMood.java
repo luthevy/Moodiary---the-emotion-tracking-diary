@@ -3,11 +3,13 @@ package com.example.moodiary;
 import android.app.AppComponentFactory;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -24,7 +26,7 @@ public class InitiateMood extends AppCompatActivity {
     DatePickerDialog.OnDateSetListener SetDate;
     TimePickerDialog.OnTimeSetListener SetTime;
     int tHour, tMinute;
-
+    private ImageButton btnNext, btnExit;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,6 +90,7 @@ public class InitiateMood extends AppCompatActivity {
                                 SimpleDateFormat f24Hours = new SimpleDateFormat("HH:mm");
                                 try{
                                     Date date = f24Hours.parse(time);
+                                    assert date != null;
                                     chooseTime.setText(f24Hours.format(date));
                                 } catch (ParseException e){
                                     e.printStackTrace();
@@ -115,5 +118,19 @@ public class InitiateMood extends AppCompatActivity {
 //                chooseTime.setText(hourOfDay+":"+minute);
 //            }
 //        };
+        btnNext = findViewById(R.id.btnNext);
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), AddEntryActivity.class));
+            }
+        });
+        btnExit = findViewById(R.id.imgbtnExit);
+        btnExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), ShowEntriesActivity.class));
+            }
+        });
     }
 }
