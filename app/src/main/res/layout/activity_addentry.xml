@@ -417,7 +417,7 @@
                 <ImageView
                     android:id="@+id/selectedImage"
                     android:layout_width="110dp"
-                    android:layout_height="110dp"
+                    android:layout_height="50dp"
                     android:layout_marginTop="5dp"/>
             </RelativeLayout>
 
@@ -427,7 +427,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="30dp">
+            android:layout_marginTop="20dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
