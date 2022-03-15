@@ -12,13 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da699d9d-720a-47fa-9e1a-ddcb9b06019d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/AddEntryActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/backArrow.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/back_arrow.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/editNewButton.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/edit_new.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_addentry.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_addentry.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,7 +20,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@C:\Users\admin\.android\avd\NieraPhone.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/lanmac/.android/avd/Nexus_5X_API_28.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -35,6 +29,9 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand />
@@ -80,13 +77,13 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android.sdk.path" value="F:/AS_SDK" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Documents/AndroidStudio/DeviceExplorer/NieraPhone [emulator-5554]/storage/emulated/0/Pictures" />
-    <property name="project.structure.last.edited" value="Dependencies" />
-    <property name="project.structure.proportion" value="0.17" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.YAML" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\HCMUS\MobileDev\19KTPM3_MobileApp_FinalProject\app\src\main\res\drawable" />
       <recent name="E:\HCMUS\MobileDev\19KTPM3_MobileApp_FinalProject\app\src\main\res\drawable-v24" />
@@ -96,16 +93,13 @@
     <key name="android.template.1135084625">
       <recent name="com.example.moodiary" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
-    </key>
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="gradle signingReport" />
     </option>
   </component>
-  <component name="RunManager" selected="Android App.AddEntryActivity">
+  <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -245,7 +239,9 @@
         </option>
         <option name="vmOptions" value="" />
       </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
     <recent_temporary>
@@ -255,7 +251,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -282,10 +278,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="286" y="154" key="#PSD" timestamp="1647332451598">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state x="286" y="154" key="#PSD/0.0.1536.816@0.0.1536.816" timestamp="1647332451598" />
     <state x="947" y="49" key="#com.intellij.ide.util.MemberChooser" timestamp="1645877396229">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
@@ -306,45 +298,37 @@
       <screen x="0" y="0" width="1536" height="816" />
     </state>
     <state x="586" y="151" key="AndroidCreateXmlResourceDialog/0.0.1536.816@0.0.1536.816" timestamp="1645870698807" />
-    <state x="496" y="88" key="FileChooserDialogImpl" timestamp="1647336744814">
+    <state x="496" y="88" key="FileChooserDialogImpl" timestamp="1646833455171">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="496" y="88" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1647336744814" />
-    <state width="1493" height="260" key="GridCell.Tab.0.bottom" timestamp="1647339045397">
+    <state x="496" y="88" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1646833455171" />
+    <state width="1480" height="445" key="GridCell.Tab.0.bottom" timestamp="1647328683948">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1493" height="260" key="GridCell.Tab.0.bottom/0.0.1536.816@0.0.1536.816" timestamp="1647339045397" />
-    <state width="1493" height="260" key="GridCell.Tab.0.center" timestamp="1647339045397">
+    <state width="1480" height="445" key="GridCell.Tab.0.bottom/0.0.1536.816@0.0.1536.816" timestamp="1647328683948" />
+    <state width="1480" height="445" key="GridCell.Tab.0.center" timestamp="1647328683948">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1493" height="260" key="GridCell.Tab.0.center/0.0.1536.816@0.0.1536.816" timestamp="1647339045397" />
-    <state width="1493" height="260" key="GridCell.Tab.0.left" timestamp="1647339045397">
+    <state width="1480" height="445" key="GridCell.Tab.0.center/0.0.1536.816@0.0.1536.816" timestamp="1647328683948" />
+    <state width="1480" height="445" key="GridCell.Tab.0.left" timestamp="1647328683948">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1493" height="260" key="GridCell.Tab.0.left/0.0.1536.816@0.0.1536.816" timestamp="1647339045397" />
-    <state width="1493" height="260" key="GridCell.Tab.0.right" timestamp="1647339045397">
+    <state width="1480" height="445" key="GridCell.Tab.0.left/0.0.1536.816@0.0.1536.816" timestamp="1647328683948" />
+    <state width="1480" height="445" key="GridCell.Tab.0.right" timestamp="1647328683948">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1493" height="260" key="GridCell.Tab.0.right/0.0.1536.816@0.0.1536.816" timestamp="1647339045397" />
-    <state x="277" y="53" key="SettingsEditor" timestamp="1647333234887">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state x="277" y="53" key="SettingsEditor/0.0.1536.816@0.0.1536.816" timestamp="1647333234887" />
+    <state width="1480" height="445" key="GridCell.Tab.0.right/0.0.1536.816@0.0.1536.816" timestamp="1647328683948" />
     <state x="542" y="171" key="chooseDestDirectoryDialog" timestamp="1646042355242">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
     <state x="542" y="171" key="chooseDestDirectoryDialog/0.0.1536.816@0.0.1536.816" timestamp="1646042355242" />
-    <state x="395" y="151" key="psd.add.library.dependency.panel.dimension" timestamp="1647332298922">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state x="395" y="151" key="psd.add.library.dependency.panel.dimension/0.0.1536.816@0.0.1536.816" timestamp="1647332298922" />
     <state x="341" y="181" width="840" height="1034" key="run.anything.popup" timestamp="1645859389215">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
     <state x="341" y="181" width="840" height="1034" key="run.anything.popup/0.0.1536.816@0.0.1536.816" timestamp="1645859389215" />
-    <state x="347" y="0" width="840" height="1034" key="search.everywhere.popup" timestamp="1647334957981">
+    <state x="347" y="-1" width="840" height="1034" key="search.everywhere.popup" timestamp="1645698084489">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="347" y="0" width="840" height="1034" key="search.everywhere.popup/0.0.1536.816@0.0.1536.816" timestamp="1647334957981" />
+    <state x="347" y="-1" width="840" height="1034" key="search.everywhere.popup/0.0.1536.816@0.0.1536.816" timestamp="1645698084489" />
   </component>
 </project>
