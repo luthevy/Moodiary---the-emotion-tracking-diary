@@ -16,14 +16,14 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_marginTop="120dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageButton">
+        app:layout_constraintTop_toTopOf="@+id/imgbtnExit">
 
         <TextView
             android:id="@+id/Stitle"
@@ -39,35 +39,34 @@
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
             android:layout_below="@+id/linearLayout"
             android:layout_marginTop="70dp"
-            >
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/chooseDay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Choose Day"
                 android:layout_gravity="center"
+                android:layout_marginLeft="-10dp"
+                android:clickable="true"
                 android:drawableLeft="@drawable/ic_baseline_calendar"
                 android:drawableRight="@drawable/ic_baseline_arrow_drop_down"
-                android:textColor="@color/Green"
-                android:clickable="true"
-                android:layout_marginLeft="-10dp"/>
+                android:text="Choose Day"
+                android:textColor="@color/Green" />
 
             <TextView
                 android:id="@+id/chooseTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Choose Time"
                 android:layout_gravity="center"
+                android:layout_marginLeft="80dp"
+                android:clickable="true"
                 android:drawableLeft="@drawable/ic_baseline_clock"
                 android:drawableRight="@drawable/ic_baseline_arrow_drop_down"
-                android:textColor="@color/Green"
-                android:clickable="true"
-                android:layout_marginLeft="80dp"/>
+                android:text="Choose Time"
+                android:textColor="@color/Green" />
 
         </LinearLayout>
 
@@ -75,29 +74,43 @@
             android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_below="@+id/linearLayout"
             android:layout_marginTop="70dp"
-            >
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
 
+                <ImageView
+                    android:id="@+id/chooseAmazingBg"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/circular_shape50"
+                    android:visibility="visible"
+                    android:scaleType="centerInside"
+                    />
                 <ImageView
                     android:id="@+id/chooseAmazing"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@drawable/mood_amazing"
-                    android:tint="@color/GreenYellow"/>
+                    android:tint="@color/GreenYellow"
+                    android:layout_centerInParent="true"
+                    />
+            </RelativeLayout>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textStyle="bold"
                     android:text="Amazing"
-                    android:textColor="@color/GreenYellow"/>
+                    android:textColor="@color/GreenYellow"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -105,19 +118,34 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/chooseHappy"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/mood_happy"
-                    android:tint="@color/Green"/>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:id="@+id/chooseHappyBg"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/circular_shape50"
+                        android:visibility="visible"
+                        android:scaleType="centerInside"
+                        />
+                    <ImageView
+                        android:id="@+id/chooseHappy"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/mood_happy"
+                        android:tint="@color/Green"
+                        />
+                </RelativeLayout>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textStyle="bold"
                     android:text="Happy"
-                    android:textColor="@color/Green"/>
+                    android:textColor="@color/Green"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -125,19 +153,34 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/chooseOk"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/mood_ok"
-                    android:tint="@color/Aqua"/>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:id="@+id/chooseOkBg"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/circular_shape50"
+                        android:visibility="visible"
+                        android:scaleType="centerInside"
+                        />
+                    <ImageView
+                        android:id="@+id/chooseOk"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/mood_ok"
+                        android:tint="@color/Aqua" />
+
+                </RelativeLayout>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textStyle="bold"
                     android:text="Ok"
-                    android:textColor="@color/Aqua"/>
+                    android:textColor="@color/Aqua"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -145,19 +188,34 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/chooseSad"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/mood_sad"
-                    android:tint="@color/Orange"/>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:id="@+id/chooseSadBg"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/circular_shape50"
+                        android:visibility="visible"
+                        android:scaleType="centerInside"
+                        />
+                    <ImageView
+                        android:id="@+id/chooseSad"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/mood_sad"
+                        android:tint="@color/Orange" />
+
+                </RelativeLayout>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textStyle="bold"
                     android:text="Sad"
-                    android:textColor="@color/Orange"/>
+                    android:textColor="@color/Orange"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -165,19 +223,35 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                <ImageView
+                    android:id="@+id/chooseAwfulBg"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/circular_shape50"
+                    android:visibility="visible"
+                    android:scaleType="centerInside"
+                    />
                 <ImageView
                     android:id="@+id/chooseAwful"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@drawable/mood_awful"
-                    android:tint="@color/Red"/>
+                    android:tint="@color/Red" />
+
+                </RelativeLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textStyle="bold"
                     android:text="Awful"
-                    android:textColor="@color/Red"/>
+                    android:textColor="@color/Red"
+                    android:textStyle="bold" />
             </LinearLayout>
 
 
@@ -186,48 +260,59 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/linearLayout4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:gravity="bottom|center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
             android:id="@+id/btnNext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/circular_shape"
             android:scaleType="centerInside"
-            app:srcCompat="@drawable/ic_baseline_chevron_right"
-            android:background="@drawable/circular_shape"/>
+            app:srcCompat="@drawable/ic_baseline_chevron_right" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Continue"
-            android:textStyle="bold"
-            android:textColor="@color/LimeGreen"/>
+            android:textColor="@color/LimeGreen"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/linearLayout5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginRight="10dp"
         android:gravity="bottom|right"
         android:orientation="vertical"
-        android:layout_marginRight="10dp"
-        >
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
             android:id="@+id/btnEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scaleType="centerInside"
             android:layout_marginRight="7dp"
-            app:srcCompat="@drawable/ic_baseline_edit"
-            android:background="@drawable/circular_shape_none"/>
+            android:background="@drawable/circular_shape_none"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/ic_baseline_edit" />
+
         <TextView
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Edit mood"
-            android:textStyle="bold"
-            android:textColor="@color/LimeGreen"/>
+            android:textColor="@color/LimeGreen"
+            android:textStyle="bold" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

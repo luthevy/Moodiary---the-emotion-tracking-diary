@@ -48,8 +48,9 @@ public class AddEntryActivity extends AppCompatActivity {
     private EditText notes;
     private Button btnAddPhoto;
     private ImageButton btnSave;
-    private ImageView btnMoodBack;
+    private ImageView btnMoodBack, chosenMood;
     private Uri selectedImage;
+    private String currentMood;
 
 
     @Override
@@ -72,6 +73,7 @@ public class AddEntryActivity extends AppCompatActivity {
         btnAddPhoto = findViewById(R.id.btnAddPhoto);
         btnSave = findViewById(R.id.btnSave);
         btnMoodBack = findViewById(R.id.btnMoodTurnBack);
+        chosenMood = findViewById(R.id.chosenMood);
 
         btnMoodBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +82,20 @@ public class AddEntryActivity extends AppCompatActivity {
 
             }
         });
+
+        currentMood=getIntent().getStringExtra("currentChoosenMood").toString();
+
+        if(currentMood.equals("Amazing"))
+            chosenMood.setImageResource(R.drawable.mood_amazing);
+        if(currentMood.equals("Happy"))
+            chosenMood.setImageResource(R.drawable.mood_happy);
+        if(currentMood.equals("Ok"))
+            chosenMood.setImageResource(R.drawable.mood_ok);
+        if(currentMood.equals("Sad"))
+            chosenMood.setImageResource(R.drawable.mood_sad);
+        if(currentMood.equals("Awful"))
+            chosenMood.setImageResource(R.drawable.mood_awful);
+
         activity1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -153,7 +169,7 @@ public class AddEntryActivity extends AppCompatActivity {
                          listMood += i+1 + " ";
                  }
 
-                 Entry newEntry = new Entry(listMood, notes.getText().toString());
+                 Entry newEntry = new Entry(listMood, notes.getText().toString(), currentMood);
 
                  // get date of entry to name for image
                  String imgName = newEntry.getDateOfmood(); imgName = imgName.replace("/","");
