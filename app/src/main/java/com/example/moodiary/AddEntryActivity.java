@@ -1,5 +1,6 @@
 package com.example.moodiary;
 
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.MotionEvent;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -24,6 +26,9 @@ import androidx.core.widget.ImageViewCompat;
 import com.google.android.gms.common.util.ArrayUtils;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -44,6 +49,8 @@ public class AddEntryActivity extends AppCompatActivity {
     private Button btnAddPhoto;
     private ImageButton btnSave;
     private ImageView btnMoodBack;
+    private Uri selectedImage;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -147,6 +154,23 @@ public class AddEntryActivity extends AppCompatActivity {
                  }
 
                  Entry newEntry = new Entry(listMood, notes.getText().toString());
+
+                 // get date of entry to name for image
+                 String imgName = newEntry.getDateOfmood(); imgName = imgName.replace("/","");
+                 imgName = imgName.replace(":","");imgName = imgName.replace(" ","");
+
+                 //UPLOAD IMAGE
+                 if(selectedImage != null){
+                    StorageReference fileReference = FirebaseStorage.getInstance().getReference("images").child(imgName+"."+getFileExtension(selectedImage));
+                    fileReference.putFile(selectedImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            Toast.makeText(AddEntryActivity.this,"Add Image Success", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                 }
+
+                 //UPLOAD DATA OF ENTRY
                  dtb.add(newEntry).addOnSuccessListener(new OnSuccessListener<Void>() {
                      @Override
                      public void onSuccess(Void unused) {
@@ -158,6 +182,7 @@ public class AddEntryActivity extends AppCompatActivity {
                          Toast.makeText(AddEntryActivity.this,"Add Unsuccess", Toast.LENGTH_SHORT).show();
                      }
                  });
+
             }
         });
     }
@@ -170,7 +195,7 @@ public class AddEntryActivity extends AppCompatActivity {
             btnAddPhoto.setVisibility(View.GONE);
 
             //show selected image
-            Uri selectedImage = data.getData();
+            selectedImage = data.getData();
             ImageView imageView = findViewById(R.id.selectedImage);
             imageView.setImageURI(selectedImage);
         }
@@ -190,6 +215,12 @@ public class AddEntryActivity extends AppCompatActivity {
             circularShape.setImageResource(R.drawable.circular_shape_none);
             ImageViewCompat.setImageTintList(activityImage, ColorStateList.valueOf(Color.parseColor("#32CD32")));
         }
+    }
+
+    private String getFileExtension(Uri uri){
+        ContentResolver cR = getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(cR.getType(uri));
     }
 }
 
