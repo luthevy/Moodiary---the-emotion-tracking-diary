@@ -87,9 +87,6 @@
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.YAML" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\HCMUS\MobileDev\19KTPM3_MobileApp_FinalProject\app\src\main\res\drawable" />
       <recent name="E:\HCMUS\MobileDev\19KTPM3_MobileApp_FinalProject\app\src\main\res\drawable-v24" />
@@ -98,6 +95,9 @@
     </key>
     <key name="android.template.1135084625">
       <recent name="com.example.moodiary" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
     </key>
   </component>
   <component name="RunAnythingCache">
