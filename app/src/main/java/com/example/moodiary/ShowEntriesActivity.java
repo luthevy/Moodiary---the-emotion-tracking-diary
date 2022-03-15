@@ -2,6 +2,7 @@ package com.example.moodiary;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
@@ -39,6 +40,13 @@ public class ShowEntriesActivity extends ListActivity {
             }
         });
 
+        fabToday.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), InitiateMood.class));
+
+            }
+        });
         CustomEntriesList aa=new CustomEntriesList(this, R.layout.custom_row_entries, items, thumbnails);
         setListAdapter(aa);
     }

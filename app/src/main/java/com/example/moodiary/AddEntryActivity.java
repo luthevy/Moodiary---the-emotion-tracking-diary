@@ -35,11 +35,12 @@ public class AddEntryActivity extends AppCompatActivity {
     private EditText notes;
     private Button btnAddPhoto;
     private ImageButton btnSave;
+    private ImageView btnMoodBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_addentry);
 
         LinearLayout activity1 = findViewById(R.id.activity1);
         LinearLayout activity2 = findViewById(R.id.activity2);
@@ -55,7 +56,15 @@ public class AddEntryActivity extends AppCompatActivity {
         notes = findViewById(R.id.edtxt_Notes);
         btnAddPhoto = findViewById(R.id.btnAddPhoto);
         btnSave = findViewById(R.id.btnSave);
+        btnMoodBack = findViewById(R.id.btnMoodTurnBack);
 
+        btnMoodBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), InitiateMood.class));
+
+            }
+        });
         activity1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
