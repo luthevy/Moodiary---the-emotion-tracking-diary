@@ -8,18 +8,22 @@ import java.util.Date;
 public class Entry {
     private String activity;
     private String note;
-    private String dateOfmood;
+    private String dayOfmood;
+    private String timeOfmood;
     private String moodType;
+    private String dateOfMood;
 
     public Entry(){}
-    public Entry(String activities, String noteSth, String type){
+    public Entry(String activities, String noteSth, String day, String time, String type){
 
         activity = activities;
         note = noteSth;
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
-        dateOfmood=formatter.format(date).toString();
+        dayOfmood = day;
+        timeOfmood = time;
         moodType = type;
+        dateOfMood = dayOfmood + " " +timeOfmood;
     }
 
     public String getActivity() {
@@ -36,15 +40,19 @@ public class Entry {
         this.note = note;
     }
 
-    public String getDateOfmood() {
-        return dateOfmood;
-    }
+    public String getDayOfmood() { return dayOfmood; }
 
-    public void setDateOfmood(String dateOfmood) {
-        this.dateOfmood = dateOfmood;
-    }
+    public String getTimeOfmood() { return timeOfmood; }
+
+    public void setDayOfmood(String dayOfmood) { this.dayOfmood = dayOfmood; }
+
+    public void setTimeOfmood(String timeOfmood) { this.timeOfmood = timeOfmood; }
 
     public String getMoodType() { return moodType; }
 
     public void setMoodType(String moodType) { this.moodType = moodType; }
+
+    public String getDateOfMood() { return dateOfMood; }
+
+    public void setDateOfMood(String dateOfMood) { this.dateOfMood = dateOfMood; }
 }

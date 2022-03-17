@@ -51,6 +51,7 @@ public class AddEntryActivity extends AppCompatActivity {
     private ImageView btnMoodBack, chosenMood;
     private Uri selectedImage;
     private String currentMood;
+    private String dayOfMood, timeOfMood;
 
 
     @Override
@@ -84,6 +85,8 @@ public class AddEntryActivity extends AppCompatActivity {
         });
 
         currentMood=getIntent().getStringExtra("currentChoosenMood").toString();
+        dayOfMood = getIntent().getStringExtra("dayOfMood").toString();
+        timeOfMood = getIntent().getStringExtra("timeOfMood").toString();
 
         if(currentMood.equals("Amazing"))
             chosenMood.setImageResource(R.drawable.mood_amazing);
@@ -169,10 +172,10 @@ public class AddEntryActivity extends AppCompatActivity {
                          listMood += i+1 + " ";
                  }
 
-                 Entry newEntry = new Entry(listMood, notes.getText().toString(), currentMood);
+                 Entry newEntry = new Entry(listMood, notes.getText().toString(),dayOfMood,timeOfMood, currentMood);
 
                  // get date of entry to name for image
-                 String imgName = newEntry.getDateOfmood(); imgName = imgName.replace("/","");
+                 String imgName = newEntry.getDateOfMood(); imgName = imgName.replace("/","");
                  imgName = imgName.replace(":","");imgName = imgName.replace(" ","");
 
                  //UPLOAD IMAGE

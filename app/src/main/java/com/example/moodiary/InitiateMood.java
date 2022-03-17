@@ -65,7 +65,7 @@ public class InitiateMood extends AppCompatActivity {
         String curdate = dateFormatTemp.format(new Date());
         chooseDay.setText(curdate);
 
-        SimpleDateFormat timeFormatTemp = new SimpleDateFormat("HH:ss");
+        SimpleDateFormat timeFormatTemp = new SimpleDateFormat("HH:mm");
         String curtime = timeFormatTemp.format(new Date());
         chooseTime.setText(curtime);
 
@@ -180,6 +180,8 @@ public class InitiateMood extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), AddEntryActivity.class);
                 intent.putExtra("currentChoosenMood",moodType);
+                intent.putExtra("dayOfMood",chooseDay.getText().toString());
+                intent.putExtra("timeOfMood",chooseTime.getText().toString());
                 startActivity(intent);
             }
         });
