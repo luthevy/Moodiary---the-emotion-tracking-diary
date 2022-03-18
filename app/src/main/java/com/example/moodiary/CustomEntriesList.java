@@ -24,12 +24,28 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-        View row = inflater.inflate(R.layout.custom_row_entries, null);
-        ListView listsameDate = row.findViewById(R.id.list_same_date);
+        LinearLayout row = (LinearLayout) inflater.inflate(R.layout.custom_row_entries, null);
+//        ListView listsameDate = row.findViewById(R.id.list_same_date);
         System.out.println("In custom  "+ items.get(position));
+        for(Entry e :items.get(position)){
+            View child = inflater.inflate(R.layout.custom_show_one_entries, null);
+            ImageView moodIcon = child.findViewById(R.id.moodIcon);
+            ImageView actIcon = child.findViewById(R.id.actIcon);
+            TextView dateText = child.findViewById(R.id.dateText);
+            TextView curMood = child.findViewById(R.id.curMood);
+            TextView timeText = child.findViewById(R.id.timeText);
+            TextView actText = child.findViewById(R.id.actText);
+            TextView descText = child.findViewById(R.id.descText);
 
-        CustomOneEntry custom = new CustomOneEntry(row.getContext(), R.layout.custom_row_entries, items.get(position), thumbnails);
-        listsameDate.setAdapter(custom);
+            dateText.setText(e.getDayOfmood());
+            curMood.setText(e.getMoodType());
+            timeText.setText(e.getTimeOfmood());
+            descText.setText(e.getNote());
+            row.addView(child);
+        }
+
+//        CustomOneEntry custom = new CustomOneEntry(listsameDate.getContext(), R.layout.custom_show_one_entries, items.get(position), thumbnails);
+//        listsameDate.setAdapter(custom);
 
         return(row);
     }

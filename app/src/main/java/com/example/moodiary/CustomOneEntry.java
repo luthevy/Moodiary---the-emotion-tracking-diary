@@ -28,7 +28,7 @@ public class CustomOneEntry extends ArrayAdapter<Entry> {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
         View row = inflater.inflate(R.layout.custom_show_one_entries, null);
-        System.out.println("cusstom 2  "+ items);
+        System.out.println("cusstom 2  "+ items.get(position));
 
         ImageView moodIcon = row.findViewById(R.id.moodIcon);
         ImageView actIcon = row.findViewById(R.id.actIcon);
