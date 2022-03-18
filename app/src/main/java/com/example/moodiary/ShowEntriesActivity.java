@@ -2,6 +2,7 @@ package com.example.moodiary;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,10 +24,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ShowEntriesActivity extends ListActivity {
+public class ShowEntriesActivity extends Activity {
 
-    String[] items={"hello","Ok"};
-    Integer[] thumbnails={R.drawable.ic_baseline_add_circle,R.drawable.box};
+
+    Integer[] mood_thumbnails={R.drawable.mood_amazing,R.drawable.mood_happy, R.drawable.mood_ok, R.drawable.mood_sad,
+                            R.drawable.mood_awful};
+    ListView listbyDate, listsameDate;
+
     private BottomNavigationView bottom_navigation_menu;
     private FloatingActionButton fabMain, fabToday;
     private Boolean isFabOpen=false;
@@ -34,6 +38,7 @@ public class ShowEntriesActivity extends ListActivity {
     private FirebaseDatabase database;
     DatabaseReference ref;
     private ArrayList<Entry> listEntry;
+
     private ArrayList<ArrayList<Entry>> listOfEntryInDate;
 
     @Override
@@ -44,7 +49,8 @@ public class ShowEntriesActivity extends ListActivity {
         bottom_navigation_menu.setBackground(null);
         bottom_navigation_menu.setItemIconTintList(null);
 
-        //---------------------Decor Sub Menu-------------------------------
+
+//---------------------Decor Sub Menu-------------------------------
           fabMain=(FloatingActionButton)findViewById(R.id.fabMain);
           fabToday=(FloatingActionButton)findViewById(R.id.fabToday);
           fabToday.setVisibility(View.INVISIBLE);
@@ -67,7 +73,7 @@ public class ShowEntriesActivity extends ListActivity {
             }
         });
 
-        //--------------------------------Get infor from database-------
+//--------------------------------Get infor from database-------
         ref = FirebaseDatabase.getInstance().getReference("Entry");
         listEntry=new ArrayList<>();
 
@@ -82,6 +88,16 @@ public class ShowEntriesActivity extends ListActivity {
                 }
 
                 divideEntry();
+
+
+                listbyDate = findViewById(R.id.list_different_date);
+                //listsameDate = findViewById(R.id.list_different_date);
+
+                CustomEntriesList aa=new CustomEntriesList(ShowEntriesActivity.this, R.layout.custom_row_entries, listOfEntryInDate, mood_thumbnails);
+                //CustomOneEntry aa=new CustomOneEntry(ShowEntriesActivity.this, R.layout.custom_show_one_entries, listEntry, mood_thumbnails);
+
+                listbyDate.setAdapter(aa);
+                //listsameDate.setAdapter(aa);
             }
 
             @Override
@@ -89,14 +105,12 @@ public class ShowEntriesActivity extends ListActivity {
                 System.out.println("ERR read");
             }
         });
+//---------------------------List view-------------------------------
 
-
-        CustomEntriesList aa=new CustomEntriesList(this, R.layout.custom_row_entries, items, thumbnails);
-        setListAdapter(aa);
     }
 
 
-    //-------------------------------Show sub menu-----------------------------
+//-------------------------------Show sub menu-----------------------------
     private void showFabMenu(){
         isFabOpen=true;
         fabToday.setVisibility(View.VISIBLE);
@@ -142,7 +156,7 @@ public class ShowEntriesActivity extends ListActivity {
             temp_list.clear();
         }
 
-        System.out.println("new size "+ listOfEntryInDate.get(2).get(0).getDayOfmood());
+        System.out.println("new size "+ listOfEntryInDate.get(1).toString());
 
     }
 }

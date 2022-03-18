@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@drawable/entries_box">
+
+    <ImageView
+        android:id="@+id/moodIcon"
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:layout_marginRight="3dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/mood_12"
+        android:tint="@color/Yellow"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/dateText"
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="8dp"
+                    android:text="January 28th, 2022"
+                    android:textStyle="bold"
+                    android:textSize="15sp"/>
+                <ImageView
+                    android:id="@+id/Setting"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:clickable="true"
+                    android:src="@drawable/ic_baseline_settings"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:id="@+id/curMood"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:text="rad"
+                    android:textColor="#ffcc33"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/timeText"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_height="20dp"
+                    android:text="20:07"
+                    android:textSize="18sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:gravity="center">
+                <ImageView
+                    android:id="@+id/actIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_baseline_settings"/>
+
+                <TextView
+                    android:id="@+id/actText"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_height="30dp"
+                    android:text="fixing"
+                    android:textSize="18sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:layout_marginRight="50dp">
+
+                <TextView
+                    android:id="@+id/descText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Going to the moon and watching asas somejs xmay be"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
