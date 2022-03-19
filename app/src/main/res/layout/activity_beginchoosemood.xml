@@ -131,13 +131,13 @@
                         android:visibility="visible"
                         android:scaleType="centerInside"
                         />
+
                     <ImageView
                         android:id="@+id/chooseHappy"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:src="@drawable/mood_happy"
-                        android:tint="@color/Green"
-                        />
+                        android:tint="@color/Green" />
                 </RelativeLayout>
                 <TextView
                     android:layout_width="match_parent"

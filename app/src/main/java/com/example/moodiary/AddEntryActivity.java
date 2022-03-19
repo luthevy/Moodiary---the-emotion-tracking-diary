@@ -194,6 +194,8 @@ public class AddEntryActivity extends AppCompatActivity {
                      @Override
                      public void onSuccess(Void unused) {
                          Toast.makeText(AddEntryActivity.this,"Add Success", Toast.LENGTH_SHORT).show();
+                         startActivity(new Intent(getApplicationContext(), ShowEntriesActivity.class));
+
                      }
                  }).addOnFailureListener(new OnFailureListener() {
                      @Override

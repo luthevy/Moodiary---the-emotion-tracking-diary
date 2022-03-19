@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:layout_marginTop="20dp">
 
     <ImageView
         android:id="@+id/moodIcon"
@@ -14,48 +15,50 @@
         android:tint="@color/Yellow"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="25dp"
+                android:layout_marginTop="10dp"
+                >
                 <TextView
                     android:id="@+id/dateText"
-                    android:layout_width="match_parent"
-                    android:layout_weight="1"
-                    android:layout_height="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
                     android:layout_marginTop="8dp"
                     android:text="January 28th, 2022"
                     android:textStyle="bold"
-                    android:textSize="15sp"/>
+                    android:layout_weight="1"
+                    android:textSize="18sp"
+                    android:layout_gravity="left"/>
                 <ImageView
                     android:id="@+id/Setting"
-                    android:layout_marginRight="10dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:layout_marginTop="5dp"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_marginRight="20dp"
                     android:clickable="true"
-                    android:src="@drawable/ic_baseline_settings"/>
+                    android:src="@drawable/ic_baseline_settings"
+                    android:layout_gravity="right"/>
             </LinearLayout>
-
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="10dp">
                 <TextView
                     android:id="@+id/curMood"
-                    android:layout_width="30dp"
-                    android:layout_height="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
                     android:text="rad"
                     android:textColor="#ffcc33"
                     android:textSize="18sp"/>
@@ -63,32 +66,35 @@
                 <TextView
                     android:id="@+id/timeText"
                     android:layout_width="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_height="20dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_height="30dp"
                     android:text="20:07"
                     android:textSize="18sp"/>
 
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/act_linear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:gravity="center">
-                <ImageView
-                    android:id="@+id/actIcon"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_baseline_settings"/>
 
-                <TextView
-                    android:id="@+id/actText"
-                    android:layout_width="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_height="30dp"
-                    android:text="fixing"
-                    android:textSize="18sp"/>
+<!--                <ImageView-->
+<!--                    android:id="@+id/actIcon"-->
+<!--                    android:layout_width="30dp"-->
+<!--                    android:layout_height="30dp"-->
+<!--                    android:src="@drawable/ic_baseline_settings" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/actText"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:layout_height="30dp"-->
+<!--                    android:layout_marginTop="1dp"-->
+<!--                    android:text="fixing"-->
+<!--                    android:textSize="18sp"/>-->
             </LinearLayout>
 
             <LinearLayout
@@ -96,7 +102,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
-                android:layout_marginRight="50dp">
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="10dp">
 
                 <TextView
                     android:id="@+id/descText"

@@ -2,6 +2,9 @@ package com.example.moodiary;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +18,6 @@ public class CustomOneEntry extends ArrayAdapter<Entry> {
     Context context;
     Integer[] thumbnails;
     ArrayList<Entry> items;
-    //Entry[] items;
 
     public CustomOneEntry(Context context, int layoutToBeInflated, ArrayList<Entry> items, Integer[] thumbnails) {
         super(context, R.layout.custom_show_one_entries, items);
@@ -45,4 +47,6 @@ public class CustomOneEntry extends ArrayAdapter<Entry> {
 
         return(row);
     }
+
+
 }

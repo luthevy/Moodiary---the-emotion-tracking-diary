@@ -22,12 +22,14 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class ShowEntriesActivity extends Activity {
 
 
-    Integer[] mood_thumbnails={R.drawable.mood_amazing,R.drawable.mood_happy, R.drawable.mood_ok, R.drawable.mood_sad,
+    public Integer[] mood_thumbnails={R.drawable.mood_amazing,R.drawable.mood_happy, R.drawable.mood_ok, R.drawable.mood_sad,
                             R.drawable.mood_awful};
     ListView listbyDate, listsameDate;
 
@@ -86,7 +88,7 @@ public class ShowEntriesActivity extends Activity {
                     System.out.println("Read " + entry.getTimeOfmood());
                     listEntry.add(entry);
                 }
-
+                Collections.reverse(listEntry);
                 divideEntry();
 
 
