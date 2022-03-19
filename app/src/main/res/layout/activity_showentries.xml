@@ -6,37 +6,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-
-    <RelativeLayout
-        android:id="@+id/addBoxLayout"
+    <FrameLayout
+        android:id="@+id/navDisplay"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="62dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="62dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/box">
-
-        <TextView
-            android:id="@+id/text1"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/addBoxLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/addIconUpon"
-            android:background="@android:color/transparent"
-            android:text="Add your day, your story"
-            android:maxLines="1"
-            android:padding="15dp"
-            android:textSize="15dp" />
+            android:layout_marginLeft="62dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="62dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/box">
 
-        <ImageView
-            android:id="@+id/addIconUpon"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="17dp"
-            android:src="@drawable/ic_baseline_add_circle" />
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/addIconUpon"
+                android:background="@android:color/transparent"
+                android:text="Add your day, your story"
+                android:maxLines="1"
+                android:padding="15dp"
+                android:textSize="15dp" />
 
+<<<<<<< Updated upstream
     </RelativeLayout>
 <!--    <androidx.core.widget.NestedScrollView-->
 <!--        android:layout_width="match_parent"-->
@@ -52,14 +48,43 @@
                 android:layout_marginTop="70dp"
                 android:layout_marginBottom="80dp"
                 android:id="@+id/list_different_date"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:divider="@android:color/transparent"
-                android:dividerHeight="10.0sp"/>
+=======
+            <ImageView
+                android:id="@+id/addIconUpon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="17dp"
+                android:src="@drawable/ic_baseline_add_circle" />
 
+        </RelativeLayout>
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="70dp">
+
+            <LinearLayout
+>>>>>>> Stashed changes
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+<<<<<<< Updated upstream
 <!--        </LinearLayout>-->
 
 <!--    </androidx.core.widget.NestedScrollView>-->
+=======
+                <ListView
+                    android:id="@android:id/list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:divider="@android:color/transparent"
+                    android:dividerHeight="10.0sp"/>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </FrameLayout>
+>>>>>>> Stashed changes
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/navigator"

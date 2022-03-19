@@ -2,15 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/navEntries"
         android:title="Entries"
         android:icon="@drawable/navigation_entries" />
     <item
+        android:id="@+id/navCalendar"
         android:title="Calendar"
         android:icon="@drawable/navigation_calendar"/>
     <item
+        android:id="@+id/navStats"
         android:title="Stats"
         android:icon="@drawable/navigation_stats"/>
     <item
+        android:id="@+id/navSettings"
         android:title="Settings"
         android:icon="@drawable/navigation_setting"/>
 </menu>

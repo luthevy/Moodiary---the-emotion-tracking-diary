@@ -6,17 +6,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp">
-    <TextView
+<!--    <TextView-->
+<!--        android:id="@+id/txt_SigninTop"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_width="fill_parent"-->
+<!--        android:paddingTop="20dp"-->
+<!--        android:text="@string/LOGIN"-->
+<!--        android:textSize="40sp"-->
+<!--        android:fontFamily="sans-serif-black"-->
+<!--        android:textColor="@color/black"-->
+<!--        tools:ignore="MissingConstraints" />-->
+    <ImageView
         android:id="@+id/txt_SigninTop"
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:paddingTop="20dp"
-        android:text="@string/LOGIN"
-        android:textSize="40sp"
-        android:fontFamily="sans-serif-black"
-        android:textColor="@color/black"
-        tools:ignore="MissingConstraints" />
+        android:layout_width="120dp"
+        android:layout_height="116dp"
+        android:src="@drawable/logo_moodiary"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
+    </ImageView>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/lay_SigninEmail"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -41,8 +51,6 @@
             android:selectAllOnFocus="true"
             app:boxStrokeColor="@color/black"
             app:boxStrokeWidthFocused="2dp"
-
-
             app:hintTextColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -90,11 +98,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:layout_marginTop="40dp"
-        android:backgroundTint="@color/Yellow"
+        android:backgroundTint="@color/SpringGreen"
         android:textStyle="bold"
         android:textSize="18sp"
         android:layout_marginBottom="64dp"
-        android:textColor="@color/black"
+        android:textColor="@color/Black"
         android:text="@string/action_sign_in_short"
         app:layout_constraintTop_toBottomOf="@+id/txtForgotPw"
         app:layout_constraintVertical_bias="0.2"

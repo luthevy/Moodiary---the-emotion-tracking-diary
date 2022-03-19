@@ -13,4 +13,6 @@
     <string name="REGISTER">REGISTER</string>
     <string name="your_fullname">Your fullname</string>
     <string name="your_email">Your email</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
