@@ -1,22 +1,18 @@
 package com.example.moodiary;
-<<<<<<< Updated upstream
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-=======
->>>>>>> Stashed changes
 
 import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
-<<<<<<< Updated upstream
 import android.text.TextUtils;
-=======
 import android.view.MenuItem;
->>>>>>> Stashed changes
 import android.view.View;
 import androidx.annotation.NonNull;
 import android.app.Fragment;
+import android.widget.ListView;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
@@ -83,7 +79,7 @@ public class ShowEntriesActivity extends Activity {
 
             }
         });
-<<<<<<< Updated upstream
+
 
 //--------------------------------Get infor from database-------
         ref = FirebaseDatabase.getInstance().getReference("Entry");
@@ -111,20 +107,12 @@ public class ShowEntriesActivity extends Activity {
                 listbyDate.setAdapter(aa);
                 //listsameDate.setAdapter(aa);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 System.out.println("ERR read");
             }
         });
 //---------------------------List view-------------------------------
-=======
-        CustomEntriesList aa=new CustomEntriesList(this, R.layout.custom_row_entries, items, thumbnails);
-        setListAdapter(aa);
-
-
->>>>>>> Stashed changes
-
     }
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -149,12 +137,9 @@ public class ShowEntriesActivity extends Activity {
 //                    return true;
 //                }
 
-<<<<<<< Updated upstream
 
 //-------------------------------Show sub menu-----------------------------
-=======
-            };
->>>>>>> Stashed changes
+};
     private void showFabMenu(){
         isFabOpen=true;
         fabToday.setVisibility(View.VISIBLE);

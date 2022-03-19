@@ -65,7 +65,7 @@
         android:layout_height="60dp"
         android:layout_gravity="start"
         android:layout_marginTop="40dp"
-        android:backgroundTint="@color/Yellow"
+        android:backgroundTint="@color/SpringGreen"
         android:textStyle="bold"
         android:textSize="18sp"
         android:layout_marginBottom="64dp"
