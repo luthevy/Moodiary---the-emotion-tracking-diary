@@ -12,6 +12,7 @@ public class Entry {
     private String timeOfmood;
     private String moodType;
     private String dateOfMood;
+    private String imgLink;
 
     public Entry(){}
     public Entry(String activities, String noteSth, String day, String time, String type){
@@ -24,6 +25,20 @@ public class Entry {
         timeOfmood = time;
         moodType = type;
         dateOfMood = dayOfmood + " " +timeOfmood;
+        imgLink="";
+    }
+
+    public Entry(String activities, String noteSth, String day, String time, String type, String linkImg){
+
+        activity = activities;
+        note = noteSth;
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+        dayOfmood = day;
+        timeOfmood = time;
+        moodType = type;
+        dateOfMood = dayOfmood + " " +timeOfmood;
+        imgLink=linkImg;
     }
 
     public String getActivity() {
@@ -55,4 +70,12 @@ public class Entry {
     public String getDateOfMood() { return dateOfMood; }
 
     public void setDateOfMood(String dateOfMood) { this.dateOfMood = dateOfMood; }
+
+    public void setImgLink(String imgLink) {
+        this.imgLink = imgLink;
+    }
+
+    public String getImgLink() {
+        return imgLink;
+    }
 }

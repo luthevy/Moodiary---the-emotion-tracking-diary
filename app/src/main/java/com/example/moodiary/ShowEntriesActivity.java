@@ -184,8 +184,6 @@ public class ShowEntriesActivity extends Activity {
 
             temp_list.clear();
         }
-
-        System.out.println("new size "+ listOfEntryInDate.get(1).toString());
-
+        
     }
 }

@@ -52,6 +52,8 @@ public class AddEntryActivity extends AppCompatActivity {
     private Uri selectedImage;
     private String currentMood;
     private String dayOfMood, timeOfMood;
+    String linkimg = "", listMood;
+    int completeupload=0;
 
 
     @Override
@@ -166,44 +168,67 @@ public class AddEntryActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AddEntryToDatabase dtb = new AddEntryToDatabase();
-                 String listMood = "";
-                 for (int i=0; i<chooseStatus.length;i++){
-                     if(chooseStatus[i]==1)
-                         listMood += i+1 + " ";
-                 }
+                listMood = "";
+                for (int i = 0; i < chooseStatus.length; i++) {
+                    if (chooseStatus[i] == 1)
+                        listMood += i + 1 + " ";
+                }
 
-                 Entry newEntry = new Entry(listMood, notes.getText().toString(),dayOfMood,timeOfMood, currentMood);
+                Entry newEntry = new Entry(listMood, notes.getText().toString(), dayOfMood, timeOfMood, currentMood);
 
-                 // get date of entry to name for image
-                 String imgName = newEntry.getDateOfMood(); imgName = imgName.replace("/","");
-                 imgName = imgName.replace(":","");imgName = imgName.replace(" ","");
+                // get date of entry to name for image
+                String imgName = newEntry.getDateOfMood();
+                imgName = imgName.replace("/", "");
+                imgName = imgName.replace(":", "");
+                imgName = imgName.replace(" ", "");
 
-                 //UPLOAD IMAGE
-                 if(selectedImage != null){
-                    StorageReference fileReference = FirebaseStorage.getInstance().getReference("images").child(imgName+"."+getFileExtension(selectedImage));
+                //UPLOAD IMAGE
+                if (selectedImage != null) {
+                    StorageReference fileReference = FirebaseStorage.getInstance().getReference("images").child(imgName + "." + getFileExtension(selectedImage));
                     fileReference.putFile(selectedImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            Toast.makeText(AddEntryActivity.this,"Add Image Success", Toast.LENGTH_SHORT).show();
+                            fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    linkimg = uri.toString();
+                                    Entry newEntry1 = new Entry(listMood, notes.getText().toString(), dayOfMood, timeOfMood, currentMood, linkimg);
+                                    //UPLOAD DATA OF ENTRY
+                                    dtb.add(newEntry1).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void unused) {
+                                            Toast.makeText(AddEntryActivity.this, "Add Success", Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(getApplicationContext(), ShowEntriesActivity.class));
+
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull @NotNull Exception e) {
+                                            Toast.makeText(AddEntryActivity.this, "Add Unsuccess", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                }
+                            });
                         }
                     });
-                 }
+                }
 
-                 //UPLOAD DATA OF ENTRY
-                 dtb.add(newEntry).addOnSuccessListener(new OnSuccessListener<Void>() {
-                     @Override
-                     public void onSuccess(Void unused) {
-                         Toast.makeText(AddEntryActivity.this,"Add Success", Toast.LENGTH_SHORT).show();
-                         startActivity(new Intent(getApplicationContext(), ShowEntriesActivity.class));
+                else {
+                    //UPLOAD DATA OF ENTRY
+                    dtb.add(newEntry).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            Toast.makeText(AddEntryActivity.this, "Add Success", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), ShowEntriesActivity.class));
 
-                     }
-                 }).addOnFailureListener(new OnFailureListener() {
-                     @Override
-                     public void onFailure(@NonNull @NotNull Exception e) {
-                         Toast.makeText(AddEntryActivity.this,"Add Unsuccess", Toast.LENGTH_SHORT).show();
-                     }
-                 });
-
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull @NotNull Exception e) {
+                            Toast.makeText(AddEntryActivity.this, "Add Unsuccess", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
             }
         });
     }

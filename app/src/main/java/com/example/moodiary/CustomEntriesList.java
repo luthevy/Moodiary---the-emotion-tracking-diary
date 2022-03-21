@@ -4,10 +4,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
@@ -17,6 +20,7 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
     Context context;
     Integer[] thumbnails;
     ArrayList<ArrayList<Entry>> items;
+    String actColor;
 
 //-----------------
     Integer[] moods_thumbnail={R.drawable.mood_amazing,R.drawable.mood_happy, R.drawable.mood_ok, R.drawable.mood_sad,
@@ -50,6 +54,7 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
             TextView dateText = child.findViewById(R.id.dateText);
             TextView curMood = child.findViewById(R.id.curMood);
             TextView timeText = child.findViewById(R.id.timeText);
+
             //TextView actText = child.findViewById(R.id.actText);
             TextView descText = child.findViewById(R.id.descText);
 
@@ -59,6 +64,20 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
                 dateText.setText("-----------------------");
             curMood.setText(e.getMoodType());
 
+            timeText.setText(e.getTimeOfmood());
+            descText.setText(e.getNote());
+            setMoodThumb(moodIcon, e.getMoodType(), curMood);
+
+            if(!e.getImgLink().equals("")) {
+                //Picasso
+                LinearLayout entryImgLayout = child.findViewById(R.id.entryImgLayout);
+                View entryImgView = inflater.inflate(R.layout.custom_image_layout, null);
+                ImageView entryImg = entryImgView.findViewById(R.id.entryImg);
+                Picasso.with(entryImgView.getContext()).load(e.getImgLink()).into(entryImg);
+                entryImgLayout.addView(entryImgView);
+            }
+
+            // SET LAYOUT CHO 1 BOX CUNG NGAY
             LinearLayout act_linear = child.findViewById(R.id.act_linear);
             String []parts = e.getActivity().split(" ");
             for(int i = 0; i< parts.length; i++){
@@ -67,15 +86,12 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
                 TextView textView = small_act_layout.findViewById(R.id.actText);
 
                 actIcon.setImageResource(activity_thumbnail[Integer.parseInt(parts[i])-1]);
-                actIcon.setImageTintList(ColorStateList.valueOf(Color.parseColor("#90DA6E")));
+                actIcon.setImageTintList(ColorStateList.valueOf(Color.parseColor(actColor)));
 
                 textView.setText(activity_type[Integer.parseInt(parts[i])-1]);
                 act_linear.addView(small_act_layout);
             }
 
-            timeText.setText(e.getTimeOfmood());
-            descText.setText(e.getNote());
-            setMoodThumb(moodIcon, e.getMoodType(), curMood);
             get1DateOnly=1;
             row.addView(child);
 
@@ -89,6 +105,7 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
             if(mood.equals(moods_type[i])){
                 img.setImageResource(moods_thumbnail[i]);
                 img.setImageTintList(ColorStateList.valueOf(Color.parseColor(moods_color[i])));
+                actColor = moods_color[i];
                 curMood.setTextColor(ColorStateList.valueOf(Color.parseColor(moods_color[i])));
             }
         }
