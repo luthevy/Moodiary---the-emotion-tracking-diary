@@ -118,24 +118,19 @@ public class ShowEntriesActivity extends Activity {
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    Fragment selectedFragment = null;
                     switch (item.getItemId()){
                         case R.id.navSettings:
-                            startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+                            selectedFragment = new SettingsFragment();
+                            break;
+                        case R.id.navEntries:
+                            selectedFragment = new EntriesFragment();
                             break;
                     }
+
+                    getFragmentManager().beginTransaction().replace(R.id.navDisplay,selectedFragment).commit();
                     return true;
                 }
-//                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                    Fragment selectedFragment = null;
-//                    switch (item.getItemId()){
-//                        case R.id.navSettings:
-//                            selectedFragment = new SettingsFragment();
-//                            break;
-//                    }
-//
-//                    getFragmentManager().beginTransaction().replace(R.id.navDisplay,selectedFragment).commit();
-//                    return true;
-//                }
 
 
 //-------------------------------Show sub menu-----------------------------

@@ -47,14 +47,11 @@
             android:id="@+id/edtxt_ForgotPwEmail"
             android:layout_width="fill_parent"
             android:layout_height="60dp"
-
             android:autofillHints="@string/prompt_email"
             android:inputType="textEmailAddress"
             android:selectAllOnFocus="true"
             app:boxStrokeColor="@color/black"
             app:boxStrokeWidthFocused="2dp"
-
-
             app:hintTextColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
