@@ -23,14 +23,16 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
     String actColor;
 
 //-----------------
-    Integer[] moods_thumbnail={R.drawable.mood_amazing,R.drawable.mood_happy, R.drawable.mood_ok, R.drawable.mood_sad,
-            R.drawable.mood_awful};
-    Integer[] activity_thumbnail = {R.drawable.activity_drawing, R.drawable.activity_tv, R.drawable.activity_eat,
-            R.drawable.activity_sleep, R.drawable.activity_walk, R.drawable.activity_date, R.drawable.activity_swim,
-            R.drawable.activity_friend, R.drawable.activity_work};
-    String [] moods_type = {"Amazing", "Happy","Ok", "Sad", "Awful"};
-    String [] moods_color ={"#90DA6E", "#5CEF93", "#45D9FF", "#F5CC67", "#FC6C79"};
-    String [] activity_type ={"drawing", "TV", "eat", "sleep", "walk", "date", "swim", "friend", "work"};
+//    Integer[] moods_thumbnail={R.drawable.mood_amazing,R.drawable.mood_happy, R.drawable.mood_ok, R.drawable.mood_sad,
+//            R.drawable.mood_awful};
+//    Integer[] activity_thumbnail = {R.drawable.activity_drawing, R.drawable.activity_tv, R.drawable.activity_eat,
+//            R.drawable.activity_sleep, R.drawable.activity_walk, R.drawable.activity_date, R.drawable.activity_swim,
+//            R.drawable.activity_friend, R.drawable.activity_work};
+//    String [] moods_type = {"Amazing", "Happy","Ok", "Sad", "Awful"};
+//    String [] moods_color ={"#90DA6E", "#5CEF93", "#45D9FF", "#F5CC67", "#FC6C79"};
+//    String [] activity_type ={"drawing", "TV", "eat", "sleep", "walk", "date", "swim", "friend", "work"};
+
+    MoodInfor moodInfor;
 //-----------------------------------------
 
     public CustomEntriesList(Context context, int layoutToBeInflated, ArrayList<ArrayList<Entry>> items, Integer[] thumbnails) {
@@ -50,12 +52,10 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
         for(Entry e :items.get(position)){
             View child = inflater.inflate(R.layout.custom_show_one_entries, null);
             ImageView moodIcon = child.findViewById(R.id.moodIcon);
-            //ImageView actIcon = child.findViewById(R.id.actIcon);
             TextView dateText = child.findViewById(R.id.dateText);
             TextView curMood = child.findViewById(R.id.curMood);
             TextView timeText = child.findViewById(R.id.timeText);
 
-            //TextView actText = child.findViewById(R.id.actText);
             TextView descText = child.findViewById(R.id.descText);
 
             if(get1DateOnly==0)
@@ -85,53 +85,30 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
                 ImageView actIcon = small_act_layout.findViewById(R.id.actIcon);
                 TextView textView = small_act_layout.findViewById(R.id.actText);
 
-                actIcon.setImageResource(activity_thumbnail[Integer.parseInt(parts[i])-1]);
+                actIcon.setImageResource(moodInfor.activity_thumbnail[Integer.parseInt(parts[i])-1]);
                 actIcon.setImageTintList(ColorStateList.valueOf(Color.parseColor(actColor)));
 
-                textView.setText(activity_type[Integer.parseInt(parts[i])-1]);
+                textView.setText(moodInfor.activity_type[Integer.parseInt(parts[i])-1]);
                 act_linear.addView(small_act_layout);
             }
 
             get1DateOnly=1;
             row.addView(child);
-
         }
         return(row);
     }
 
     private void setMoodThumb(ImageView img, String mood, TextView curMood){
 
-        for (int i=0; i< moods_type.length; i++){
-            if(mood.equals(moods_type[i])){
-                img.setImageResource(moods_thumbnail[i]);
-                img.setImageTintList(ColorStateList.valueOf(Color.parseColor(moods_color[i])));
-                actColor = moods_color[i];
-                curMood.setTextColor(ColorStateList.valueOf(Color.parseColor(moods_color[i])));
+        for (int i=0; i< moodInfor.moods_type.length; i++) {
+            for (int j = 0; j < moodInfor.moods_type[i].length;j++){
+                if (mood.equals(moodInfor.moods_type[i][j])) {
+                    img.setImageResource(moodInfor.moods_thumbnail[i][j]);
+                    img.setImageTintList(ColorStateList.valueOf(Color.parseColor(moodInfor.moods_color[i])));
+                    actColor = moodInfor.moods_color[i];
+                    curMood.setTextColor(ColorStateList.valueOf(Color.parseColor(moodInfor.moods_color[i])));
+                }
             }
         }
-//        if(mood.equals("Amazing")){
-//            img.setImageResource(R.drawable.mood_amazing);
-//            img.setImageTintList(ColorStateList.valueOf(Color.parseColor("#90DA6E")));
-//        }
-//
-//        if(mood.equals("Happy")){
-//            img.setImageResource(R.drawable.mood_happy);
-//            img.setImageTintList(ColorStateList.valueOf(Color.parseColor("#5CEF93")));
-//        }
-//
-//        if(mood.equals("Sad")){
-//            img.setImageResource(R.drawable.mood_sad);
-//            img.setImageTintList(ColorStateList.valueOf(Color.parseColor("#F5CC67")));
-//        }
-//
-//        if(mood.equals("Ok")){
-//            img.setImageResource(R.drawable.mood_ok);
-//            img.setImageTintList(ColorStateList.valueOf(Color.parseColor("#45D9FF")));
-//        }
-//
-//        if(mood.equals("Awful")){
-//            img.setImageResource(R.drawable.mood_awful);
-//            img.setImageTintList(ColorStateList.valueOf(Color.parseColor("#FC6C79")));
-//        }
     }
 }

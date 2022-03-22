@@ -52,8 +52,9 @@ public class AddEntryActivity extends AppCompatActivity {
     private Uri selectedImage;
     private String currentMood;
     private String dayOfMood, timeOfMood;
-    String linkimg = "", listMood;
+    String linkimg = "", listAct;
     int completeupload=0;
+    private MoodInfor moodInfor;
 
 
     @Override
@@ -90,16 +91,24 @@ public class AddEntryActivity extends AppCompatActivity {
         dayOfMood = getIntent().getStringExtra("dayOfMood").toString();
         timeOfMood = getIntent().getStringExtra("timeOfMood").toString();
 
-        if(currentMood.equals("Amazing"))
-            chosenMood.setImageResource(R.drawable.mood_amazing);
-        if(currentMood.equals("Happy"))
-            chosenMood.setImageResource(R.drawable.mood_happy);
-        if(currentMood.equals("Ok"))
-            chosenMood.setImageResource(R.drawable.mood_ok);
-        if(currentMood.equals("Sad"))
-            chosenMood.setImageResource(R.drawable.mood_sad);
-        if(currentMood.equals("Awful"))
-            chosenMood.setImageResource(R.drawable.mood_awful);
+
+        for (int i = 0; i < moodInfor.moods_type.length; i++){
+            for (int j = 0; j < moodInfor.moods_type[i].length; j++){
+                if(currentMood.equals(moodInfor.moods_type[i][j]))
+                    chosenMood.setImageResource(moodInfor.moods_thumbnail[i][j]);
+            }
+        }
+
+//        if(currentMood.equals("Amazing"))
+//            chosenMood.setImageResource(R.drawable.mood_amazing);
+//        if(currentMood.equals("Happy"))
+//            chosenMood.setImageResource(R.drawable.mood_happy);
+//        if(currentMood.equals("Ok"))
+//            chosenMood.setImageResource(R.drawable.mood_ok);
+//        if(currentMood.equals("Sad"))
+//            chosenMood.setImageResource(R.drawable.mood_sad);
+//        if(currentMood.equals("Awful"))
+//            chosenMood.setImageResource(R.drawable.mood_awful);
 
         activity1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -168,13 +177,13 @@ public class AddEntryActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AddEntryToDatabase dtb = new AddEntryToDatabase();
-                listMood = "";
+                listAct = "";
                 for (int i = 0; i < chooseStatus.length; i++) {
                     if (chooseStatus[i] == 1)
-                        listMood += i + 1 + " ";
+                        listAct += i + 1 + " ";
                 }
 
-                Entry newEntry = new Entry(listMood, notes.getText().toString(), dayOfMood, timeOfMood, currentMood);
+                Entry newEntry = new Entry(listAct, notes.getText().toString(), dayOfMood, timeOfMood, currentMood);
 
                 // get date of entry to name for image
                 String imgName = newEntry.getDateOfMood();
@@ -192,7 +201,7 @@ public class AddEntryActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     linkimg = uri.toString();
-                                    Entry newEntry1 = new Entry(listMood, notes.getText().toString(), dayOfMood, timeOfMood, currentMood, linkimg);
+                                    Entry newEntry1 = new Entry(listAct, notes.getText().toString(), dayOfMood, timeOfMood, currentMood, linkimg);
                                     //UPLOAD DATA OF ENTRY
                                     dtb.add(newEntry1).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override

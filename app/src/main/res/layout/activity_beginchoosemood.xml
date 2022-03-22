@@ -83,8 +83,9 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
             <RelativeLayout
+                android:id="@+id/amazingRL"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center">
 
                 <ImageView
@@ -103,8 +104,11 @@
                     android:tint="@color/GreenYellow"
                     android:layout_centerInParent="true"
                     />
+
+
             </RelativeLayout>
                 <TextView
+                    android:id="@+id/textAmazing"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -119,6 +123,7 @@
                 android:orientation="vertical">
 
                 <RelativeLayout
+                    android:id="@+id/happyRL"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center">
@@ -140,6 +145,7 @@
                         android:tint="@color/Green" />
                 </RelativeLayout>
                 <TextView
+                    android:id="@+id/textHappy"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -154,6 +160,7 @@
                 android:orientation="vertical">
 
                 <RelativeLayout
+                    android:id="@+id/okRL"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center">
@@ -175,6 +182,7 @@
 
                 </RelativeLayout>
                 <TextView
+                    android:id="@+id/textOk"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -189,6 +197,7 @@
                 android:orientation="vertical">
 
                 <RelativeLayout
+                    android:id="@+id/sadRL"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center">
@@ -210,6 +219,7 @@
 
                 </RelativeLayout>
                 <TextView
+                    android:id="@+id/textSad"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -224,6 +234,7 @@
                 android:orientation="vertical">
 
                 <RelativeLayout
+                    android:id="@+id/awfulRL"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center">
@@ -246,6 +257,7 @@
                 </RelativeLayout>
 
                 <TextView
+                    android:id="@+id/textAwful"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"

@@ -1,17 +1,24 @@
 package com.example.moodiary;
 
+import android.app.Activity;
 import android.app.AppComponentFactory;
 import android.app.DatePickerDialog;
+import android.app.ListActivity;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -24,10 +31,20 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+
+
 public class InitiateMood extends AppCompatActivity {
+    private MoodInfor moodInfor;
+
+//    Integer[][] moods_thumbnail=infor.moods_thumbnail;
+//
+//    String [][] moods_type = infor.moods_type;
+//    String [] moods_color = infor.moods_color;
+
     private TextView chooseDay, chooseTime;
-    ImageView chooseAmazing, chooseHappy, chooseOk, chooseSad, chooseAwful;
-    ImageView chooseAmazingBg, chooseHappyBg, chooseOkBg, chooseSadBg, chooseAwfulBg;
+    private ImageView chooseAmazing, chooseHappy, chooseOk, chooseSad, chooseAwful;
+    private ImageView chooseAmazingBg, chooseHappyBg, chooseOkBg, chooseSadBg, chooseAwfulBg;
+    private TextView textAmazing, textHappy, textOk, textSad, textAwful;
     DatePickerDialog.OnDateSetListener SetDate;
     TimePickerDialog.OnTimeSetListener SetTime;
     int tHour, tMinute;
@@ -37,6 +54,7 @@ public class InitiateMood extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beginchoosemood);
+
 
         chooseAmazing = findViewById(R.id.chooseAmazing);
         chooseHappy = findViewById(R.id.chooseHappy);
@@ -50,12 +68,34 @@ public class InitiateMood extends AppCompatActivity {
         chooseOkBg = findViewById(R.id.chooseOkBg);
         chooseAwfulBg = findViewById(R.id.chooseAwfulBg);
 
+        textAmazing = findViewById(R.id.textAmazing);
+        textHappy = findViewById(R.id.textHappy);
+        textOk = findViewById(R.id.textOk);
+        textSad = findViewById(R.id.textOk);
+        textAwful = findViewById(R.id.textAwful);
 
-        chooseDay = findViewById(R.id.chooseDay);
+        if(moodInfor.moods_type[0].length > 1){
+            textAmazing.setText("...");
+        }
+        if(moodInfor.moods_type[1].length > 1){
+            textHappy.setText("...");
+        }
+        if(moodInfor.moods_type[2].length > 1){
+            textOk.setText("...");
+        }
+        if(moodInfor.moods_type[3].length > 1){
+            textSad.setText("...");
+        }
+        if(moodInfor.moods_type[4].length > 1){
+            textAwful.setText("...");
+        }
+
+
+            chooseDay = findViewById(R.id.chooseDay);
         chooseTime = findViewById(R.id.chooseTime);
 
 
-        //-------------------------------------------------------------------------------------------------------
+        //----------------------------------------Day Time Setting---------------------------------------------------------------
         final Calendar calendar = Calendar.getInstance();
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         int month = calendar.get(Calendar.MONTH);
@@ -124,13 +164,40 @@ public class InitiateMood extends AppCompatActivity {
             }
         });
 
-        //---------------------------------------------------------------------------------
+
+
+
+        //----------------------------------CLICK MOOD ICON-----------------------------------------------
 
         chooseAmazing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setDefaultBackground();
-                moodType = "Amazing";
+                if(moodInfor.moods_type[0].length == 1)
+                    moodType = "Amazing";
+                else{
+                    chooseAmazing.setVisibility(View.INVISIBLE);
+                    textAmazing.setVisibility(View.INVISIBLE);
+                    LayoutInflater inflater = ((Activity)InitiateMood.this).getLayoutInflater();
+                    RelativeLayout rl = findViewById(R.id.amazingRL);
+                    View extra_list = inflater.inflate(R.layout.list_view_layout, null);
+                    ListView extra_mood = extra_list.findViewById(R.id.extra_mood);
+                    CustomExtraMoods adapter = new CustomExtraMoods(InitiateMood.this,R.layout.custom_extra_mood,moodInfor.moods_thumbnail[0],
+                            moodInfor.moods_type[0],moodInfor.moods_color[0]);
+                    extra_mood.setAdapter(adapter);
+                    extra_mood.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                            chooseAmazing.setVisibility(View.VISIBLE);
+                            textAmazing.setVisibility(View.VISIBLE);
+                            chooseAmazing.setImageResource(moodInfor.moods_thumbnail[0][position]);
+                            textAmazing.setText(moodInfor.moods_type[0][position]);
+                            moodType = moodInfor.moods_type[0][position];
+                            rl.removeView(extra_list);
+                        }
+                    });
+                    rl.addView(extra_list);
+                }
                 chooseAmazingBg.setImageTintList(ColorStateList.valueOf(Color.parseColor("#90DA6E")));
             }
         });
@@ -139,7 +206,31 @@ public class InitiateMood extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 setDefaultBackground();
-                moodType = "Happy";
+                if((moodInfor.moods_type[1]).length == 1)
+                    moodType = "Happy";
+                else{
+                    chooseHappy.setVisibility(View.INVISIBLE);
+                    textHappy.setVisibility(View.INVISIBLE);
+                    LayoutInflater inflater = ((Activity)InitiateMood.this).getLayoutInflater();
+                    RelativeLayout rl = findViewById(R.id.happyRL);
+                    View extra_list = inflater.inflate(R.layout.list_view_layout, null);
+                    ListView extra_mood = extra_list.findViewById(R.id.extra_mood);
+                    CustomExtraMoods adapter = new CustomExtraMoods(InitiateMood.this,R.layout.custom_extra_mood,moodInfor.moods_thumbnail[1],
+                            moodInfor.moods_type[1],moodInfor.moods_color[1]);
+                    extra_mood.setAdapter(adapter);
+                    extra_mood.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                            chooseHappy.setVisibility(View.VISIBLE);
+                            textHappy.setVisibility(View.VISIBLE);
+                            chooseHappy.setImageResource(moodInfor.moods_thumbnail[1][position]);
+                            textHappy.setText(moodInfor.moods_type[1][position]);
+                            moodType = moodInfor.moods_type[1][position];
+                            rl.removeView(extra_list);
+                        }
+                    });
+                    rl.addView(extra_list);
+                }
                 chooseHappyBg.setImageTintList(ColorStateList.valueOf(Color.parseColor("#5CEF93")));
             }
         });
@@ -148,7 +239,31 @@ public class InitiateMood extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 setDefaultBackground();
-                moodType = "Ok";
+                if(moodInfor.moods_type[2].length == 1)
+                    moodType = "Amazing";
+                else{
+                    chooseOk.setVisibility(View.INVISIBLE);
+                    textOk.setVisibility(View.INVISIBLE);
+                    LayoutInflater inflater = ((Activity)InitiateMood.this).getLayoutInflater();
+                    RelativeLayout rl = findViewById(R.id.okRL);
+                    View extra_list = inflater.inflate(R.layout.list_view_layout, null);
+                    ListView extra_mood = extra_list.findViewById(R.id.extra_mood);
+                    CustomExtraMoods adapter = new CustomExtraMoods(InitiateMood.this,R.layout.custom_extra_mood,moodInfor.moods_thumbnail[2],
+                            moodInfor.moods_type[2],moodInfor.moods_color[2]);
+                    extra_mood.setAdapter(adapter);
+                    extra_mood.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                            chooseOk.setVisibility(View.VISIBLE);
+                            textOk.setVisibility(View.VISIBLE);
+                            chooseOk.setImageResource(moodInfor.moods_thumbnail[2][position]);
+                            textOk.setText(moodInfor.moods_type[2][position]);
+                            moodType = moodInfor.moods_type[2][position];
+                            rl.removeView(extra_list);
+                        }
+                    });
+                    rl.addView(extra_list);
+                }
                 chooseOkBg.setImageTintList(ColorStateList.valueOf(Color.parseColor("#45D9FF")));
             }
         });
@@ -157,7 +272,31 @@ public class InitiateMood extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 setDefaultBackground();
-                moodType = "Sad";
+                if(moodInfor.moods_type[3].length == 1)
+                    moodType = "Sad";
+                else{
+                    chooseSad.setVisibility(View.INVISIBLE);
+                    textSad.setVisibility(View.INVISIBLE);
+                    LayoutInflater inflater = ((Activity)InitiateMood.this).getLayoutInflater();
+                    RelativeLayout rl = findViewById(R.id.sadRL);
+                    View extra_list = inflater.inflate(R.layout.list_view_layout, null);
+                    ListView extra_mood = extra_list.findViewById(R.id.extra_mood);
+                    CustomExtraMoods adapter = new CustomExtraMoods(InitiateMood.this,R.layout.custom_extra_mood,moodInfor.moods_thumbnail[3],
+                            moodInfor.moods_type[3],moodInfor.moods_color[3]);
+                    extra_mood.setAdapter(adapter);
+                    extra_mood.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                            chooseSad.setVisibility(View.VISIBLE);
+                            textSad.setVisibility(View.VISIBLE);
+                            chooseSad.setImageResource(moodInfor.moods_thumbnail[3][position]);
+                            textSad.setText(moodInfor.moods_type[3][position]);
+                            moodType = moodInfor.moods_type[3][position];
+                            rl.removeView(extra_list);
+                        }
+                    });
+                    rl.addView(extra_list);
+                }
                 chooseSadBg.setImageTintList(ColorStateList.valueOf(Color.parseColor("#F5CC67")));
             }
         });
@@ -166,8 +305,31 @@ public class InitiateMood extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 setDefaultBackground();
-                moodType = "Awful";
-                chooseAwfulBg.setImageTintList(ColorStateList.valueOf(Color.parseColor("#FC6C79")));
+                if(moodInfor.moods_type[4].length == 1)
+                    moodType = "Awful";
+                else{
+                    chooseAwful.setVisibility(View.INVISIBLE);
+                    textAwful.setVisibility(View.INVISIBLE);
+                    LayoutInflater inflater = ((Activity)InitiateMood.this).getLayoutInflater();
+                    RelativeLayout rl = findViewById(R.id.awfulRL);
+                    View extra_list = inflater.inflate(R.layout.list_view_layout, null);
+                    ListView extra_mood = extra_list.findViewById(R.id.extra_mood);
+                    CustomExtraMoods adapter = new CustomExtraMoods(InitiateMood.this,R.layout.custom_extra_mood,
+                            moodInfor.moods_thumbnail[4],moodInfor.moods_type[4],moodInfor.moods_color[4]);
+                    extra_mood.setAdapter(adapter);
+                    extra_mood.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                            chooseAwful.setVisibility(View.VISIBLE);
+                            textAwful.setVisibility(View.VISIBLE);
+                            chooseAwful.setImageResource(moodInfor.moods_thumbnail[3][position]);
+                            textAwful.setText(moodInfor.moods_type[3][position]);
+                            moodType = moodInfor.moods_type[3][position];
+                            rl.removeView(extra_list);
+                        }
+                    });
+                    rl.addView(extra_list);
+                }                chooseAwfulBg.setImageTintList(ColorStateList.valueOf(Color.parseColor("#FC6C79")));
             }
         });
 
