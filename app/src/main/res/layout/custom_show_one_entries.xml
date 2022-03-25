@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
@@ -8,11 +10,11 @@
     <ImageView
         android:id="@+id/moodIcon"
         android:layout_width="100dp"
-        android:layout_height="70dp"
-        android:layout_marginRight="3dp"
+        android:layout_height="100dp"
         android:layout_gravity="center_vertical"
+        android:layout_marginRight="3dp"
         android:src="@drawable/mood_12"
-        android:tint="@color/Yellow"/>
+        app:tint="@color/Yellow" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -39,29 +41,31 @@
                     android:layout_weight="1"
                     android:textSize="18sp"
                     android:layout_gravity="left"/>
+
                 <ImageView
                     android:id="@+id/Setting"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
+                    android:layout_gravity="right"
                     android:layout_marginTop="5dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginRight="10dp"
                     android:clickable="true"
                     android:src="@drawable/ic_baseline_settings"
-                    android:layout_gravity="right"/>
+                    tools:srcCompat="@drawable/ic_baseline_edit_normal" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="4dp">
                 <TextView
                     android:id="@+id/curMood"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="wrap_content"
                     android:text="rad"
                     android:textColor="#ffcc33"
-                    android:textSize="18sp"/>
+                    android:textSize="30sp"/>
 
                 <TextView
                     android:id="@+id/timeText"
@@ -78,7 +82,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="0dp"
                 android:gravity="center">
 
 <!--                <ImageView-->
@@ -100,7 +104,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:layout_marginRight="50dp"
                 android:layout_marginBottom="10dp">
@@ -110,7 +114,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Going to the moon and watching asas somejs xmay be"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:lineHeight="20dp"/>
             </LinearLayout>
 
             <LinearLayout
