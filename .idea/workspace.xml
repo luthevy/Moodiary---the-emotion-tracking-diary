@@ -12,15 +12,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da699d9d-720a-47fa-9e1a-ddcb9b06019d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_addentry.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_addentry.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/CustomEntriesList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/CustomEntriesList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/CustomOneEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/CustomOneEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/entries_box.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/entries_box.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/custom_row_entries.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/custom_row_entries.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/custom_show_one_entries.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/custom_show_one_entries.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/lanmac/.android/avd/Nexus_5X_API_28.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Admin\.android\avd\phat.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -77,7 +85,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android.sdk.path" value="F:/AS_SDK" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="RecentsManager">
@@ -251,7 +259,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -276,59 +284,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="947" y="49" key="#com.intellij.ide.util.MemberChooser" timestamp="1645877396229">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state x="947" y="49" key="#com.intellij.ide.util.MemberChooser/0.0.1536.816@0.0.1536.816" timestamp="1645877396229" />
-    <state x="93" y="93" width="1350" height="630" key="AVDManager" timestamp="1647324529033">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state x="93" y="93" width="1350" height="630" key="AVDManager/0.0.1536.816@0.0.1536.816" timestamp="1647324529033" />
-    <state x="346" y="154" key="AndroidCreateResourceDirectoryDialog" timestamp="1645710834775">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state x="346" y="154" key="AndroidCreateResourceDirectoryDialog/0.0.1536.816@0.0.1536.816" timestamp="1645710834775" />
-    <state x="346" y="154" key="AndroidCreateResourceFileDialog" timestamp="1645957086527">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state x="346" y="154" key="AndroidCreateResourceFileDialog/0.0.1536.816@0.0.1536.816" timestamp="1645957086527" />
-    <state x="586" y="151" key="AndroidCreateXmlResourceDialog" timestamp="1645870698807">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state x="586" y="151" key="AndroidCreateXmlResourceDialog/0.0.1536.816@0.0.1536.816" timestamp="1645870698807" />
-    <state x="496" y="88" key="FileChooserDialogImpl" timestamp="1646833455171">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state x="496" y="88" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1646833455171" />
-    <state width="1480" height="445" key="GridCell.Tab.0.bottom" timestamp="1647328683948">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state width="1480" height="445" key="GridCell.Tab.0.bottom/0.0.1536.816@0.0.1536.816" timestamp="1647328683948" />
-    <state width="1480" height="445" key="GridCell.Tab.0.center" timestamp="1647328683948">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state width="1480" height="445" key="GridCell.Tab.0.center/0.0.1536.816@0.0.1536.816" timestamp="1647328683948" />
-    <state width="1480" height="445" key="GridCell.Tab.0.left" timestamp="1647328683948">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state width="1480" height="445" key="GridCell.Tab.0.left/0.0.1536.816@0.0.1536.816" timestamp="1647328683948" />
-    <state width="1480" height="445" key="GridCell.Tab.0.right" timestamp="1647328683948">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state width="1480" height="445" key="GridCell.Tab.0.right/0.0.1536.816@0.0.1536.816" timestamp="1647328683948" />
-    <state x="542" y="171" key="chooseDestDirectoryDialog" timestamp="1646042355242">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state x="542" y="171" key="chooseDestDirectoryDialog/0.0.1536.816@0.0.1536.816" timestamp="1646042355242" />
-    <state x="341" y="181" width="840" height="1034" key="run.anything.popup" timestamp="1645859389215">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state x="341" y="181" width="840" height="1034" key="run.anything.popup/0.0.1536.816@0.0.1536.816" timestamp="1645859389215" />
-    <state x="347" y="-1" width="840" height="1034" key="search.everywhere.popup" timestamp="1645698084489">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state x="347" y="-1" width="840" height="1034" key="search.everywhere.popup/0.0.1536.816@0.0.1536.816" timestamp="1645698084489" />
   </component>
 </project>

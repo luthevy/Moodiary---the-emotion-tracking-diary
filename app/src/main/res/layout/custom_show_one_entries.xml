@@ -4,15 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_marginTop="20dp">
+    android:layout_marginTop="20dp"
+    android:orientation="horizontal">
 
     <ImageView
         android:id="@+id/moodIcon"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center_vertical"
-        android:layout_marginRight="3dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="top"
+        android:layout_marginEnd="3dp"
+        android:layout_marginStart="13dp"
+        android:padding="3dp"
         android:src="@drawable/mood_12"
         app:tint="@color/Yellow" />
 
@@ -28,52 +30,37 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:layout_marginTop="10dp"
-                >
-                <TextView
-                    android:id="@+id/dateText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="8dp"
-                    android:text="January 28th, 2022"
-                    android:textStyle="bold"
-                    android:layout_weight="1"
-                    android:textSize="18sp"
-                    android:layout_gravity="left"/>
-
-                <ImageView
-                    android:id="@+id/Setting"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_gravity="right"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="10dp"
-                    android:clickable="true"
-                    android:src="@drawable/ic_baseline_settings"
-                    tools:srcCompat="@drawable/ic_baseline_edit_normal" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="4dp">
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal">
+
                 <TextView
                     android:id="@+id/curMood"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="rad"
                     android:textColor="#ffcc33"
-                    android:textSize="30sp"/>
+                    android:textSize="23sp" />
 
                 <TextView
                     android:id="@+id/timeText"
-                    android:layout_width="match_parent"
-                    android:layout_marginLeft="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center"
                     android:text="20:07"
-                    android:textSize="18sp"/>
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/Setting"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:paddingStart="170dp"
+                    android:clickable="true"
+
+                    android:src="@drawable/ic_baseline_edit_normal"/>
+
 
             </LinearLayout>
 
@@ -81,49 +68,48 @@
                 android:id="@+id/act_linear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="0dp"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
 
-<!--                <ImageView-->
-<!--                    android:id="@+id/actIcon"-->
-<!--                    android:layout_width="30dp"-->
-<!--                    android:layout_height="30dp"-->
-<!--                    android:src="@drawable/ic_baseline_settings" />-->
+                <!--                <ImageView-->
+                <!--                    android:id="@+id/actIcon"-->
+                <!--                    android:layout_width="30dp"-->
+                <!--                    android:layout_height="30dp"-->
+                <!--                    android:src="@drawable/ic_baseline_settings" />-->
 
-<!--                <TextView-->
-<!--                    android:id="@+id/actText"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_marginLeft="20dp"-->
-<!--                    android:layout_height="30dp"-->
-<!--                    android:layout_marginTop="1dp"-->
-<!--                    android:text="fixing"-->
-<!--                    android:textSize="18sp"/>-->
+                <!--                <TextView-->
+                <!--                    android:id="@+id/actText"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_marginLeft="20dp"-->
+                <!--                    android:layout_height="30dp"-->
+                <!--                    android:layout_marginTop="1dp"-->
+                <!--                    android:text="fixing"-->
+                <!--                    android:textSize="18sp"/>-->
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:gravity="center"
                 android:layout_marginRight="50dp"
-                android:layout_marginBottom="10dp">
+                android:layout_marginBottom="10dp"
+                android:gravity="center">
 
                 <TextView
                     android:id="@+id/descText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:lineHeight="20dp"
                     android:text="Going to the moon and watching asas somejs xmay be"
-                    android:textSize="18sp"
-                    android:lineHeight="20dp"/>
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/entryImgLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
 
             </LinearLayout>
 

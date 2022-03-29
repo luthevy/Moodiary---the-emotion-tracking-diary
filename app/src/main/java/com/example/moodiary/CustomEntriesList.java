@@ -48,20 +48,14 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
         LinearLayout row = (LinearLayout) inflater.inflate(R.layout.custom_row_entries, null);
         row.removeAllViews();
         System.out.println("In custom  "+ items.get(position));
-        int get1DateOnly = 0;
         for(Entry e :items.get(position)){
             View child = inflater.inflate(R.layout.custom_show_one_entries, null);
             ImageView moodIcon = child.findViewById(R.id.moodIcon);
-            TextView dateText = child.findViewById(R.id.dateText);
             TextView curMood = child.findViewById(R.id.curMood);
             TextView timeText = child.findViewById(R.id.timeText);
 
             TextView descText = child.findViewById(R.id.descText);
 
-            if(get1DateOnly==0)
-                dateText.setText(e.getDayOfmood());
-            else
-                dateText.setText("-----------------------");
             curMood.setText(e.getMoodType());
 
             timeText.setText(e.getTimeOfmood());
@@ -92,7 +86,6 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
                 act_linear.addView(small_act_layout);
             }
 
-            get1DateOnly=1;
             row.addView(child);
         }
         return(row);

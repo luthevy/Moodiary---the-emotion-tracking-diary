@@ -2,16 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:background="@drawable/entries_box"
-    >
+    android:orientation="vertical">
 
-<!--    <ListView-->
-<!--        android:id="@+id/list_same_date"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:divider="@android:color/transparent"-->
-<!--        android:dividerHeight="10.0sp"-->
-<!--        android:background="@drawable/entries_box"/>-->
+    <!--    <ListView-->
+    <!--        android:id="@+id/list_same_date"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:divider="@android:color/transparent"-->
+    <!--        android:dividerHeight="10.0sp"-->
+    <!--        android:background="@drawable/entries_box"/>-->
 
 </LinearLayout>

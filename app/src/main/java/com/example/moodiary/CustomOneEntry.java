@@ -34,13 +34,11 @@ public class CustomOneEntry extends ArrayAdapter<Entry> {
 
         ImageView moodIcon = row.findViewById(R.id.moodIcon);
         ImageView actIcon = row.findViewById(R.id.actIcon);
-        TextView dateText = row.findViewById(R.id.dateText);
         TextView curMood = row.findViewById(R.id.curMood);
         TextView timeText = row.findViewById(R.id.timeText);
         TextView actText = row.findViewById(R.id.actText);
         TextView descText = row.findViewById(R.id.descText);
 
-        dateText.setText(items.get(position).getDayOfmood());
         curMood.setText(items.get(position).getMoodType());
         timeText.setText(items.get(position).getTimeOfmood());
         descText.setText(items.get(position).getNote());
