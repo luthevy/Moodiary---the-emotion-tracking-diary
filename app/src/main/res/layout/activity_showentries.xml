@@ -25,29 +25,21 @@
                 android:id="@+id/text1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/addIconUpon"
+                android:layout_toEndOf="@+id/addIconUpon"
                 android:background="@android:color/transparent"
                 android:maxLines="1"
                 android:padding="15dp"
                 android:text="Add your day, your story"
-                android:textSize="15dp"/>
+                android:textSize="15sp"/>
 
             <ImageView
                 android:id="@+id/addIconUpon"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="17dp"
+                android:layout_marginStart="17dp"
                 android:src="@drawable/ic_baseline_add_circle"/>
         </RelativeLayout>
-        <!--    <androidx.core.widget.NestedScrollView-->
-        <!--        android:layout_width="match_parent"-->
-        <!--        android:layout_height="match_parent"-->
-        <!--        android:layout_marginTop="70dp">-->
-        <!--        <LinearLayout-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:orientation="vertical">-->
 
         <ListView
             android:id="@+id/list_different_date"
@@ -57,9 +49,6 @@
             android:layout_marginBottom="80dp"
             android:divider="@android:color/transparent"
             android:dividerHeight="10.0sp"/>
-        <!--        </LinearLayout>-->
-        <!--    </androidx.core.widget.NestedScrollView>-->
-
     </FrameLayout>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -77,7 +66,10 @@
             app:contentInsetEnd="2dp"
             app:contentInsetStart="0dp"
             app:fabAlignmentMode="center"
-            app:fabCradleMargin="8dp">
+            app:fabCradleMargin="10dp"
+            app:fabCradleRoundedCornerRadius="15dp"
+            app:hideOnScroll="true"
+            app:layout_scrollFlags="scroll|enterAlways">
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottom_navigation_menu"
@@ -98,20 +90,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/baseline_add_white_24"
-
+            app:elevation="0dp"
+            app:fabCustomSize="65dp"
             app:layout_anchor="@id/bottom_navigation_menu"/>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabToday"
-            android:layout_width="wrap_content"
-            android:layout_height="99dp"
-            android:layout_margin="100dp"
-            android:src="@drawable/navigation_calendar"
-            app:fab_size="mini"
-            app:layout_anchor="@+id/fabMain"
-            app:layout_anchorGravity="top|center"
-            app:maxImageSize="40dp"
-            app:tint="@null"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

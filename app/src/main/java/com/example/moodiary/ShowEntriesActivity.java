@@ -37,7 +37,7 @@ public class ShowEntriesActivity extends Activity {
     ListView listbyDate, listsameDate;
 
     private BottomNavigationView bottom_navigation_menu;
-    private FloatingActionButton fabMain, fabToday;
+    private FloatingActionButton fabMain;
     private Boolean isFabOpen=false;
 
     private FirebaseDatabase database;
@@ -59,8 +59,8 @@ public class ShowEntriesActivity extends Activity {
 
 //---------------------Decor Sub Menu-------------------------------
           fabMain=(FloatingActionButton)findViewById(R.id.fabMain);
-          fabToday=(FloatingActionButton)findViewById(R.id.fabToday);
-          fabToday.setVisibility(View.INVISIBLE);
+//          fabToday=(FloatingActionButton)findViewById(R.id.fabToday);
+//          fabToday.setVisibility(View.INVISIBLE);
 
 //        fabMain.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -135,16 +135,16 @@ public class ShowEntriesActivity extends Activity {
 
 //-------------------------------Show sub menu-----------------------------
 };
-    private void showFabMenu(){
-        isFabOpen=true;
-        fabToday.setVisibility(View.VISIBLE);
-
-    }
-
-    private void closeFabMenu(){
-        isFabOpen=false;
-        fabToday.setVisibility(View.INVISIBLE);
-    }
+//    private void showFabMenu(){
+//        isFabOpen=true;
+//        fabToday.setVisibility(View.VISIBLE);
+//
+//    }
+//
+//    private void closeFabMenu(){
+//        isFabOpen=false;
+//        fabToday.setVisibility(View.INVISIBLE);
+//    }
 
     //-------------Divide entries that have the same day---------
     private void divideEntry(){
