@@ -62,17 +62,17 @@ public class ShowEntriesActivity extends Activity {
           fabToday=(FloatingActionButton)findViewById(R.id.fabToday);
           fabToday.setVisibility(View.INVISIBLE);
 
-        fabMain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(!isFabOpen)
-                    showFabMenu();
-                else
-                    closeFabMenu();
-            }
-        });
+//        fabMain.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if(!isFabOpen)
+//                    showFabMenu();
+//                else
+//                    closeFabMenu();
+//            }
+//        });
 
-        fabToday.setOnClickListener(new View.OnClickListener() {
+        fabMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), InitiateMood.class));
