@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
+
     <FrameLayout
         android:id="@+id/navDisplay"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <RelativeLayout
             android:id="@+id/addBoxLayout"
             android:layout_width="match_parent"
@@ -17,9 +17,9 @@
             android:layout_marginLeft="62dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="62dp"
+            android:background="@drawable/box"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="@drawable/box">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/text1"
@@ -27,17 +27,18 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/addIconUpon"
                 android:background="@android:color/transparent"
-                android:text="Add your day, your story"
                 android:maxLines="1"
                 android:padding="15dp"
-                android:textSize="15dp" />
+                android:text="Add your day, your story"
+                android:textSize="15dp"/>
+
             <ImageView
                 android:id="@+id/addIconUpon"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="17dp"
-                android:src="@drawable/ic_baseline_add_circle" />
+                android:src="@drawable/ic_baseline_add_circle"/>
         </RelativeLayout>
         <!--    <androidx.core.widget.NestedScrollView-->
         <!--        android:layout_width="match_parent"-->
@@ -49,11 +50,11 @@
         <!--            android:orientation="vertical">-->
 
         <ListView
-            android:layout_marginTop="70dp"
-            android:layout_marginBottom="80dp"
             android:id="@+id/list_different_date"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="70dp"
+            android:layout_marginBottom="80dp"
             android:divider="@android:color/transparent"
             android:dividerHeight="10.0sp"/>
         <!--        </LinearLayout>-->
@@ -65,47 +66,56 @@
         android:id="@+id/navigator"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottomAppBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:background="@color/black"
-            app:fabCradleRoundedCornerRadius="5dp"
-            app:fabCradleMargin="0dp">
+            android:paddingBottom="5dp"
+            app:contentInsetEnd="2dp"
+            app:contentInsetStart="0dp"
+            app:fabAlignmentMode="center"
+            app:fabCradleMargin="8dp"
+            app:hideOnScroll="true"
+            app:layout_scrollFlags="scroll">
+
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottom_navigation_menu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:menu="@menu/bottom_navigation"
-                android:layout_marginRight="20dp"
-                app:labelVisibilityMode="labeled"
                 android:background="@android:color/white"
+                app:itemIconSize="35dp"
                 app:itemIconTint="@color/black"
-                app:itemTextColor="@color/design_default_color_on_secondary"/>
+                app:itemPaddingBottom="-5dp"
+                app:itemTextAppearanceActive="@style/text_active"
+                app:itemTextAppearanceInactive="@style/text_inactive"
+                app:itemTextColor="#777777"
+                app:labelVisibilityMode="labeled"
+                app:menu="@menu/bottom_navigation"/>
         </com.google.android.material.bottomappbar.BottomAppBar>
-
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabMain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/navigation_add"
+            app:layout_anchor="@id/bottomAppBar"
             app:maxImageSize="60dp"
-            app:tint="@null"
-            app:layout_anchor="@id/bottomAppBar"/>
+            app:tint="@null"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabToday"
             android:layout_width="wrap_content"
             android:layout_height="99dp"
+            android:layout_margin="100dp"
             android:src="@drawable/navigation_calendar"
+            app:fab_size="mini"
             app:layout_anchor="@+id/fabMain"
             app:layout_anchorGravity="top|center"
             app:maxImageSize="40dp"
-            app:tint="@null"
-            app:fab_size="mini"
-            android:layout_margin="100dp"/>
+            app:tint="@null"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

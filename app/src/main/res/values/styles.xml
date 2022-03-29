@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="text_active">
+        <item name="android:textSize">10sp</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
+    <style name="text_inactive">
+        <item name="android:textSize">10sp</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+</resources>

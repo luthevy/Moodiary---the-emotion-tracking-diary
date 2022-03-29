@@ -3,18 +3,22 @@
 
     <item
         android:id="@+id/navEntries"
-        android:title="Entries"
-        android:icon="@drawable/navigation_entries" />
+        android:icon="@drawable/navigation_entries"
+        android:title="Entries"/>
     <item
         android:id="@+id/navCalendar"
-        android:title="Calendar"
-        android:icon="@drawable/navigation_calendar"/>
+        android:icon="@drawable/navigation_calendar"
+        android:title="Calendar"/>
+
+    <item
+        android:enabled="false"
+        android:title=""/>
     <item
         android:id="@+id/navStats"
-        android:title="Stats"
-        android:icon="@drawable/navigation_stats"/>
+        android:icon="@drawable/navigation_stats"
+        android:title="Stats"/>
     <item
         android:id="@+id/navSettings"
-        android:title="Settings"
-        android:icon="@drawable/navigation_setting"/>
+        android:icon="@drawable/navigation_setting"
+        android:title="Settings"/>
 </menu>
