@@ -77,18 +77,14 @@
             app:contentInsetEnd="2dp"
             app:contentInsetStart="0dp"
             app:fabAlignmentMode="center"
-            app:fabCradleMargin="8dp"
-            app:hideOnScroll="true"
-            app:layout_scrollFlags="scroll">
+            app:fabCradleMargin="8dp">
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottom_navigation_menu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/white"
-                app:itemIconSize="35dp"
-                app:itemIconTint="@color/black"
-                app:itemPaddingBottom="-5dp"
+                app:itemIconSize="25dp"
                 app:itemTextAppearanceActive="@style/text_active"
                 app:itemTextAppearanceInactive="@style/text_inactive"
                 app:itemTextColor="#777777"
@@ -98,12 +94,12 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabMain"
+            style="@style/Widget.MaterialComponents.FloatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/navigation_add"
-            app:layout_anchor="@id/bottomAppBar"
-            app:maxImageSize="60dp"
-            app:tint="@null"/>
+            android:src="@drawable/baseline_add_white_24"
+
+            app:layout_anchor="@id/bottom_navigation_menu"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabToday"
@@ -116,6 +112,7 @@
             app:layout_anchorGravity="top|center"
             app:maxImageSize="40dp"
             app:tint="@null"/>
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

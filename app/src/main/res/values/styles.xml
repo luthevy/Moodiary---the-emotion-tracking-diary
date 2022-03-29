@@ -2,12 +2,14 @@
 <resources>
 
     <style name="text_active">
-        <item name="android:textSize">10sp</item>
-        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:font">@font/poppins</item>
     </style>
 
     <style name="text_inactive">
-        <item name="android:textSize">10sp</item>
-        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:font">@font/poppins</item>
     </style>
 </resources>
