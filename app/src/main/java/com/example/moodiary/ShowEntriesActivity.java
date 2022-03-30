@@ -1,17 +1,14 @@
 package com.example.moodiary;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
-import android.app.ListActivity;
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
-import androidx.annotation.NonNull;
-import android.app.Fragment;
 import android.widget.ListView;
+
+import androidx.annotation.NonNull;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -21,13 +18,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
 public class ShowEntriesActivity extends Activity {
 
@@ -37,8 +29,8 @@ public class ShowEntriesActivity extends Activity {
     ListView listbyDate, listsameDate;
 
     private BottomNavigationView bottom_navigation_menu;
-    private FloatingActionButton fabMain;
-    private Boolean isFabOpen=false;
+    private       FloatingActionButton fabMain;
+    private final Boolean              isFabOpen =false;
 
     private FirebaseDatabase database;
     DatabaseReference ref;
@@ -50,7 +42,7 @@ public class ShowEntriesActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_showentries);
-        bottom_navigation_menu=(BottomNavigationView)findViewById(R.id.bottom_navigation_menu);
+        bottom_navigation_menu= findViewById(R.id.bottom_navigation_menu);
         bottom_navigation_menu.setBackground(null);
         bottom_navigation_menu.setItemIconTintList(null);
         bottom_navigation_menu.setOnNavigationItemSelectedListener(navListener);
@@ -58,7 +50,7 @@ public class ShowEntriesActivity extends Activity {
 
 
 //---------------------Decor Sub Menu-------------------------------
-          fabMain=(FloatingActionButton)findViewById(R.id.fabMain);
+          fabMain= findViewById(R.id.fabMain);
 //          fabToday=(FloatingActionButton)findViewById(R.id.fabToday);
 //          fabToday.setVisibility(View.INVISIBLE);
 
@@ -114,7 +106,7 @@ public class ShowEntriesActivity extends Activity {
         });
 //---------------------------List view-------------------------------
     }
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+    private final BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
