@@ -12,17 +12,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da699d9d-720a-47fa-9e1a-ddcb9b06019d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/AddEntryActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/AddEntryActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/AddEntryToDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/AddEntryToDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/CustomEntriesList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/CustomEntriesList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/CustomExtraMoods.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/CustomExtraMoods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/CustomOneEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/CustomOneEntry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/EntriesFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/EntriesFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/Entry.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/Entry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/ForgotPwActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/ForgotPwActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/SettingsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/SettingsActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/SettingsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/SettingsFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/ShowEntriesActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/ShowEntriesActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/InitiateMood.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/InitiateMood.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_addentry.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_addentry.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_beginchoosemood.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_beginchoosemood.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -35,13 +35,15 @@ public class InitiateMood extends AppCompatActivity {
     DatePickerDialog.OnDateSetListener SetDate;
     TimePickerDialog.OnTimeSetListener SetTime;
     int                                tHour, tMinute;
-    private ImageButton btnNext, btnExit;
-    private String moodType = "Amazing";
+    private ImageButton btnNext, btnBack;
 
     private final String[]    mtypes = {"Amazing", "Happy", "OK", "Sad", "Awful"};
     private       ImageView[] ms, mbgs;
     private TextView[]       mtexts;
     private RelativeLayout[] mrls;
+
+    private int[] chosenMood = {0, 0};
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -155,20 +157,21 @@ public class InitiateMood extends AppCompatActivity {
         for (int j = 0; j < ms.length; ++j) {
             int i = j;
 
-            if (MoodInfor.moods_type[i].length > 1){
+            if (MoodInfor.moods_type[i].length > 1) {
                 mtexts[i].setText("...");
-            mtexts[i].setTextSize(30);
-            mtexts[i].setTypeface(null, Typeface.BOLD);
-            mtexts[i].setPaddingRelative(0,-45,0,0);
+                mtexts[i].setTextSize(30);
+                mtexts[i].setTypeface(null, Typeface.BOLD);
+                mtexts[i].setPaddingRelative(0, -45, 0, 0);
             }
 
             ms[i].setOnClickListener((View view) -> {
                 resetBackground();
 
                 mbgs[i].setVisibility(View.VISIBLE);
-                if (MoodInfor.moods_type[i].length == 1)
-                    moodType = mtypes[i];
-                else {
+                if (MoodInfor.moods_type[i].length == 1) {
+                    chosenMood[0] = i;
+                    chosenMood[1] = 0;
+                } else {
                     mtexts[i].setVisibility(View.INVISIBLE);
                     ms[i].setVisibility(View.INVISIBLE);
                     mbgs[i].setVisibility(View.INVISIBLE);
@@ -197,8 +200,9 @@ public class InitiateMood extends AppCompatActivity {
                         mtexts[i].setText(MoodInfor.moods_type[i][position]);
                         mtexts[i].setTextSize(15);
                         mtexts[i].setTypeface(null, Typeface.NORMAL);
-                        mtexts[i].setPaddingRelative(0,0,0,0);
-                        moodType = MoodInfor.moods_type[i][position];
+                        mtexts[i].setPaddingRelative(0, 0, 0, 0);
+                        chosenMood[0] = i;
+                        chosenMood[1] = position;
                         rl.removeView(extra_list);
                     });
 
@@ -231,14 +235,14 @@ public class InitiateMood extends AppCompatActivity {
         btnNext = findViewById(R.id.btnNext);
         btnNext.setOnClickListener((View view) -> {
                     Intent intent = new Intent(getApplicationContext(), AddEntryActivity.class);
-                    intent.putExtra("currentChoosenMood", moodType);
+                    intent.putExtra("chosenMood", chosenMood);
                     intent.putExtra("dayOfMood", chooseDay.getText().toString());
                     intent.putExtra("timeOfMood", chooseTime.getText().toString());
                     startActivity(intent);
                 }
         );
-        btnExit = findViewById(R.id.imgbtnExit);
-        btnExit.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), ShowEntriesActivity.class)));
+        btnBack = findViewById(R.id.btnBack1);
+        btnBack.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), ShowEntriesActivity.class)));
     }
 
     public void resetBackground() {

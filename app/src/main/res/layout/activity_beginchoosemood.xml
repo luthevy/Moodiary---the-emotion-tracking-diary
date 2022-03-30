@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <ImageButton
-        android:id="@+id/imgbtnExit"
+        android:id="@+id/btnBack1"
         android:layout_width="30dp"
         android:layout_height="40dp"
         android:layout_marginStart="10dp"
@@ -26,7 +26,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imgbtnExit">
+        app:layout_constraintTop_toTopOf="@+id/btnBack1">
 
         <TextView
             android:id="@+id/Stitle"

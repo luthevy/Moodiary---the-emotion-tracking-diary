@@ -31,7 +31,7 @@ import org.jetbrains.annotations.NotNull;
 
 
 public class AddEntryActivity extends AppCompatActivity {
-//    private int activityIds[] = {
+    //    private int activityIds[] = {
 //            R.id.activity1,
 //            R.id.activity2,
 //            R.id.activity3,
@@ -41,17 +41,16 @@ public class AddEntryActivity extends AppCompatActivity {
 //            R.id.activity7,
 //            R.id.activity8,
 //            R.id.activity9};
-    private int chooseStatus[] = {0,0,0,0,0,0,0,0,0};
-    private EditText notes;
-    private Button btnAddPhoto;
+    private int         chooseStatus[] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+    private EditText    notes;
+    private Button      btnAddPhoto;
     private ImageButton btnSave;
-    private ImageView btnMoodBack, chosenMood;
-    private Uri selectedImage;
-    private String currentMood;
+    private ImageView   btnMoodBack, chosenMood;
+    private Uri    selectedImage;
+    private int[]  currentMood;
     private String dayOfMood, timeOfMood;
     String linkimg = "", listAct;
-    int completeupload=0;
-    private MoodInfor moodInfor;
+    int completeupload = 0;
 
 
     @Override
@@ -68,13 +67,13 @@ public class AddEntryActivity extends AppCompatActivity {
         LinearLayout activity7 = findViewById(R.id.activity7);
         LinearLayout activity8 = findViewById(R.id.activity8);
         LinearLayout activity9 = findViewById(R.id.activity9);
-        LinearLayout edit_new = findViewById(R.id.edit_new);
+        LinearLayout edit_new  = findViewById(R.id.edit_new);
 
-        notes = findViewById(R.id.edtxt_Notes);
+        notes       = findViewById(R.id.edtxt_Notes);
         btnAddPhoto = findViewById(R.id.btnAddPhoto);
-        btnSave = findViewById(R.id.btnSave);
-        btnMoodBack = findViewById(R.id.btnMoodTurnBack);
-        chosenMood = findViewById(R.id.chosenMood);
+        btnSave     = findViewById(R.id.btnSave);
+        btnMoodBack = findViewById(R.id.btnBack2);
+        chosenMood  = findViewById(R.id.chosenMood);
 
         btnMoodBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,17 +83,11 @@ public class AddEntryActivity extends AppCompatActivity {
             }
         });
 
-        currentMood=getIntent().getStringExtra("currentChoosenMood").toString();
-        dayOfMood = getIntent().getStringExtra("dayOfMood").toString();
-        timeOfMood = getIntent().getStringExtra("timeOfMood").toString();
+        currentMood = getIntent().getIntArrayExtra("chosenMood");
+        dayOfMood   = getIntent().getStringExtra("dayOfMood").toString();
+        timeOfMood  = getIntent().getStringExtra("timeOfMood").toString();
 
-
-        for (int i = 0; i < moodInfor.moods_type.length; i++){
-            for (int j = 0; j < moodInfor.moods_type[i].length; j++){
-                if(currentMood.equals(moodInfor.moods_type[i][j]))
-                    chosenMood.setImageResource(moodInfor.moods_thumbnail[i][j]);
-            }
-        }
+        chosenMood.setImageResource(MoodInfor.moods_thumbnail[currentMood[0]][currentMood[1]]);
 
 //        if(currentMood.equals("Amazing"))
 //            chosenMood.setImageResource(R.drawable.mood_amazing);
@@ -110,55 +103,55 @@ public class AddEntryActivity extends AppCompatActivity {
         activity1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clickActivity(activity1,0);
+                clickActivity(activity1, 0);
             }
         });
         activity2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clickActivity(activity2,1);
+                clickActivity(activity2, 1);
             }
         });
         activity3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clickActivity(activity3,2);
+                clickActivity(activity3, 2);
             }
         });
         activity4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clickActivity(activity4,3);
+                clickActivity(activity4, 3);
             }
         });
         activity5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clickActivity(activity5,4);
+                clickActivity(activity5, 4);
             }
         });
         activity6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clickActivity(activity6,5);
+                clickActivity(activity6, 5);
             }
         });
         activity7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clickActivity(activity7,6);
+                clickActivity(activity7, 6);
             }
         });
         activity8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clickActivity(activity8,7);
+                clickActivity(activity8, 7);
             }
         });
         activity9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clickActivity(activity9,8);
+                clickActivity(activity9, 8);
             }
         });
 
@@ -180,7 +173,7 @@ public class AddEntryActivity extends AppCompatActivity {
                         listAct += i + 1 + " ";
                 }
 
-                Entry newEntry = new Entry(listAct, notes.getText().toString(), dayOfMood, timeOfMood, currentMood);
+                Entry newEntry = new Entry(listAct, notes.getText().toString(), dayOfMood, timeOfMood, MoodInfor.moods_type[currentMood[0]][currentMood[1]]);
 
                 // get date of entry to name for image
                 String imgName = newEntry.getDateOfMood();
@@ -198,7 +191,7 @@ public class AddEntryActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     linkimg = uri.toString();
-                                    Entry newEntry1 = new Entry(listAct, notes.getText().toString(), dayOfMood, timeOfMood, currentMood, linkimg);
+                                    Entry newEntry1 = new Entry(listAct, notes.getText().toString(), dayOfMood, timeOfMood, MoodInfor.moods_type[currentMood[0]][currentMood[1]], linkimg);
                                     //UPLOAD DATA OF ENTRY
                                     dtb.add(newEntry1).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
@@ -217,9 +210,7 @@ public class AddEntryActivity extends AppCompatActivity {
                             });
                         }
                     });
-                }
-
-                else {
+                } else {
                     //UPLOAD DATA OF ENTRY
                     dtb.add(newEntry).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
@@ -242,7 +233,7 @@ public class AddEntryActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && data != null){
+        if (resultCode == RESULT_OK && data != null) {
             //hide the button after choosing an image
             btnAddPhoto.setVisibility(View.GONE);
 
@@ -253,25 +244,24 @@ public class AddEntryActivity extends AppCompatActivity {
         }
     }
 
-    private void clickActivity(LinearLayout activity, int pos){
-        RelativeLayout layout = (RelativeLayout) activity.getChildAt(0);
-        ImageView circularShape = (ImageView) layout.getChildAt(0);
-        ImageView activityImage = (ImageView) layout.getChildAt(1);
+    private void clickActivity(LinearLayout activity, int pos) {
+        RelativeLayout layout        = (RelativeLayout) activity.getChildAt(0);
+        ImageView      circularShape = (ImageView) layout.getChildAt(0);
+        ImageView      activityImage = (ImageView) layout.getChildAt(1);
         if (chooseStatus[pos] == 0) {
             chooseStatus[pos] = 1;
             circularShape.setImageResource(R.drawable.circular_shape);
             ImageViewCompat.setImageTintList(activityImage, ColorStateList.valueOf(Color.parseColor("#FFFFFF")));
-        }
-        else if (chooseStatus[pos] == 1) {
+        } else if (chooseStatus[pos] == 1) {
             chooseStatus[pos] = 0;
             circularShape.setImageResource(R.drawable.circular_shape_none);
             ImageViewCompat.setImageTintList(activityImage, ColorStateList.valueOf(Color.parseColor("#32CD32")));
         }
     }
 
-    private String getFileExtension(Uri uri){
-        ContentResolver cR = getContentResolver();
-        MimeTypeMap mime = MimeTypeMap.getSingleton();
+    private String getFileExtension(Uri uri) {
+        ContentResolver cR   = getContentResolver();
+        MimeTypeMap     mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(cR.getType(uri));
     }
 }
