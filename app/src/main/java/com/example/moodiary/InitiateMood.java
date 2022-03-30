@@ -37,7 +37,7 @@ public class InitiateMood extends AppCompatActivity {
     int                                tHour, tMinute;
     private ImageButton btnNext, btnBack;
 
-    private final String[]    mtypes = {"Amazing", "Happy", "OK", "Sad", "Awful"};
+    private final String[]    mtypes = {"Amazing", "Happy", "Ok", "Sad", "Awful"};
     private       ImageView[] ms, mbgs;
     private TextView[]       mtexts;
     private RelativeLayout[] mrls;

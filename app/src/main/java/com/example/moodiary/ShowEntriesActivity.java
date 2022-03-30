@@ -18,8 +18,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 
 public class ShowEntriesActivity extends Activity {
 
@@ -86,6 +90,22 @@ public class ShowEntriesActivity extends Activity {
                     System.out.println("Read " + entry.getTimeOfmood());
                     listEntry.add(entry);
                 }
+                //Collections.reverse(listEntry);
+                Collections.sort(listEntry, new Comparator<Entry>() {
+                    @Override
+                    public int compare(Entry e1, Entry e2) {
+                        SimpleDateFormat formatter = new SimpleDateFormat("dd/mm/yyyy");
+                        try {
+                            Date date1=formatter.parse(e1.getDayOfmood());
+                            Date date2=formatter.parse(e2.getDayOfmood());
+
+                            return date1.compareTo(date2);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        return 0;
+                    }
+                });
                 Collections.reverse(listEntry);
                 divideEntry();
 
