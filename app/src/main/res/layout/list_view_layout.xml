@@ -6,5 +6,6 @@
         android:id="@+id/extra_mood"
         android:layout_width="80dp"
         android:layout_height="match_parent"
+        android:divider="@null"
         />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

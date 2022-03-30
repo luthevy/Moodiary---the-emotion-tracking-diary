@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -29,12 +30,6 @@ import java.util.Date;
 
 
 public class InitiateMood extends AppCompatActivity {
-    private MoodInfor moodInfor;
-
-//    Integer[][] moods_thumbnail=infor.moods_thumbnail;
-//
-//    String [][] moods_type = infor.moods_type;
-//    String [] moods_color = infor.moods_color;
 
     private TextView chooseDay, chooseTime;
     DatePickerDialog.OnDateSetListener SetDate;
@@ -43,11 +38,10 @@ public class InitiateMood extends AppCompatActivity {
     private ImageButton btnNext, btnExit;
     private String moodType = "Amazing";
 
-    private ImageView[] ms, mbgs;
+    private final String[]    mtypes = {"Amazing", "Happy", "OK", "Sad", "Awful"};
+    private       ImageView[] ms, mbgs;
     private TextView[]       mtexts;
     private RelativeLayout[] mrls;
-    private String[]         mtypes = {"Amazing", "Happy", "OK", "Sad", "Awful"
-    };
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -131,31 +125,28 @@ public class InitiateMood extends AppCompatActivity {
         };
 
 
-        chooseTime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                TimePickerDialog timePicker = new TimePickerDialog(InitiateMood.this, android.R.style.Theme_Holo_Dialog_MinWidth,
-                        new TimePickerDialog.OnTimeSetListener() {
-                            @Override
-                            public void onTimeSet(TimePicker timePicker, int hourOfDay, int Minute) {
-                                tHour   = hourOfDay;
-                                tMinute = Minute;
-                                String time = hourOfDay + ":" + Minute;
+        chooseTime.setOnClickListener(view -> {
+            TimePickerDialog timePicker = new TimePickerDialog(InitiateMood.this, android.R.style.Theme_Holo_Dialog_MinWidth,
+                    new TimePickerDialog.OnTimeSetListener() {
+                        @Override
+                        public void onTimeSet(TimePicker timePicker, int hourOfDay, int Minute) {
+                            tHour   = hourOfDay;
+                            tMinute = Minute;
+                            String time = hourOfDay + ":" + Minute;
 
-                                SimpleDateFormat f24Hours = new SimpleDateFormat("HH:mm");
-                                try {
-                                    Date date = f24Hours.parse(time);
-                                    assert date != null;
-                                    chooseTime.setText(f24Hours.format(date));
-                                } catch (ParseException e) {
-                                    e.printStackTrace();
-                                }
+                            SimpleDateFormat f24Hours = new SimpleDateFormat("HH:mm");
+                            try {
+                                Date date = f24Hours.parse(time);
+                                assert date != null;
+                                chooseTime.setText(f24Hours.format(date));
+                            } catch (ParseException e) {
+                                e.printStackTrace();
                             }
-                        }, 12, 0, true);
-                timePicker.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                timePicker.updateTime(tHour, tMinute);
-                timePicker.show();
-            }
+                        }
+                    }, 12, 0, true);
+            timePicker.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            timePicker.updateTime(tHour, tMinute);
+            timePicker.show();
         });
 
 
@@ -164,8 +155,12 @@ public class InitiateMood extends AppCompatActivity {
         for (int j = 0; j < ms.length; ++j) {
             int i = j;
 
-            if (MoodInfor.moods_type[i].length > 1)
+            if (MoodInfor.moods_type[i].length > 1){
                 mtexts[i].setText("...");
+            mtexts[i].setTextSize(30);
+            mtexts[i].setTypeface(null, Typeface.BOLD);
+            mtexts[i].setPaddingRelative(0,-45,0,0);
+            }
 
             ms[i].setOnClickListener((View view) -> {
                 resetBackground();
@@ -200,6 +195,9 @@ public class InitiateMood extends AppCompatActivity {
 
                         ms[i].setImageResource(MoodInfor.moods_thumbnail[i][position]);
                         mtexts[i].setText(MoodInfor.moods_type[i][position]);
+                        mtexts[i].setTextSize(15);
+                        mtexts[i].setTypeface(null, Typeface.NORMAL);
+                        mtexts[i].setPaddingRelative(0,0,0,0);
                         moodType = MoodInfor.moods_type[i][position];
                         rl.removeView(extra_list);
                     });
@@ -231,31 +229,28 @@ public class InitiateMood extends AppCompatActivity {
         //--------------------------------------------------------------------------------------------
 
         btnNext = findViewById(R.id.btnNext);
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AddEntryActivity.class);
-                intent.putExtra("currentChoosenMood", moodType);
-                intent.putExtra("dayOfMood", chooseDay.getText().toString());
-                intent.putExtra("timeOfMood", chooseTime.getText().toString());
-                startActivity(intent);
-            }
-        });
+        btnNext.setOnClickListener((View view) -> {
+                    Intent intent = new Intent(getApplicationContext(), AddEntryActivity.class);
+                    intent.putExtra("currentChoosenMood", moodType);
+                    intent.putExtra("dayOfMood", chooseDay.getText().toString());
+                    intent.putExtra("timeOfMood", chooseTime.getText().toString());
+                    startActivity(intent);
+                }
+        );
         btnExit = findViewById(R.id.imgbtnExit);
-        btnExit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), ShowEntriesActivity.class));
-            }
-        });
+        btnExit.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), ShowEntriesActivity.class)));
     }
 
     public void resetBackground() {
         for (int i = 0; i < ms.length; ++i) {
             mbgs[i].setVisibility(View.INVISIBLE);
-//            TO RESET THE CHOSEN MOOD UPON CLICKING ANOTHER TYPE
-//            if (MoodInfor.moods_type[i].length > 1)
+            // TO RESET THE CHOSEN MOOD UPON CLICKING ANOTHER TYPE
+//            if (MoodInfor.moods_type[i].length > 1){
 //                mtexts[i].setText("...");
+//                mtexts[i].setTextSize(30);
+//                mtexts[i].setTypeface(null, Typeface.BOLD);
+//                mtexts[i].setPaddingRelative(0,-45,0,0);
+//            }
 //            else mtexts[i].setText(MoodInfor.moods_type[i][0]);
 //
 //            ms[i].setImageResource(MoodInfor.moods_thumbnail[i][0]);
