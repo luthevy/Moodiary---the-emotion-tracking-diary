@@ -4,15 +4,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -31,8 +31,6 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
 //    String [] moods_type = {"Amazing", "Happy","Ok", "Sad", "Awful"};
 //    String [] moods_color ={"#90DA6E", "#5CEF93", "#45D9FF", "#F5CC67", "#FC6C79"};
 //    String [] activity_type ={"drawing", "TV", "eat", "sleep", "walk", "date", "swim", "friend", "work"};
-
-    MoodInfor moodInfor;
 //-----------------------------------------
 
     public CustomEntriesList(Context context, int layoutToBeInflated, ArrayList<ArrayList<Entry>> items, Integer[] thumbnails) {
@@ -79,10 +77,10 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
                 ImageView actIcon = small_act_layout.findViewById(R.id.actIcon);
                 TextView textView = small_act_layout.findViewById(R.id.actText);
 
-                actIcon.setImageResource(moodInfor.activity_thumbnail[Integer.parseInt(parts[i])-1]);
+                actIcon.setImageResource(MoodInfor.activity_thumbnail[Integer.parseInt(parts[i])-1]);
                 actIcon.setImageTintList(ColorStateList.valueOf(Color.parseColor(actColor)));
 
-                textView.setText(moodInfor.activity_type[Integer.parseInt(parts[i])-1]);
+                textView.setText(MoodInfor.activity_type[Integer.parseInt(parts[i])-1]);
                 act_linear.addView(small_act_layout);
             }
 
@@ -93,13 +91,13 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
 
     private void setMoodThumb(ImageView img, String mood, TextView curMood){
 
-        for (int i=0; i< moodInfor.moods_type.length; i++) {
-            for (int j = 0; j < moodInfor.moods_type[i].length;j++){
-                if (mood.equals(moodInfor.moods_type[i][j])) {
-                    img.setImageResource(moodInfor.moods_thumbnail[i][j]);
-                    img.setImageTintList(ColorStateList.valueOf(Color.parseColor(moodInfor.moods_color[i])));
-                    actColor = moodInfor.moods_color[i];
-                    curMood.setTextColor(ColorStateList.valueOf(Color.parseColor(moodInfor.moods_color[i])));
+        for (int i = 0; i< MoodInfor.moods_type.length; i++) {
+            for (int j = 0; j < MoodInfor.moods_type[i].length; j++){
+                if (mood.equals(MoodInfor.moods_type[i][j])) {
+                    img.setImageResource(MoodInfor.moods_thumbnail[i][j]);
+                    img.setImageTintList(ColorStateList.valueOf(Color.parseColor(MoodInfor.moods_color[i])));
+                    actColor = MoodInfor.moods_color[i];
+                    curMood.setTextColor(ColorStateList.valueOf(Color.parseColor(MoodInfor.moods_color[i])));
                 }
             }
         }

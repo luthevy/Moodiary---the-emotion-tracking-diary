@@ -1,7 +1,5 @@
 package com.example.moodiary;
 
-import android.app.Activity;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 

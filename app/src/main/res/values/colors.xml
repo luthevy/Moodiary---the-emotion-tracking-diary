@@ -147,4 +147,11 @@
     <color name="DarkBlue">#00008B</color>
     <color name="Navy">#000080</color>
     <color name="Black">#000000</color>
+    <color name="main1">#97e0bb</color>
+    <color name="main2">#5dbc9d</color>
+    <color name="mc1">#90DA6E</color>
+    <color name="mc2">#5CEF93</color>
+    <color name="mc3">#45D9FF</color>
+    <color name="mc4">#F5CC67</color>
+    <color name="mc5">#FC6C79</color>
 </resources>
