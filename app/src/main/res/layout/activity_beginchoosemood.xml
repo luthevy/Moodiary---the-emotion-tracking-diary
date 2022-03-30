@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
 
 
     <ImageButton
@@ -86,24 +88,25 @@
                 android:id="@+id/amazingRL"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                >
 
                 <ImageView
                     android:id="@+id/chooseAmazingBg"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/circular_shape50"
-                    android:visibility="visible"
+                    android:src="@drawable/mood_shadow"
+                    android:visibility="invisible"
                     android:scaleType="centerInside"
-                    />
+                    app:tint="@color/mc1"/>
+
                 <ImageView
                     android:id="@+id/chooseAmazing"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/mood_amazing"
-                    android:tint="@color/GreenYellow"
                     android:layout_centerInParent="true"
-                    />
+                    android:src="@drawable/mood_amazing"
+                    app:tint="@color/mc1"/>
 
 
             </RelativeLayout>
@@ -113,7 +116,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Amazing"
-                    android:textColor="@color/GreenYellow"
+                    android:textColor="@color/mc1"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -132,17 +135,17 @@
                         android:id="@+id/chooseHappyBg"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/circular_shape50"
-                        android:visibility="visible"
+                        android:src="@drawable/mood_shadow"
+                        android:visibility="invisible"
                         android:scaleType="centerInside"
-                        />
+                        app:tint="@color/mc2"/>
 
                     <ImageView
                         android:id="@+id/chooseHappy"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:src="@drawable/mood_happy"
-                        android:tint="@color/Green" />
+                        app:tint="@color/mc2"/>
                 </RelativeLayout>
                 <TextView
                     android:id="@+id/textHappy"
@@ -150,7 +153,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Happy"
-                    android:textColor="@color/Green"
+                    android:textColor="@color/mc2"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -169,16 +172,17 @@
                         android:id="@+id/chooseOkBg"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/circular_shape50"
-                        android:visibility="visible"
+                        android:src="@drawable/mood_shadow"
+                        android:visibility="invisible"
                         android:scaleType="centerInside"
-                        />
+                        app:tint="@color/mc3"/>
+
                     <ImageView
                         android:id="@+id/chooseOk"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:src="@drawable/mood_ok"
-                        android:tint="@color/Aqua" />
+                        app:tint="@color/mc3"/>
 
                 </RelativeLayout>
                 <TextView
@@ -187,7 +191,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Ok"
-                    android:textColor="@color/Aqua"
+                    android:textColor="@color/mc3"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -206,16 +210,17 @@
                         android:id="@+id/chooseSadBg"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/circular_shape50"
-                        android:visibility="visible"
+                        android:src="@drawable/mood_shadow"
+                        android:visibility="invisible"
                         android:scaleType="centerInside"
-                        />
+                        app:tint="@color/mc4"/>
+
                     <ImageView
                         android:id="@+id/chooseSad"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:src="@drawable/mood_sad"
-                        android:tint="@color/Orange" />
+                        app:tint="@color/mc4"/>
 
                 </RelativeLayout>
                 <TextView
@@ -224,7 +229,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Sad"
-                    android:textColor="@color/Orange"
+                    android:textColor="@color/mc4"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -243,16 +248,17 @@
                     android:id="@+id/chooseAwfulBg"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/circular_shape50"
-                    android:visibility="visible"
+                    android:src="@drawable/mood_shadow"
+                    android:visibility="invisible"
                     android:scaleType="centerInside"
-                    />
-                <ImageView
-                    android:id="@+id/chooseAwful"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/mood_awful"
-                    android:tint="@color/Red" />
+                    app:tint="@color/mc5"/>
+
+                    <ImageView
+                        android:id="@+id/chooseAwful"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/mood_awful"
+                        app:tint="@color/mc5"/>
 
                 </RelativeLayout>
 
@@ -262,7 +268,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Awful"
-                    android:textColor="@color/Red"
+                    android:textColor="@color/mc5"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -297,7 +303,13 @@
             android:textColor="@color/LimeGreen"
             android:textStyle="bold" />
     </LinearLayout>
-
+    <ImageView
+        android:id="@+id/whiteRec"
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:visibility="invisible"
+        />
     <LinearLayout
         android:id="@+id/linearLayout5"
         android:layout_width="0dp"
@@ -327,4 +339,5 @@
             android:textColor="@color/LimeGreen"
             android:textStyle="bold" />
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
