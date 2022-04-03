@@ -33,8 +33,8 @@ public class ShowEntriesActivity extends Activity {
     ListView listbyDate, listsameDate;
 
     private BottomNavigationView bottom_navigation_menu;
-    private       FloatingActionButton fabMain;
-    private final Boolean              isFabOpen =false;
+    private FloatingActionButton fabMain;
+    private final Boolean isFabOpen =false;
 
     private FirebaseDatabase database;
     DatabaseReference ref;

@@ -39,6 +39,7 @@ public class SignupActivity extends AppCompatActivity {
                 editRetypePw.getText().length()>0) {
                 if (editPw.getText().toString().equals(editRetypePw.getText().toString())){
                     register(editFullname.getText().toString(),editEmail.getText().toString(),editPw.getText().toString());
+                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 }
                 else{
                     Toast.makeText(this, "Invalid retype password", Toast.LENGTH_SHORT).show();
@@ -69,15 +70,15 @@ public class SignupActivity extends AppCompatActivity {
                 });
     }
     private void reload(){
-        startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
     }
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            reload();
-        }
-    }
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        // Check if user is signed in (non-null) and update UI accordingly.
+//        FirebaseUser currentUser = mAuth.getCurrentUser();
+//        if(currentUser != null){
+//            reload();
+//        }
+//    }
 }
