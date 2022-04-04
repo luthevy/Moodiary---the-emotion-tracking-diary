@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -50,8 +51,6 @@ public class ShowEntriesActivity extends Activity {
         bottom_navigation_menu.setBackground(null);
         bottom_navigation_menu.setItemIconTintList(null);
         bottom_navigation_menu.setOnNavigationItemSelectedListener(navListener);
-
-
 
 //---------------------Decor Sub Menu-------------------------------
           fabMain= findViewById(R.id.fabMain);

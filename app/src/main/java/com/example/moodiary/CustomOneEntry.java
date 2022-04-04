@@ -2,6 +2,7 @@ package com.example.moodiary;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,10 +37,10 @@ public class CustomOneEntry extends ArrayAdapter<Entry> {
         TextView actText = row.findViewById(R.id.actText);
         TextView descText = row.findViewById(R.id.descText);
 
+
         curMood.setText(items.get(position).getMoodType());
         timeText.setText(items.get(position).getTimeOfmood());
         descText.setText(items.get(position).getNote());
-
         return(row);
     }
 

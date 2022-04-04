@@ -2,6 +2,7 @@ package com.example.moodiary;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -51,11 +52,8 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
             ImageView moodIcon = child.findViewById(R.id.moodIcon);
             TextView curMood = child.findViewById(R.id.curMood);
             TextView timeText = child.findViewById(R.id.timeText);
-
             TextView descText = child.findViewById(R.id.descText);
-
             curMood.setText(e.getMoodType());
-
             timeText.setText(e.getTimeOfmood());
             descText.setText(e.getNote());
             setMoodThumb(moodIcon, e.getMoodType(), curMood);
