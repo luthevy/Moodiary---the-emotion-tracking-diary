@@ -53,6 +53,13 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
             TextView curMood = child.findViewById(R.id.curMood);
             TextView timeText = child.findViewById(R.id.timeText);
             TextView descText = child.findViewById(R.id.descText);
+            ImageView updateEntry = child.findViewById(R.id.Setting);
+            updateEntry.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    context.startActivity(new Intent(context.getApplicationContext(),UpdateEntry.class));
+                }
+            });
             curMood.setText(e.getMoodType());
             timeText.setText(e.getTimeOfmood());
             descText.setText(e.getNote());
