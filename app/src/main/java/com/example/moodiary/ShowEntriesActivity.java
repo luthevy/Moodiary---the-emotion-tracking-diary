@@ -53,24 +53,14 @@ public class ShowEntriesActivity extends Activity {
         bottom_navigation_menu.setOnNavigationItemSelectedListener(navListener);
 
 //---------------------Decor Sub Menu-------------------------------
-          fabMain= findViewById(R.id.fabMain);
-//          fabToday=(FloatingActionButton)findViewById(R.id.fabToday);
-//          fabToday.setVisibility(View.INVISIBLE);
-
-//        fabMain.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if(!isFabOpen)
-//                    showFabMenu();
-//                else
-//                    closeFabMenu();
-//            }
-//        });
+        fabMain= findViewById(R.id.fabMain);
 
         fabMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), InitiateMood.class));
+                //Test screen year statistic
+                //startActivity(new Intent(getApplicationContext(),YearStatistic.class ));
 
             }
         });
