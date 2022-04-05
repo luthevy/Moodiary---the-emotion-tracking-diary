@@ -83,10 +83,10 @@ public class ShowEntriesActivity extends Activity {
                 Collections.sort(listEntry, new Comparator<Entry>() {
                     @Override
                     public int compare(Entry e1, Entry e2) {
-                        SimpleDateFormat formatter = new SimpleDateFormat("dd/mm/yyyy");
+                        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
                         try {
-                            Date date1=formatter.parse(e1.getDayOfmood());
-                            Date date2=formatter.parse(e2.getDayOfmood());
+                            Date date1=formatter.parse(e1.getDateOfMood());
+                            Date date2=formatter.parse(e2.getDateOfMood());
 
                             return date1.compareTo(date2);
                         } catch (ParseException e) {
