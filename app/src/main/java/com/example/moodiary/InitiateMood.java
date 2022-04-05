@@ -157,7 +157,7 @@ public class InitiateMood extends AppCompatActivity {
         for (int j = 0; j < ms.length; ++j) {
             int i = j;
 
-            if (MoodInfor.moods_type[i].length > 1) {
+            if (MoodInfo.moods_type[i].length > 1) {
                 mtexts[i].setText("...");
                 mtexts[i].setTextSize(30);
                 mtexts[i].setTypeface(null, Typeface.BOLD);
@@ -168,7 +168,7 @@ public class InitiateMood extends AppCompatActivity {
                 resetBackground();
 
                 mbgs[i].setVisibility(View.VISIBLE);
-                if (MoodInfor.moods_type[i].length == 1) {
+                if (MoodInfo.moods_type[i].length == 1) {
                     chosenMood[0] = i;
                     chosenMood[1] = 0;
                 } else {
@@ -184,9 +184,9 @@ public class InitiateMood extends AppCompatActivity {
                     CustomExtraMoods adapter = new CustomExtraMoods(
                             InitiateMood.this,
                             R.layout.custom_extra_mood,
-                            MoodInfor.moods_thumbnail[i],
-                            MoodInfor.moods_type[i],
-                            MoodInfor.moods_color[i]);
+                            MoodInfo.moods_thumbnail[i],
+                            MoodInfo.moods_type[i],
+                            MoodInfo.moods_color[i]);
 
                     extra_mood.setAdapter(adapter);
                     extra_mood.setOnItemClickListener((AdapterView<?> adapterView, View view_, int position, long id) -> {
@@ -196,8 +196,8 @@ public class InitiateMood extends AppCompatActivity {
                         mbgs[i].setVisibility(View.VISIBLE);
                         ms[i].setVisibility(View.VISIBLE);
 
-                        ms[i].setImageResource(MoodInfor.moods_thumbnail[i][position]);
-                        mtexts[i].setText(MoodInfor.moods_type[i][position]);
+                        ms[i].setImageResource(MoodInfo.moods_thumbnail[i][position]);
+                        mtexts[i].setText(MoodInfo.moods_type[i][position]);
                         mtexts[i].setTextSize(15);
                         mtexts[i].setTypeface(null, Typeface.NORMAL);
                         mtexts[i].setPaddingRelative(0, 0, 0, 0);

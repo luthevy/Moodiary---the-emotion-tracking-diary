@@ -1,6 +1,6 @@
 package com.example.moodiary;
 
-public class MoodInfor {
+public class MoodInfo {
     public static Integer[][] moods_thumbnail={
             {R.drawable.mood_amazing, R.drawable.mood_02, R.drawable.mood_14},
             {R.drawable.mood_happy,R.drawable.mood_00},

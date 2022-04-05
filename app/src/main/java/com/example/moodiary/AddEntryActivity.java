@@ -87,7 +87,7 @@ public class AddEntryActivity extends AppCompatActivity {
         dayOfMood   = getIntent().getStringExtra("dayOfMood").toString();
         timeOfMood  = getIntent().getStringExtra("timeOfMood").toString();
 
-        chosenMood.setImageResource(MoodInfor.moods_thumbnail[currentMood[0]][currentMood[1]]);
+        chosenMood.setImageResource(MoodInfo.moods_thumbnail[currentMood[0]][currentMood[1]]);
 
 //        if(currentMood.equals("Amazing"))
 //            chosenMood.setImageResource(R.drawable.mood_amazing);
@@ -173,7 +173,7 @@ public class AddEntryActivity extends AppCompatActivity {
                         listAct += i + 1 + " ";
                 }
 
-                Entry newEntry = new Entry(listAct, notes.getText().toString(), dayOfMood, timeOfMood, MoodInfor.moods_type[currentMood[0]][currentMood[1]]);
+                Entry newEntry = new Entry(listAct, notes.getText().toString(), dayOfMood, timeOfMood, MoodInfo.moods_type[currentMood[0]][currentMood[1]]);
 
                 // get date of entry to name for image
                 String imgName = newEntry.getDateOfMood();
@@ -191,7 +191,7 @@ public class AddEntryActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     linkimg = uri.toString();
-                                    Entry newEntry1 = new Entry(listAct, notes.getText().toString(), dayOfMood, timeOfMood, MoodInfor.moods_type[currentMood[0]][currentMood[1]], linkimg);
+                                    Entry newEntry1 = new Entry(listAct, notes.getText().toString(), dayOfMood, timeOfMood, MoodInfo.moods_type[currentMood[0]][currentMood[1]], linkimg);
                                     //UPLOAD DATA OF ENTRY
                                     dtb.add(newEntry1).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
