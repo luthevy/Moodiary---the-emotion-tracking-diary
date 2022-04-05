@@ -79,7 +79,8 @@ public class ShowEntriesActivity extends Activity {
                     System.out.println("Read " + entry.getTimeOfmood());
                     listEntry.add(entry);
                 }
-                //Collections.reverse(listEntry);
+
+                // --------------Sort date by new to old-------------
                 Collections.sort(listEntry, new Comparator<Entry>() {
                     @Override
                     public int compare(Entry e1, Entry e2) {

@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.Typeface;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +48,8 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
         LinearLayout   row      = (LinearLayout) inflater.inflate(R.layout.custom_row_entries, null);
         row.removeAllViews();
-        System.out.println("In custom  " + items.get(position));
+        int get1DateToShow = 0;
+
         for (Entry e : items.get(position)) {
 
             View      child       = inflater.inflate(R.layout.custom_show_one_entries, null);
@@ -55,6 +58,22 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
             TextView  timeText    = child.findViewById(R.id.timeText);
             TextView  descText    = child.findViewById(R.id.descText);
             ImageView updateEntry = child.findViewById(R.id.Setting);
+
+            //---------------Set date on the first entry in a day---------------
+            if(get1DateToShow==0) {
+                TextView show1Date = new TextView(row.getContext());
+                LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(
+                        (int) ViewGroup.LayoutParams.MATCH_PARENT,(int) ViewGroup.LayoutParams.WRAP_CONTENT);
+                show1Date.setText(e.getDayOfmood());
+                show1Date.setTextSize(18);
+                show1Date.setTypeface(Typeface.DEFAULT_BOLD);
+                show1Date.setLayoutParams(params);
+                show1Date.setGravity(Gravity.CENTER);
+                get1DateToShow=1;
+                row.addView(show1Date);
+            }
+
+            //----------------Update entry-----------
             updateEntry.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -67,6 +86,8 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
             descText.setText(e.getNote());
             setMoodThumb(moodIcon, e.getMoodType(), curMood);
 
+
+            //------------------------Set image -----------------------------
             if (!e.getImgLink().equals("")) {
                 //Picasso
                 LinearLayout entryImgLayout = child.findViewById(R.id.entryImgLayout);
@@ -76,7 +97,7 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
                 entryImgLayout.addView(entryImgView);
             }
 
-            // SET LAYOUT CHO 1 BOX CUNG NGAY
+            // --------------------SET LAYOUT CHO 1 BOX CUNG NGAY------------------------
             LinearLayout act_linear = child.findViewById(R.id.act_linear);
             String[]     parts      = e.getActivity().split(" ");
             for (int i = 0; i < parts.length; i++) {
