@@ -7,10 +7,20 @@ import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.*;
 
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
+
+import java.util.ArrayList;
+
 public class YearStatistic extends Activity {
     LinearLayout maxDayInMonth;
     LinearLayout []MonthOfYear;
     String[] month_brief = {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
+    private BarChart barChartCountMood;
+    ArrayList barList = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +43,7 @@ public class YearStatistic extends Activity {
 
 
 
-        //Day of month
+        //------------------Day of month-------------------
         for(int i = 0; i<=31; i++){
             TextView txtday = new TextView(this);
             txtday.setText(Integer.toString(i));
@@ -43,12 +53,14 @@ public class YearStatistic extends Activity {
             maxDayInMonth.addView(txtday);
         }
 
+        //--------------------Show mood icon in each day-----------------------
         for(int curMonth = 1; curMonth<=12; curMonth++) {
-            //January
             for (int i = 0; i <= 31; i++) {
                 if (i == 0) {
+                    //-----------Set month tag-----------
                     TextView txtday = new TextView(this);
-                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                            ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     params.setMargins(-2, 0, 0, 0);
                     txtday.setLayoutParams(params);
                     txtday.setText(month_brief[curMonth-1]);
@@ -69,6 +81,24 @@ public class YearStatistic extends Activity {
             }
         }
 
+        //------------------------Count mood chart------------------------
+        barChartCountMood = findViewById(R.id.barChartCountMood);
+        getData();
+        BarDataSet barDataSet = new BarDataSet(barList,"Mood Count");
+        BarData barData = new BarData(barDataSet);
+        barChartCountMood.setData(barData);
+        barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        barDataSet.setValueTextColor(Color.BLACK);
+        barDataSet.setValueTextSize(16f);
+        barChartCountMood.getDescription().setEnabled(true);
+    }
 
+    private void getData(){
+        barList.add(new BarEntry(2f,10));
+        barList.add(new BarEntry(3f,15));
+        barList.add(new BarEntry(4f,30));
+        barList.add(new BarEntry(5f,52));
+        barList.add(new BarEntry(6f,51));
+        barList.add(new BarEntry(7f,21));
     }
 }
