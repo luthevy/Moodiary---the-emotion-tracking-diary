@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:text="What have you been up to?"
                 android:gravity="center"
-                android:textSize="24sp"
+                android:textSize="30sp"
                 android:layout_marginTop="25dp"/>
 
             <TableLayout
@@ -65,16 +65,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center" >
+
                             <ImageView
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:src="@drawable/circular_shape_none"/>
+
                             <ImageView
                                 android:layout_width="33dp"
                                 android:layout_height="33dp"
+                                android:layout_centerInParent="true"
                                 android:src="@drawable/activity_drawing"
-                                app:tint="@color/LimeGreen"
-                                android:layout_centerInParent="true"/>
+                                app:tint="@color/main1"/>
                         </RelativeLayout>
                         <TextView
                             android:layout_width="wrap_content"
@@ -82,7 +84,7 @@
                             android:text="drawing"
                             android:gravity="center"
                             android:textStyle="bold"
-                            android:textColor="@color/LimeGreen"/>
+                            android:textColor="@color/main1"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -100,12 +102,13 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:src="@drawable/circular_shape_none"/>
+
                             <ImageView
                                 android:layout_width="33dp"
                                 android:layout_height="33dp"
+                                android:layout_centerInParent="true"
                                 android:src="@drawable/activity_tv"
-                                app:tint="@color/LimeGreen"
-                                android:layout_centerInParent="true"/>
+                                app:tint="@color/main1"/>
                         </RelativeLayout>
                         <TextView
                             android:layout_width="match_parent"
@@ -113,7 +116,7 @@
                             android:text="tv"
                             android:gravity="center"
                             android:textStyle="bold"
-                            android:textColor="@color/LimeGreen"/>
+                            android:textColor="@color/main1"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -137,7 +140,7 @@
                                 android:layout_height="33dp"
                                 android:layout_centerInParent="true"
                                 android:src="@drawable/activity_eat"
-                                app:tint="@color/LimeGreen" />
+                                app:tint="@color/main1"/>
                         </RelativeLayout>
                         <TextView
                             android:layout_width="match_parent"
@@ -145,7 +148,7 @@
                             android:text="eat"
                             android:gravity="center"
                             android:textStyle="bold"
-                            android:textColor="@color/LimeGreen"/>
+                            android:textColor="@color/main1"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -163,12 +166,13 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:src="@drawable/circular_shape_none"/>
+
                             <ImageView
                                 android:layout_width="33dp"
                                 android:layout_height="33dp"
+                                android:layout_centerInParent="true"
                                 android:src="@drawable/activity_sleep"
-                                app:tint="@color/LimeGreen"
-                                android:layout_centerInParent="true"/>
+                                app:tint="@color/main1"/>
                         </RelativeLayout>
                         <TextView
                             android:layout_width="match_parent"
@@ -176,7 +180,7 @@
                             android:text="sleep"
                             android:gravity="center"
                             android:textStyle="bold"
-                            android:textColor="@color/LimeGreen"/>
+                            android:textColor="@color/main1"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -194,12 +198,13 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:src="@drawable/circular_shape_none"/>
+
                             <ImageView
                                 android:layout_width="33dp"
                                 android:layout_height="33dp"
+                                android:layout_centerVertical="true"
                                 android:src="@drawable/activity_walk"
-                                app:tint="@color/LimeGreen"
-                                android:layout_centerInParent="true"/>
+                                app:tint="@color/main1"/>
                         </RelativeLayout>
                         <TextView
                             android:layout_width="match_parent"
@@ -207,7 +212,7 @@
                             android:text="walk"
                             android:gravity="center"
                             android:textStyle="bold"
-                            android:textColor="@color/LimeGreen"/>
+                            android:textColor="@color/main1"/>
                     </LinearLayout>
                 </TableRow>
 
@@ -227,12 +232,13 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:src="@drawable/circular_shape_none"/>
+
                             <ImageView
                                 android:layout_width="33dp"
                                 android:layout_height="33dp"
+                                android:layout_centerInParent="true"
                                 android:src="@drawable/activity_date"
-                                app:tint="@color/LimeGreen"
-                                android:layout_centerInParent="true"/>
+                                app:tint="@color/main1"/>
                         </RelativeLayout>
                         <TextView
                             android:layout_width="match_parent"
@@ -240,7 +246,7 @@
                             android:text="date"
                             android:gravity="center"
                             android:textStyle="bold"
-                            android:textColor="@color/LimeGreen"/>
+                            android:textColor="@color/main1"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -258,12 +264,13 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:src="@drawable/circular_shape_none"/>
+
                             <ImageView
                                 android:layout_width="33dp"
                                 android:layout_height="33dp"
+                                android:layout_centerInParent="true"
                                 android:src="@drawable/activity_swim"
-                                app:tint="@color/LimeGreen"
-                                android:layout_centerInParent="true"/>
+                                app:tint="@color/main1"/>
                         </RelativeLayout>
                         <TextView
                             android:layout_width="match_parent"
@@ -271,7 +278,7 @@
                             android:text="swim"
                             android:gravity="center"
                             android:textStyle="bold"
-                            android:textColor="@color/LimeGreen"/>
+                            android:textColor="@color/main1"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -285,16 +292,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center" >
+
                             <ImageView
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:src="@drawable/circular_shape_none"/>
+
                             <ImageView
                                 android:layout_width="33dp"
                                 android:layout_height="33dp"
+                                android:layout_centerInParent="true"
                                 android:src="@drawable/activity_friend"
-                                app:tint="@color/LimeGreen"
-                                android:layout_centerInParent="true"/>
+                                app:tint="@color/main1"/>
                         </RelativeLayout>
                         <TextView
                             android:layout_width="match_parent"
@@ -302,7 +311,7 @@
                             android:text="friend"
                             android:gravity="center"
                             android:textStyle="bold"
-                            android:textColor="@color/LimeGreen"/>
+                            android:textColor="@color/main1"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -320,12 +329,13 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:src="@drawable/circular_shape_none"/>
+
                             <ImageView
                                 android:layout_width="33dp"
                                 android:layout_height="33dp"
+                                android:layout_centerInParent="true"
                                 android:src="@drawable/activity_work"
-                                app:tint="@color/LimeGreen"
-                                android:layout_centerInParent="true"/>
+                                app:tint="@color/main1"/>
                         </RelativeLayout>
                         <TextView
                             android:layout_width="match_parent"
@@ -333,7 +343,7 @@
                             android:text="work"
                             android:gravity="center"
                             android:textStyle="bold"
-                            android:textColor="@color/LimeGreen"/>
+                            android:textColor="@color/main1"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -351,20 +361,21 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:src="@drawable/circular_shape_none"/>
+
                             <ImageView
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
+                                android:layout_centerInParent="true"
                                 android:src="@drawable/edit_new"
-                                app:tint="@color/LimeGreen"
-                                android:layout_centerInParent="true"/>
+                                app:tint="@color/main1"/>
                         </RelativeLayout>
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="edit/new"
+                            android:text="more"
                             android:gravity="center"
                             android:textStyle="bold"
-                            android:textColor="@color/LimeGreen"/>
+                            android:textColor="@color/main1"/>
                     </LinearLayout>
                 </TableRow>
             </TableLayout>
@@ -378,21 +389,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Note"
-                    android:textStyle="bold"
                     android:drawableLeft="@drawable/ic_baseline_event_note"
+                    android:drawablePadding="7dp"
                     android:layout_marginTop="20dp"
-                    android:textColor="@color/Green"
-                    android:drawableTint="@color/Green"/>
+                    android:textColor="@color/main2"
+                    android:drawableTint="@color/main2"
+                    android:textSize="16sp"/>
 
                 <EditText
                     android:id="@+id/edtxt_Notes"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="100dp"
                     android:background="#F2F2F7"
                     android:layout_marginTop="5dp"
                     android:inputType="text|textMultiLine"
                     android:gravity="top"
-                    android:hint="  Add note..."/>
+                    android:padding="5dp"
+                    android:hint="How was your day going?"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -402,25 +415,28 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/camera"
-                        app:tint="@color/Green" />
+                        app:tint="@color/main2"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginLeft="3dp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Photo"
-                        android:textStyle="bold"
+                        android:textSize="16sp"
                         android:layout_marginStart="3dp"
-                        android:textColor="@color/Green"/>
+                        android:textColor="@color/main2"/>
                 </LinearLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <Button
                         android:id="@+id/btnAddPhoto"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
-                        android:text="Tap to Add Photo..."
-                        android:backgroundTint="@color/LimeGreen"/>
+                        android:backgroundTint="@color/main2"
+                        android:text="Tap to Add Photo..."/>
                     <ImageView
                         android:id="@+id/selectedImage"
                         android:layout_width="110dp"
@@ -433,29 +449,26 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp">
+                android:paddingTop="65dp"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="bottom|center"
                     android:orientation="vertical"
-                    android:layout_marginLeft="150dp">
+                    android:layout_marginLeft="150dp"
+                    >
+
                     <ImageButton
                         android:id="@+id/btnSave"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="88dp"
+                        android:layout_height="88dp"
+                        android:background="@drawable/circular_shape"
                         android:scaleType="centerInside"
                         android:src="@drawable/tick"
-                        app:tint="@color/Green"
-                        android:background="@drawable/circular_shape" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Save"
-                        android:textStyle="bold"
-                        android:textColor="@color/LimeGreen"/>
+                        app:tint="?attr/colorControlNormal"/>
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -476,8 +489,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Edit activities"
-                        android:textStyle="bold"
-                        android:textColor="@color/LimeGreen"/>
+                        android:textSize="15sp"
+                        android:textColor="@color/main2"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
