@@ -12,18 +12,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da699d9d-720a-47fa-9e1a-ddcb9b06019d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/edit.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/trash.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/AddEntryActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/AddEntryActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/CustomEntriesList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/CustomEntriesList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/InitiateMood.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/InitiateMood.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/MoodInfor.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/MoodInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/custom_show_one_entries.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/custom_show_one_entries.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@C:\Users\admin\.android\avd\NieraPhone.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Admin\.android\avd\phat.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -244,7 +244,9 @@
         </option>
         <option name="vmOptions" value="" />
       </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
     <recent_temporary>
@@ -279,23 +281,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state width="1493" height="222" key="GridCell.Tab.0.bottom" timestamp="1649151922769">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state width="1493" height="222" key="GridCell.Tab.0.bottom/0.0.1536.816@0.0.1536.816" timestamp="1649151922769" />
-    <state width="1493" height="222" key="GridCell.Tab.0.center" timestamp="1649151922769">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state width="1493" height="222" key="GridCell.Tab.0.center/0.0.1536.816@0.0.1536.816" timestamp="1649151922769" />
-    <state width="1493" height="222" key="GridCell.Tab.0.left" timestamp="1649151922769">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state width="1493" height="222" key="GridCell.Tab.0.left/0.0.1536.816@0.0.1536.816" timestamp="1649151922769" />
-    <state width="1493" height="222" key="GridCell.Tab.0.right" timestamp="1649151922769">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state width="1493" height="222" key="GridCell.Tab.0.right/0.0.1536.816@0.0.1536.816" timestamp="1649151922769" />
   </component>
 </project>

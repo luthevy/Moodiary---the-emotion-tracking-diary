@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,27 +56,39 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
             TextView  curMood     = child.findViewById(R.id.curMood);
             TextView  timeText    = child.findViewById(R.id.timeText);
             TextView  descText    = child.findViewById(R.id.descText);
-            ImageView updateEntry = child.findViewById(R.id.Setting);
+            ImageView editEntry   = child.findViewById(R.id.editEntryButton);
+            ImageView deleteEntry = child.findViewById(R.id.deleteEntryButton);
 
             //---------------Set date on the first entry in a day---------------
-            if(get1DateToShow==0) {
+            if (get1DateToShow == 0) {
                 TextView show1Date = new TextView(row.getContext());
-                LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(
-                        (int) ViewGroup.LayoutParams.MATCH_PARENT,(int) ViewGroup.LayoutParams.WRAP_CONTENT);
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                        (int) ViewGroup.LayoutParams.MATCH_PARENT, (int) ViewGroup.LayoutParams.WRAP_CONTENT);
                 show1Date.setText(e.getDayOfmood());
                 show1Date.setTextSize(18);
-                show1Date.setTypeface(Typeface.DEFAULT_BOLD);
                 show1Date.setLayoutParams(params);
+                show1Date.setPadding(70, 25, 0, -20);
+                show1Date.setTextColor(Color.parseColor("#97e0bb"));
+                show1Date.setTypeface(parent.getResources().getFont(R.font.poppinsmedium));
+                show1Date.setTextSize(19);
                 show1Date.setGravity(Gravity.CENTER);
-                get1DateToShow=1;
+
+                get1DateToShow = 1;
                 row.addView(show1Date);
             }
 
             //----------------Update entry-----------
-            updateEntry.setOnClickListener(new View.OnClickListener() {
+            editEntry.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     context.startActivity(new Intent(context.getApplicationContext(), UpdateEntry.class));
+                }
+            });
+
+            deleteEntry.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
                 }
             });
 
