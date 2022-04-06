@@ -166,7 +166,7 @@ public class AddEntryActivity extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Database db = new Database();
+                AddEntryToDatabase dtb = new AddEntryToDatabase();
                 listAct = "";
                 for (int i = 0; i < chooseStatus.length; i++) {
                     if (chooseStatus[i] == 1)
@@ -193,7 +193,7 @@ public class AddEntryActivity extends AppCompatActivity {
                                     linkimg = uri.toString();
                                     Entry newEntry1 = new Entry(listAct, notes.getText().toString(), dayOfMood, timeOfMood, MoodInfo.moods_type[currentMood[0]][currentMood[1]], linkimg);
                                     //UPLOAD DATA OF ENTRY
-                                    db.add(newEntry1).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    dtb.add(newEntry1).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void unused) {
                                             Toast.makeText(AddEntryActivity.this, "Add Success", Toast.LENGTH_SHORT).show();
@@ -212,7 +212,7 @@ public class AddEntryActivity extends AppCompatActivity {
                     });
                 } else {
                     //UPLOAD DATA OF ENTRY
-                    db.add(newEntry).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    dtb.add(newEntry).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
                             Toast.makeText(AddEntryActivity.this, "Add Success", Toast.LENGTH_SHORT).show();
