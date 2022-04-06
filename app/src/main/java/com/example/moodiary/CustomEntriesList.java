@@ -16,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -91,7 +93,11 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
                     .setTitle("Delete entry")
                     .setMessage("Are you sure you want to delete this entry?")
                     .setPositiveButton("Yes", (dialogInterface, i) -> {
-
+                        FirebaseDatabase
+                                .getInstance()
+                                .getReference("Entry")
+                                .child("asd")
+                                .removeValue();
                     })
                     .setNegativeButton("Cancel",null)
                     .setIcon(android.R.drawable.ic_dialog_alert)
