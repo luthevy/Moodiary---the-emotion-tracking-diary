@@ -96,8 +96,9 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
                         FirebaseDatabase
                                 .getInstance()
                                 .getReference("Entry")
-                                .child("asd")
+                                .child(ShowEntriesActivity.keyOfEntry.get(e))
                                 .removeValue();
+                        context.startActivity(new Intent(context.getApplicationContext(), ShowEntriesActivity.class));
                     })
                     .setNegativeButton("Cancel",null)
                     .setIcon(android.R.drawable.ic_dialog_alert)
