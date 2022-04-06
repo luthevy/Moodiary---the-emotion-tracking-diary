@@ -1,7 +1,9 @@
 package com.example.moodiary;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -85,12 +87,15 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
                 }
             });
 
-            deleteEntry.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+            deleteEntry.setOnClickListener(view -> new AlertDialog.Builder(context)
+                    .setTitle("Delete entry")
+                    .setMessage("Are you sure you want to delete this entry?")
+                    .setPositiveButton("Yes", (dialogInterface, i) -> {
 
-                }
-            });
+                    })
+                    .setNegativeButton("Cancel",null)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show());
 
             curMood.setText(e.getMoodType());
             timeText.setText(e.getTimeOfmood());
@@ -111,16 +116,16 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
             // --------------------SET LAYOUT CHO 1 BOX CUNG NGAY------------------------
             LinearLayout act_linear = child.findViewById(R.id.act_linear);
             String[]     parts      = e.getActivity().split(" ");
-            for (int i = 0; i < parts.length; i++) {
+            for (String part : parts) {
 
                 View      small_act_layout = inflater.inflate(R.layout.custom_action_row, null);
                 ImageView actIcon          = small_act_layout.findViewById(R.id.actIcon);
                 TextView  textView         = small_act_layout.findViewById(R.id.actText);
 
-                actIcon.setImageResource(MoodInfo.activity_thumbnail[Integer.parseInt(parts[i]) - 1]);
+                actIcon.setImageResource(MoodInfo.activity_thumbnail[Integer.parseInt(part) - 1]);
                 actIcon.setImageTintList(ColorStateList.valueOf(Color.parseColor(actColor)));
 
-                textView.setText(MoodInfo.activity_type[Integer.parseInt(parts[i]) - 1]);
+                textView.setText(MoodInfo.activity_type[Integer.parseInt(part) - 1]);
                 act_linear.addView(small_act_layout);
             }
 

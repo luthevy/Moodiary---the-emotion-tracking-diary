@@ -2,15 +2,19 @@ package com.example.moodiary;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-public class AddEntryToDatabase {
-    private final DatabaseReference databaseReference;
+public class Database {
+    private final DatabaseReference ref;
 
-    public AddEntryToDatabase(){
+    public Database(){
         FirebaseDatabase db = FirebaseDatabase.getInstance();
-        databaseReference = db.getReference(Entry.class.getSimpleName());
+        ref = db.getReference(Entry.class.getSimpleName());
     }
 
     public Task<Void> add(Entry ent){
-        return databaseReference.push().setValue(ent);
+        return ref.push().setValue(ent);
     }
+
+//    public Task<Void> delete(Entry ent){
+//
+//    }
 }
