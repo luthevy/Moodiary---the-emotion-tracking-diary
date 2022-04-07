@@ -98,7 +98,9 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
                                 .getReference("Entry")
                                 .child(ShowEntriesActivity.keyOfEntry.get(e))
                                 .removeValue();
-                        context.startActivity(new Intent(context.getApplicationContext(), ShowEntriesActivity.class));
+                        notifyDataSetChanged();
+                        context.startActivity(((Activity) context).getIntent());
+                        //context.startActivity(new Intent(context.getApplicationContext(), ShowEntriesActivity.class));
                     })
                     .setNegativeButton("Cancel",null)
                     .setIcon(android.R.drawable.ic_dialog_alert)
