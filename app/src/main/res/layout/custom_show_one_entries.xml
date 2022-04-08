@@ -53,14 +53,26 @@
                     android:text="20:07"
                     android:textSize="15sp"/>
 
-                <ImageView
-                    android:id="@+id/Setting"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="25dp"
-                    android:clickable="true"
-                    android:paddingEnd="20dp"
-                    android:scaleType="fitEnd"
-                    android:src="@drawable/ic_baseline_edit_normal"/>
+                    android:layout_height="match_parent"
+                    android:layoutDirection="rtl">
+
+                    <ImageView
+                        android:id="@+id/deleteEntryButton"
+                        android:layout_width="40dp"
+                        android:layout_height="25dp"
+                        android:paddingStart="12dp"
+                        android:src="@drawable/trash"/>
+
+                    <ImageView
+                        android:id="@+id/editEntryButton"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/edit"/>
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
@@ -87,8 +99,7 @@
                 android:id="@+id/entryImgLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-            </LinearLayout>
+                android:orientation="vertical"></LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -141,7 +141,7 @@ public class AddEntryActivity extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AddEntryToDatabase dtb = new AddEntryToDatabase();
+                Database dtb = new Database();
                 listAct = "";
                 for (int i = 0; i < chooseStatus.length; i++) {
                     if (chooseStatus[i] == 1)

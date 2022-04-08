@@ -1,11 +1,12 @@
 package com.example.moodiary;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -57,29 +60,51 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
             TextView  curMood     = child.findViewById(R.id.curMood);
             TextView  timeText    = child.findViewById(R.id.timeText);
             TextView  descText    = child.findViewById(R.id.descText);
-            ImageView updateEntry = child.findViewById(R.id.Setting);
+            ImageView editEntry   = child.findViewById(R.id.editEntryButton);
+            ImageView deleteEntry = child.findViewById(R.id.deleteEntryButton);
 
             //---------------Set date on the first entry in a day---------------
-            if(get1DateToShow==0) {
+            if (get1DateToShow == 0) {
                 TextView show1Date = new TextView(row.getContext());
-                LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(
-                        (int) ViewGroup.LayoutParams.MATCH_PARENT,(int) ViewGroup.LayoutParams.WRAP_CONTENT);
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                        (int) ViewGroup.LayoutParams.MATCH_PARENT, (int) ViewGroup.LayoutParams.WRAP_CONTENT);
                 show1Date.setText(e.getDayOfmood());
                 show1Date.setTextSize(18);
-                show1Date.setTypeface(Typeface.DEFAULT_BOLD);
                 show1Date.setLayoutParams(params);
+                show1Date.setPadding(70, 25, 0, -20);
+                show1Date.setTextColor(Color.parseColor("#97e0bb"));
+                show1Date.setTypeface(parent.getResources().getFont(R.font.poppinsmedium));
+                show1Date.setTextSize(19);
                 show1Date.setGravity(Gravity.CENTER);
-                get1DateToShow=1;
+
+                get1DateToShow = 1;
                 row.addView(show1Date);
             }
 
             //----------------Update entry-----------
-            updateEntry.setOnClickListener(new View.OnClickListener() {
+            editEntry.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     context.startActivity(new Intent(context.getApplicationContext(), UpdateEntry.class));
                 }
             });
+
+            deleteEntry.setOnClickListener(view -> new AlertDialog.Builder(context)
+                    .setTitle("Delete entry")
+                    .setMessage("Are you sure you want to delete this entry?")
+                    .setPositiveButton("Yes", (dialogInterface, i) -> {
+                        FirebaseDatabase
+                                .getInstance()
+                                .getReference("Entry")
+                                .child(ShowEntriesActivity.keyOfEntry.get(e))
+                                .removeValue();
+                        notifyDataSetChanged();
+                        context.startActivity(((Activity) context).getIntent());
+                        //context.startActivity(new Intent(context.getApplicationContext(), ShowEntriesActivity.class));
+                    })
+                    .setNegativeButton("Cancel",null)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show());
 
             curMood.setText(e.getMoodType());
             timeText.setText(e.getTimeOfmood());
@@ -100,16 +125,16 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
             // --------------------SET LAYOUT CHO 1 BOX CUNG NGAY------------------------
             LinearLayout act_linear = child.findViewById(R.id.act_linear);
             String[]     parts      = e.getActivity().split(" ");
-            for (int i = 0; i < parts.length; i++) {
+            for (String part : parts) {
 
                 View      small_act_layout = inflater.inflate(R.layout.custom_action_row, null);
                 ImageView actIcon          = small_act_layout.findViewById(R.id.actIcon);
                 TextView  textView         = small_act_layout.findViewById(R.id.actText);
 
-                actIcon.setImageResource(MoodInfo.activity_thumbnail[Integer.parseInt(parts[i]) - 1]);
+                actIcon.setImageResource(MoodInfo.activity_thumbnail[Integer.parseInt(part) - 1]);
                 actIcon.setImageTintList(ColorStateList.valueOf(Color.parseColor(actColor)));
 
-                textView.setText(MoodInfo.activity_type[Integer.parseInt(parts[i]) - 1]);
+                textView.setText(MoodInfo.activity_type[Integer.parseInt(part) - 1]);
                 act_linear.addView(small_act_layout);
             }
 

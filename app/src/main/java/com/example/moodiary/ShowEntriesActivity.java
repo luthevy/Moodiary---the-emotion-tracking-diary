@@ -25,14 +25,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
 
 public class ShowEntriesActivity extends Activity {
 
 
     public Integer[] mood_thumbnails={R.drawable.mood_amazing,R.drawable.mood_happy, R.drawable.mood_ok, R.drawable.mood_sad,
                             R.drawable.mood_awful};
-    ListView listbyDate, listsameDate;
+    public static HashMap<Entry,String> keyOfEntry;
 
+    private ListView listbyDate, listsameDate;
     private BottomNavigationView bottom_navigation_menu;
     private FloatingActionButton fabMain;
     private final Boolean isFabOpen =false;
@@ -69,14 +71,14 @@ public class ShowEntriesActivity extends Activity {
 //--------------------------------Get infor from database-------
         ref = FirebaseDatabase.getInstance().getReference("Entry");
         listEntry=new ArrayList<>();
+        keyOfEntry = new HashMap<Entry,String>();
 
-        System.out.println("ERR read");
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot: snapshot.getChildren()){
                     Entry entry = dataSnapshot.getValue(Entry.class);
-                    System.out.println("Read " + entry.getTimeOfmood());
+                    keyOfEntry.put(entry,dataSnapshot.getKey());
                     listEntry.add(entry);
                 }
 
@@ -114,6 +116,8 @@ public class ShowEntriesActivity extends Activity {
                 System.out.println("ERR read");
             }
         });
+
+
 //---------------------------List view-------------------------------
     }
     private final BottomNavigationView.OnNavigationItemSelectedListener navListener =
