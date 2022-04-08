@@ -1,25 +1,33 @@
 package com.example.moodiary;
 
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.ImageViewCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -29,19 +37,30 @@ import com.google.firebase.storage.UploadTask;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 
 public class AddEntryActivity extends AppCompatActivity {
-    //    private int activityIds[] = {
-//            R.id.activity1,
-//            R.id.activity2,
-//            R.id.activity3,
-//            R.id.activity4,
-//            R.id.activity5,
-//            R.id.activity6,
-//            R.id.activity7,
-//            R.id.activity8,
-//            R.id.activity9};
-    private int         chooseStatus[] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+    private String[] activityDefault_type = {
+            "cleaning", "cook", "date", "drawing",
+            "eat", "family", "festival", "friend",
+            "game", "gift", "music", "party",
+            "reading", "relax", "shopping", "sleep",
+            "sport", "study", "swim", "tv",
+            "walk", "work"
+    };
+    private Integer[] activityDefault_thumbnail = {
+            R.drawable.activity_cleaning, R.drawable.activity_cook, R.drawable.activity_date, R.drawable.activity_drawing,
+            R.drawable.activity_eat, R.drawable.activity_family, R.drawable.activity_festival, R.drawable.activity_friend,
+            R.drawable.activity_game, R.drawable.activity_gift, R.drawable.activity_music, R.drawable.activity_party,
+            R.drawable.activity_reading, R.drawable.activity_relax, R.drawable.activity_shopping, R.drawable.activity_sleep,
+            R.drawable.activity_sport, R.drawable.activity_study, R.drawable.activity_swim, R.drawable.activity_tv,
+            R.drawable.activity_walk, R.drawable.activity_work
+    };
+    private int[]       chooseStatus = new int[activityDefault_type.length];
+
+    private GridView    activitiesGridView;
     private EditText    notes;
     private Button      btnAddPhoto;
     private ImageButton btnSave;
@@ -58,22 +77,31 @@ public class AddEntryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addentry);
 
-        LinearLayout activity1 = findViewById(R.id.activity1);
-        LinearLayout activity2 = findViewById(R.id.activity2);
-        LinearLayout activity3 = findViewById(R.id.activity3);
-        LinearLayout activity4 = findViewById(R.id.activity4);
-        LinearLayout activity5 = findViewById(R.id.activity5);
-        LinearLayout activity6 = findViewById(R.id.activity6);
-        LinearLayout activity7 = findViewById(R.id.activity7);
-        LinearLayout activity8 = findViewById(R.id.activity8);
-        LinearLayout activity9 = findViewById(R.id.activity9);
-        LinearLayout edit_new  = findViewById(R.id.edit_new);
+//        LinearLayout activity1 = findViewById(R.id.activity1);
+//        LinearLayout activity2 = findViewById(R.id.activity2);
+//        LinearLayout activity3 = findViewById(R.id.activity3);
+//        LinearLayout activity4 = findViewById(R.id.activity4);
+//        LinearLayout activity5 = findViewById(R.id.activity5);
+//        LinearLayout activity6 = findViewById(R.id.activity6);
+//        LinearLayout activity7 = findViewById(R.id.activity7);
+//        LinearLayout activity8 = findViewById(R.id.activity8);
+//        LinearLayout activity9 = findViewById(R.id.activity9);
+//        LinearLayout edit_new  = findViewById(R.id.edit_new);
 
-        notes       = findViewById(R.id.edtxt_Notes);
-        btnAddPhoto = findViewById(R.id.btnAddPhoto);
-        btnSave     = findViewById(R.id.btnSave);
-        btnMoodBack = findViewById(R.id.btnBack2);
-        chosenMood  = findViewById(R.id.chosenMood);
+        activitiesGridView = findViewById(R.id.activitiesGridView);
+        notes              = findViewById(R.id.edtxt_Notes);
+        btnAddPhoto        = findViewById(R.id.btnAddPhoto);
+        btnSave            = findViewById(R.id.btnSave);
+        btnMoodBack        = findViewById(R.id.btnBack2);
+        chosenMood         = findViewById(R.id.chosenMood);
+
+        //-----------------------Show all activities-------------------------
+        ArrayList<Activity> activityArrayList = new ArrayList<Activity>();
+        for (int i = 0; i < activityDefault_type.length; i++) {
+            activityArrayList.add(new Activity(activityDefault_type[i], activityDefault_thumbnail[i]));
+        }
+        ActivityGVAdapter adapter = new ActivityGVAdapter(this, activityArrayList);
+        activitiesGridView.setAdapter(adapter);
 
         btnMoodBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,60 +128,7 @@ public class AddEntryActivity extends AppCompatActivity {
 //        if(currentMood.equals("Awful"))
 //            chosenMood.setImageResource(R.drawable.mood_awful);
 
-        activity1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clickActivity(activity1, 0);
-            }
-        });
-        activity2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clickActivity(activity2, 1);
-            }
-        });
-        activity3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clickActivity(activity3, 2);
-            }
-        });
-        activity4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clickActivity(activity4, 3);
-            }
-        });
-        activity5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clickActivity(activity5, 4);
-            }
-        });
-        activity6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clickActivity(activity6, 5);
-            }
-        });
-        activity7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clickActivity(activity7, 6);
-            }
-        });
-        activity8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clickActivity(activity8, 7);
-            }
-        });
-        activity9.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clickActivity(activity9, 8);
-            }
-        });
+        
 
         btnAddPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -244,25 +219,78 @@ public class AddEntryActivity extends AppCompatActivity {
         }
     }
 
-    private void clickActivity(LinearLayout activity, int pos) {
-        RelativeLayout layout        = (RelativeLayout) activity.getChildAt(0);
-        ImageView      circularShape = (ImageView) layout.getChildAt(0);
-        ImageView      activityImage = (ImageView) layout.getChildAt(1);
-        if (chooseStatus[pos] == 0) {
-            chooseStatus[pos] = 1;
-            circularShape.setImageResource(R.drawable.circular_shape);
-            ImageViewCompat.setImageTintList(activityImage, ColorStateList.valueOf(Color.parseColor("#FFFFFF")));
-        } else if (chooseStatus[pos] == 1) {
-            chooseStatus[pos] = 0;
-            circularShape.setImageResource(R.drawable.circular_shape_none);
-            ImageViewCompat.setImageTintList(activityImage, ColorStateList.valueOf(Color.parseColor("#32CD32")));
-        }
-    }
+//    private void clickActivity(LinearLayout activity, int pos) {
+//        RelativeLayout layout        = (RelativeLayout) activity.getChildAt(0);
+//        ImageView      circularShape = (ImageView) layout.getChildAt(0);
+//        ImageView      activityImage = (ImageView) layout.getChildAt(1);
+//        if (chooseStatus[pos] == 0) {
+//            chooseStatus[pos] = 1;
+//            circularShape.setImageResource(R.drawable.circular_shape);
+//            ImageViewCompat.setImageTintList(activityImage, ColorStateList.valueOf(Color.parseColor("#FFFFFF")));
+//        } else if (chooseStatus[pos] == 1) {
+//            chooseStatus[pos] = 0;
+//            circularShape.setImageResource(R.drawable.circular_shape_none);
+//            ImageViewCompat.setImageTintList(activityImage, ColorStateList.valueOf(Color.parseColor("#32CD32")));
+//        }
+//    }
 
     private String getFileExtension(Uri uri) {
         ContentResolver cR   = getContentResolver();
         MimeTypeMap     mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(cR.getType(uri));
+    }
+
+    public class Activity {
+        private String act_name;
+        private Integer act_icon;
+        public Activity(String act_name, Integer act_icon) {
+            this.act_name = act_name;
+            this.act_icon = act_icon;
+        }
+        public String getAct_name() {
+            return act_name;
+        }
+        public Integer getAct_icon() {
+            return act_icon;
+        }
+    }
+
+    public class ActivityGVAdapter extends ArrayAdapter<Activity> {
+        public ActivityGVAdapter(@NonNull Context context, ArrayList<Activity> activityArrayList) {
+            super(context, 0, activityArrayList);
+        }
+        @NonNull
+        @Override
+        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+            View listitemView = convertView;
+            if (listitemView == null) {
+                // Layout Inflater inflates each item to be displayed in GridView.
+                listitemView = LayoutInflater.from(getContext()).inflate(R.layout.custom_activity_layout, parent, false);
+            }
+
+            Activity actModel = getItem(position);
+            LinearLayout actLayout = listitemView.findViewById(R.id.activity_layout);
+            ImageView actIcon = listitemView.findViewById(R.id.activity_icon);
+            ImageView circularShape = listitemView.findViewById(R.id.activity_circular);
+            TextView actTxt = listitemView.findViewById(R.id.activity_label);
+            actLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (chooseStatus[position] == 0) {
+                        chooseStatus[position] = 1;
+                        circularShape.setImageResource(R.drawable.circular_shape);
+                        ImageViewCompat.setImageTintList(actIcon, ColorStateList.valueOf(Color.parseColor("#FFFFFF")));
+                    } else if (chooseStatus[position] == 1) {
+                        chooseStatus[position] = 0;
+                        circularShape.setImageResource(R.drawable.circular_shape_none);
+                        ImageViewCompat.setImageTintList(actIcon, ColorStateList.valueOf(Color.parseColor("#97e0bb")));
+                    }
+                }
+            });
+            actIcon.setImageResource(actModel.getAct_icon());
+            actTxt.setText(actModel.getAct_name());
+            return listitemView;
+        }
     }
 }
 
