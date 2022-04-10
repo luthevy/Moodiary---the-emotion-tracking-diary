@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/FloralWhite"
-
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
@@ -16,12 +15,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingConstraints">
-
-        <CalendarView
+        <com.prolificinteractive.materialcalendarview.MaterialCalendarView
             android:id="@+id/calendarView"
             android:layout_width="390dp"
-            android:layout_height="wrap_content"
-            android:background="@color/WhiteSmoke" />
+            android:layout_height="match_parent"
+            android:background="@color/WhiteSmoke"
+            app:mcv_showOtherDates="all"
+            app:mcv_selectionColor="@color/Yellow"/>
     </androidx.cardview.widget.CardView>
     <View
         android:id="@+id/calendarDivider"
