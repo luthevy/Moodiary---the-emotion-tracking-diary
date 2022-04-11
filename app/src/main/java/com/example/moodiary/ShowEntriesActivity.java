@@ -135,6 +135,9 @@ public class ShowEntriesActivity extends Activity {
                         case R.id.navCalendar:
                             selectedFragment = new CalendarFragment();
                             break;
+                        case R.id.navStats:
+                            selectedFragment = new StatsFragment();
+                            break;
                     }
 
                     getFragmentManager().beginTransaction().replace(R.id.navDisplay,selectedFragment).commit();

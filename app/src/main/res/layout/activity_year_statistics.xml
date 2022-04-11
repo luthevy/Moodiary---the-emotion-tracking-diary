@@ -17,26 +17,32 @@
             android:layout_height="wrap_content"
             android:text="2022"
             android:textStyle="bold"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:textSize="24sp"
+            android:background="@drawable/box"
+            android:layout_marginHorizontal="100sp"
+            />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Year in Pixels"
             android:textStyle="bold"
-            android:textSize="15sp" />
+            android:textSize="24sp"
+            android:layout_marginLeft="10dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="@drawable/entries_box">
 
             <LinearLayout
                 android:id="@+id/maxDayInMonth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="16dp"
                 android:layout_marginRight="10dp"/>
 
             <LinearLayout
@@ -115,15 +121,27 @@
 
         </LinearLayout>
 
+
+        <TextView
+            android:id="@+id/hello"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mood Counts"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_marginTop="20dp">
+            android:background="@drawable/entries_box">
 
-        <com.github.mikephil.charting.charts.BarChart
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/barChartCountMood"/></LinearLayout>
+            <com.github.mikephil.charting.charts.BarChart
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/barChartCountMood"
+                android:layout_marginLeft="18dp"/>
+        </LinearLayout>
 
     </LinearLayout>
     </ScrollView>
