@@ -2,8 +2,8 @@ package com.example.moodiary;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -16,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
@@ -89,22 +88,31 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
                 }
             });
 
-            deleteEntry.setOnClickListener(view -> new AlertDialog.Builder(context)
-                    .setTitle("Delete entry")
-                    .setMessage("Are you sure you want to delete this entry?")
-                    .setPositiveButton("Yes", (dialogInterface, i) -> {
-                        FirebaseDatabase
-                                .getInstance()
-                                .getReference("Entry")
-                                .child(ShowEntriesActivity.keyOfEntry.get(e))
-                                .removeValue();
-                        notifyDataSetChanged();
-                        context.startActivity(((Activity) context).getIntent());
-                        //context.startActivity(new Intent(context.getApplicationContext(), ShowEntriesActivity.class));
-                    })
-                    .setNegativeButton("Cancel",null)
-                    .setIcon(android.R.drawable.ic_dialog_alert)
-                    .show());
+            deleteEntry.setOnClickListener(view -> {
+                AlertDialog dialog = new AlertDialog.Builder(context)
+                        .setTitle("Delete")
+                        .setMessage("Are you sure?")
+                        .setPositiveButton("Yes", (dialogInterface, i) -> {
+                            FirebaseDatabase
+                                    .getInstance()
+                                    .getReference("Entry")
+                                    .child(ShowEntriesActivity.keyOfEntry.get(e))
+                                    .removeValue();
+                            notifyDataSetChanged();
+                            context.startActivity(((Activity) context).getIntent());
+                            //context.startActivity(new Intent(context.getApplicationContext(), ShowEntriesActivity.class));
+                        })
+                        .setNegativeButton("No",null)
+                        .setIcon(R.drawable.warning1)
+                        .show();
+
+                dialog.getButton(Dialog.BUTTON_POSITIVE).setTextSize(18);
+                dialog.getButton(Dialog.BUTTON_POSITIVE).setTextColor(Color.parseColor("#ff999999"));
+                dialog.getButton(Dialog.BUTTON_NEGATIVE).setTextSize(18);
+
+                ((TextView) dialog.findViewById(android.R.id.message)).setTextSize(20);
+
+            });
 
             curMood.setText(e.getMoodType());
             timeText.setText(e.getTimeOfmood());
