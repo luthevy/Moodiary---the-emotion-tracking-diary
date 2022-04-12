@@ -2,9 +2,11 @@ package com.example.moodiary;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 
@@ -27,6 +29,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -38,6 +41,7 @@ public class YearStatistic extends Activity {
     LinearLayout []MonthOfYear;
     String[] month_brief = {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
     TextView currentYearStatistic;
+    ImageButton backBtn;
     int currentYear;
     private BarChart barChartCountMood;
     private ArrayList<Entry> listEntry;
@@ -66,6 +70,13 @@ public class YearStatistic extends Activity {
         MonthOfYear[10] = findViewById(R.id.Month10);
         MonthOfYear[11] = findViewById(R.id.Month11);
         MonthOfYear[12] = findViewById(R.id.Month12);
+        backBtn = findViewById(R.id.backBtnInYear);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(YearStatistic.this, ShowEntriesActivity.class));
+            }
+        });
         listEntry = new ArrayList<>();
 
         DatabaseReference dtb = FirebaseDatabase.getInstance().getReference("Entry");
