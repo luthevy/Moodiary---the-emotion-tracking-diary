@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.moodiary.Entry;
 import com.example.moodiary.R;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -35,13 +37,22 @@ public class UpdateEntryActivity extends AppCompatActivity {
                 .getReference("Entry")
                 .child(e);
 
-        thisEntry = thisEntryRef.get()
+        thisEntry = thisEntryRef.get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
+            @Override
+            public void onSuccess(DataSnapshot dataSnapshot) {
+
+            }
+        })
                 .getResult()
                 .getValue(Entry.class);
 
         btnUpdate.setOnClickListener(view -> {
-            //thisEntryRef.setValue(thisEntry);
-            startActivity(new Intent(getApplicationContext(), ShowEntriesActivity.class));
+            thisEntryRef.setValue(thisEntry).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void unused) {
+                    startActivity(new Intent(getApplicationContext(), ShowEntriesActivity.class));
+                }
+            });
         });
     }
 }
