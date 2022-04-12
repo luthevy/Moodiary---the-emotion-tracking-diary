@@ -61,7 +61,7 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
             TextView  curMood     = child.findViewById(R.id.curMood);
             TextView  timeText    = child.findViewById(R.id.timeText);
             TextView  descText    = child.findViewById(R.id.descText);
-            ImageView editEntry   = child.findViewById(R.id.editEntryButton);
+            ImageView updateEntry = child.findViewById(R.id.updateEntryButton);
             ImageView deleteEntry = child.findViewById(R.id.deleteEntryButton);
 
             //---------------Set date on the first entry in a day---------------
@@ -83,14 +83,17 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
             }
 
             //----------------Update entry-----------
-            editEntry.setOnClickListener(new View.OnClickListener() {
+            updateEntry.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    context.startActivity(new Intent(context.getApplicationContext(), UpdateEntryActivity.class));
+                    Intent intent = new Intent(context, UpdateEntryActivity.class);
+                    intent.putExtra("EntryKey", ShowEntriesActivity.keyOfEntry.get(e));
+                    context.startActivity(intent);
                 }
             });
 
             deleteEntry.setOnClickListener(view -> {
+                System.out.println(ShowEntriesActivity.keyOfEntry.get(e));
                 AlertDialog dialog = new AlertDialog.Builder(context)
                         .setTitle("Delete")
                         .setMessage("Are you sure?")
@@ -104,7 +107,7 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
                             context.startActivity(((Activity) context).getIntent());
                             //context.startActivity(new Intent(context.getApplicationContext(), ShowEntriesActivity.class));
                         })
-                        .setNegativeButton("No",null)
+                        .setNegativeButton("No", null)
                         .setIcon(R.drawable.warning1)
                         .show();
 

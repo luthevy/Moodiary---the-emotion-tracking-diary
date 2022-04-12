@@ -37,14 +37,14 @@ import java.util.HashMap;
 public class ShowEntriesActivity extends AppCompatActivity {
 
 
-    public Integer[]                    mood_thumbnails={R.drawable.mood_amazing,R.drawable.mood_happy, R.drawable.mood_ok, R.drawable.mood_sad,
-                            R.drawable.mood_awful};
-    public static HashMap<Entry,String> keyOfEntry;
+    public        Integer[]              mood_thumbnails =
+            {R.drawable.mood_amazing, R.drawable.mood_happy, R.drawable.mood_ok, R.drawable.mood_sad, R.drawable.mood_awful};
+    public static HashMap<Entry, String> keyOfEntry;
 
     private ListView listbyDate, listsameDate;
-    private BottomNavigationView bottom_navigation_menu;
-    private FloatingActionButton fabMain;
-    private final Boolean isFabOpen =false;
+    private       BottomNavigationView bottom_navigation_menu;
+    private       FloatingActionButton fabMain;
+    private final Boolean              isFabOpen = false;
 
     private FirebaseDatabase database;
     DatabaseReference ref;
@@ -56,13 +56,13 @@ public class ShowEntriesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_entries);
-        bottom_navigation_menu= findViewById(R.id.bottom_navigation_menu);
+        bottom_navigation_menu = findViewById(R.id.bottom_navigation_menu);
         bottom_navigation_menu.setBackground(null);
         bottom_navigation_menu.setItemIconTintList(null);
         bottom_navigation_menu.setOnNavigationItemSelectedListener(navListener);
 
 //---------------------Decor Sub Menu-------------------------------
-        fabMain= findViewById(R.id.fabMain);
+        fabMain = findViewById(R.id.fabMain);
 
         fabMain.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,16 +76,16 @@ public class ShowEntriesActivity extends AppCompatActivity {
 
 
 //--------------------------------Get infor from database-------
-        ref = FirebaseDatabase.getInstance().getReference("Entry");
-        listEntry=new ArrayList<>();
-        keyOfEntry = new HashMap<Entry,String>();
+        ref        = FirebaseDatabase.getInstance().getReference("Entry");
+        listEntry  = new ArrayList<>();
+        keyOfEntry = new HashMap<Entry, String>();
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Entry entry = dataSnapshot.getValue(Entry.class);
-                    keyOfEntry.put(entry,dataSnapshot.getKey());
+                    keyOfEntry.put(entry, dataSnapshot.getKey());
                     listEntry.add(entry);
                 }
 
@@ -95,8 +95,8 @@ public class ShowEntriesActivity extends AppCompatActivity {
                     public int compare(Entry e1, Entry e2) {
                         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
                         try {
-                            Date date1=formatter.parse(e1.getDateOfMood());
-                            Date date2=formatter.parse(e2.getDateOfMood());
+                            Date date1 = formatter.parse(e1.getDateOfMood());
+                            Date date2 = formatter.parse(e2.getDateOfMood());
 
                             return date1.compareTo(date2);
                         } catch (ParseException e) {
@@ -112,12 +112,13 @@ public class ShowEntriesActivity extends AppCompatActivity {
                 listbyDate = findViewById(R.id.list_different_date);
                 //listsameDate = findViewById(R.id.list_different_date);
 
-                CustomEntriesList aa =new CustomEntriesList(ShowEntriesActivity.this, R.layout.custom_row_entries, listOfEntryInDate, mood_thumbnails);
+                CustomEntriesList aa = new CustomEntriesList(ShowEntriesActivity.this, R.layout.custom_row_entries, listOfEntryInDate, mood_thumbnails);
                 //CustomOneEntry aa=new CustomOneEntry(ShowEntriesActivity.this, R.layout.custom_show_one_entries, listEntry, mood_thumbnails);
 
                 listbyDate.setAdapter(aa);
                 //listsameDate.setAdapter(aa);
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 System.out.println("ERR read");
@@ -127,12 +128,13 @@ public class ShowEntriesActivity extends AppCompatActivity {
 
 //---------------------------List view-------------------------------
     }
+
     private final BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     Fragment selectedFragment = null;
-                    switch (item.getItemId()){
+                    switch (item.getItemId()) {
                         case R.id.navSettings:
                             selectedFragment = new SettingsFragment();
                             break;
@@ -147,13 +149,13 @@ public class ShowEntriesActivity extends AppCompatActivity {
                             break;
                     }
 
-                    getSupportFragmentManager().beginTransaction().replace(R.id.navDisplay,selectedFragment).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.navDisplay, selectedFragment).commit();
                     return true;
                 }
 
 
 //-------------------------------Show sub menu-----------------------------
-};
+            };
 //    private void showFabMenu(){
 //        isFabOpen=true;
 //        fabToday.setVisibility(View.VISIBLE);
@@ -166,15 +168,15 @@ public class ShowEntriesActivity extends AppCompatActivity {
 //    }
 
     //-------------Divide entries that have the same day---------
-    private void divideEntry(){
+    private void divideEntry() {
         listOfEntryInDate = new ArrayList<ArrayList<Entry>>();
-        ArrayList<Entry>all_entries = (ArrayList)listEntry.clone();
-        ArrayList<Entry>temp_list = new ArrayList<>();
+        ArrayList<Entry> all_entries = (ArrayList) listEntry.clone();
+        ArrayList<Entry> temp_list   = new ArrayList<>();
 
         int len = listEntry.size();
 
-        while(len > 0) {
-            int i = 0;
+        while (len > 0) {
+            int   i           = 0;
             Entry first_entry = all_entries.get(0);
 
             temp_list.add(first_entry);
@@ -182,7 +184,7 @@ public class ShowEntriesActivity extends AppCompatActivity {
             all_entries.remove(0);
             len--;
 
-            if(all_entries.size()>0) {
+            if (all_entries.size() > 0) {
                 while (i < all_entries.size()) {
                     if (first_entry.getDayOfmood().equals(all_entries.get(i).getDayOfmood())) {
                         temp_list.add(all_entries.get(i));
@@ -193,11 +195,11 @@ public class ShowEntriesActivity extends AppCompatActivity {
                         i++;
                 }
             }
-            listOfEntryInDate.add((ArrayList)temp_list.clone());
+            listOfEntryInDate.add((ArrayList) temp_list.clone());
             //System.out.println("new size 1"+ listOfEntryInDate.get(0).get(0).getDayOfmood());
 
             temp_list.clear();
         }
-        
+
     }
 }

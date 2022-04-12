@@ -12,7 +12,9 @@ public class Entry {
     private String dateOfMood;
     private String imgLink;
 
+    // FOR FIREBASE
     public Entry(){}
+
     public Entry(String activities, String noteSth, String day, String time, String type){
 
         activity = activities;

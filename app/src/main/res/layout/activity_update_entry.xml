@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -12,20 +11,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:paddingTop="15dp">
 
             <ImageButton
-                android:id="@+id/imgbtnExit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/btnBack1"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
                 android:background="@color/white"
-                android:src="@drawable/ic_x_icon"
+                android:scaleType="centerCrop"
+                android:src="@drawable/button_back"
                 app:layout_constraintStart_toStartOf="@+id/linearLayout"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="#777777"/>
 
             <LinearLayout
                 android:id="@+id/linearLayout"
@@ -34,9 +39,7 @@
                 android:layout_marginTop="20dp"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imgbtnExit">
+                app:layout_constraintTop_toTopOf="@+id/btnBack1">
 
                 <LinearLayout
                     android:id="@+id/linearLayout2"
@@ -51,12 +54,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+
                         android:layout_marginLeft="-10dp"
                         android:clickable="true"
                         android:drawableLeft="@drawable/ic_baseline_calendar"
                         android:drawableRight="@drawable/ic_baseline_arrow_drop_down"
+                        android:drawablePadding="7dp"
                         android:text="Choose Day"
-                        android:textColor="@color/Green" />
+                        android:textColor="@color/main2"
+                        android:textSize="16sp"/>
 
                     <TextView
                         android:id="@+id/chooseTime"
@@ -67,9 +73,10 @@
                         android:clickable="true"
                         android:drawableLeft="@drawable/ic_baseline_clock"
                         android:drawableRight="@drawable/ic_baseline_arrow_drop_down"
+                        android:drawablePadding="7dp"
                         android:text="Choose Time"
-                        android:textColor="@color/Green" />
-
+                        android:textColor="@color/main2"
+                        android:textSize="16sp"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -77,13 +84,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/linearLayout"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="20dp"
                     android:orientation="horizontal">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
+
                         <RelativeLayout
                             android:id="@+id/amazingRL"
                             android:layout_width="wrap_content"
@@ -94,29 +102,28 @@
                                 android:id="@+id/chooseAmazingBg"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
-                                android:src="@drawable/circular_shape50"
-                                android:visibility="visible"
                                 android:scaleType="centerInside"
-                                />
+                                android:src="@drawable/mood_shadow"
+                                android:visibility="invisible"
+                                app:tint="@color/mc1"/>
+
                             <ImageView
                                 android:id="@+id/chooseAmazing"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
                                 android:src="@drawable/mood_amazing"
-                                android:tint="@color/GreenYellow"
-                                android:layout_centerInParent="true"
-                                />
-
+                                app:tint="@color/mc1"/>
 
                         </RelativeLayout>
+
                         <TextView
                             android:id="@+id/textAmazing"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="Amazing"
-                            android:textColor="@color/GreenYellow"
-                            android:textStyle="bold" />
+                            android:textColor="@color/mc1"
+                            android:textSize="15sp"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -134,26 +141,27 @@
                                 android:id="@+id/chooseHappyBg"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
-                                android:src="@drawable/circular_shape50"
-                                android:visibility="visible"
                                 android:scaleType="centerInside"
-                                />
+                                android:src="@drawable/mood_shadow"
+                                android:visibility="invisible"
+                                app:tint="@color/mc2"/>
 
                             <ImageView
                                 android:id="@+id/chooseHappy"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
                                 android:src="@drawable/mood_happy"
-                                android:tint="@color/Green" />
+                                app:tint="@color/mc2"/>
                         </RelativeLayout>
+
                         <TextView
                             android:id="@+id/textHappy"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="Happy"
-                            android:textColor="@color/Green"
-                            android:textStyle="bold" />
+                            android:textColor="@color/mc2"
+                            android:textSize="15sp"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -171,26 +179,27 @@
                                 android:id="@+id/chooseOkBg"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
-                                android:src="@drawable/circular_shape50"
-                                android:visibility="visible"
                                 android:scaleType="centerInside"
-                                />
+                                android:src="@drawable/mood_shadow"
+                                android:visibility="invisible"
+                                app:tint="@color/mc3"/>
+
                             <ImageView
                                 android:id="@+id/chooseOk"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
                                 android:src="@drawable/mood_ok"
-                                android:tint="@color/Aqua" />
-
+                                app:tint="@color/mc3"/>
                         </RelativeLayout>
+
                         <TextView
                             android:id="@+id/textOk"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="Ok"
-                            android:textColor="@color/Aqua"
-                            android:textStyle="bold" />
+                            android:textColor="@color/mc3"
+                            android:textSize="15sp"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -208,26 +217,28 @@
                                 android:id="@+id/chooseSadBg"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
-                                android:src="@drawable/circular_shape50"
-                                android:visibility="visible"
                                 android:scaleType="centerInside"
-                                />
+                                android:src="@drawable/mood_shadow"
+                                android:visibility="invisible"
+                                app:tint="@color/mc4"/>
+
                             <ImageView
                                 android:id="@+id/chooseSad"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
                                 android:src="@drawable/mood_sad"
-                                android:tint="@color/Orange" />
+                                app:tint="@color/mc4"/>
 
                         </RelativeLayout>
+
                         <TextView
                             android:id="@+id/textSad"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="Sad"
-                            android:textColor="@color/Orange"
-                            android:textStyle="bold" />
+                            android:textColor="@color/mc4"
+                            android:textSize="15sp"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -245,16 +256,17 @@
                                 android:id="@+id/chooseAwfulBg"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
-                                android:src="@drawable/circular_shape50"
-                                android:visibility="visible"
                                 android:scaleType="centerInside"
-                                />
+                                android:src="@drawable/mood_shadow"
+                                android:visibility="invisible"
+                                app:tint="@color/mc5"/>
+
                             <ImageView
                                 android:id="@+id/chooseAwful"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
                                 android:src="@drawable/mood_awful"
-                                android:tint="@color/Red" />
+                                app:tint="@color/mc5"/>
 
                         </RelativeLayout>
 
@@ -264,388 +276,83 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="Awful"
-                            android:textColor="@color/Red"
-                            android:textStyle="bold" />
+                            android:textColor="@color/mc5"
+                            android:textSize="15sp"/>
                     </LinearLayout>
-
-
                 </LinearLayout>
             </LinearLayout>
-            <TableLayout
+
+            <GridView
+                android:id="@+id/activitiesGridView"
                 android:layout_width="350dp"
-                android:layout_height="wrap_content"
-                android:stretchColumns="*"
+                android:layout_height="400dp"
                 android:layout_gravity="center"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-                <TableRow android:layout_marginTop="25dp">
-                    <LinearLayout
-                        android:id="@+id/activity1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:orientation="vertical"
-                        android:layout_gravity="center">
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center" >
-                            <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:src="@drawable/circular_shape_none"/>
-                            <ImageView
-                                android:layout_width="33dp"
-                                android:layout_height="33dp"
-                                android:src="@drawable/activity_drawing"
-                                app:tint="@color/LimeGreen"
-                                android:layout_centerInParent="true"/>
-                        </RelativeLayout>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="drawing"
-                            android:gravity="center"
-                            android:textStyle="bold"
-                            android:textColor="@color/LimeGreen"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/activity2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:orientation="vertical"
-                        android:layout_gravity="center">
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center" >
-                            <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:src="@drawable/circular_shape_none"/>
-                            <ImageView
-                                android:layout_width="33dp"
-                                android:layout_height="33dp"
-                                android:src="@drawable/activity_tv"
-                                app:tint="@color/LimeGreen"
-                                android:layout_centerInParent="true"/>
-                        </RelativeLayout>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="tv"
-                            android:gravity="center"
-                            android:textStyle="bold"
-                            android:textColor="@color/LimeGreen"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/activity3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:orientation="vertical"
-                        android:layout_gravity="center">
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center" >
-                            <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:src="@drawable/circular_shape_none"/>
-
-                            <ImageView
-                                android:layout_width="33dp"
-                                android:layout_height="33dp"
-                                android:layout_centerInParent="true"
-                                android:src="@drawable/activity_eat"
-                                app:tint="@color/LimeGreen" />
-                        </RelativeLayout>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="eat"
-                            android:gravity="center"
-                            android:textStyle="bold"
-                            android:textColor="@color/LimeGreen"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/activity4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:orientation="vertical"
-                        android:layout_gravity="center">
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center" >
-                            <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:src="@drawable/circular_shape_none"/>
-                            <ImageView
-                                android:layout_width="33dp"
-                                android:layout_height="33dp"
-                                android:src="@drawable/activity_sleep"
-                                app:tint="@color/LimeGreen"
-                                android:layout_centerInParent="true"/>
-                        </RelativeLayout>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="sleep"
-                            android:gravity="center"
-                            android:textStyle="bold"
-                            android:textColor="@color/LimeGreen"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/activity5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:orientation="vertical"
-                        android:layout_gravity="center">
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center" >
-                            <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:src="@drawable/circular_shape_none"/>
-                            <ImageView
-                                android:layout_width="33dp"
-                                android:layout_height="33dp"
-                                android:src="@drawable/activity_walk"
-                                app:tint="@color/LimeGreen"
-                                android:layout_centerInParent="true"/>
-                        </RelativeLayout>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="walk"
-                            android:gravity="center"
-                            android:textStyle="bold"
-                            android:textColor="@color/LimeGreen"/>
-                    </LinearLayout>
-                </TableRow>
-
-                <TableRow android:layout_marginTop="25dp">
-                    <LinearLayout
-                        android:id="@+id/activity6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:orientation="vertical"
-                        android:layout_gravity="center">
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center" >
-                            <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:src="@drawable/circular_shape_none"/>
-                            <ImageView
-                                android:layout_width="33dp"
-                                android:layout_height="33dp"
-                                android:src="@drawable/activity_date"
-                                app:tint="@color/LimeGreen"
-                                android:layout_centerInParent="true"/>
-                        </RelativeLayout>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="date"
-                            android:gravity="center"
-                            android:textStyle="bold"
-                            android:textColor="@color/LimeGreen"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/activity7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:orientation="vertical"
-                        android:layout_gravity="center">
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center" >
-                            <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:src="@drawable/circular_shape_none"/>
-                            <ImageView
-                                android:layout_width="33dp"
-                                android:layout_height="33dp"
-                                android:src="@drawable/activity_swim"
-                                app:tint="@color/LimeGreen"
-                                android:layout_centerInParent="true"/>
-                        </RelativeLayout>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="swim"
-                            android:gravity="center"
-                            android:textStyle="bold"
-                            android:textColor="@color/LimeGreen"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/activity8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:orientation="vertical"
-                        android:layout_gravity="center">
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center" >
-                            <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:src="@drawable/circular_shape_none"/>
-                            <ImageView
-                                android:layout_width="33dp"
-                                android:layout_height="33dp"
-                                android:src="@drawable/activity_friend"
-                                app:tint="@color/LimeGreen"
-                                android:layout_centerInParent="true"/>
-                        </RelativeLayout>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="friend"
-                            android:gravity="center"
-                            android:textStyle="bold"
-                            android:textColor="@color/LimeGreen"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/activity9"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:orientation="vertical"
-                        android:layout_gravity="center">
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center" >
-                            <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:src="@drawable/circular_shape_none"/>
-                            <ImageView
-                                android:layout_width="33dp"
-                                android:layout_height="33dp"
-                                android:src="@drawable/activity_work"
-                                app:tint="@color/LimeGreen"
-                                android:layout_centerInParent="true"/>
-                        </RelativeLayout>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="work"
-                            android:gravity="center"
-                            android:textStyle="bold"
-                            android:textColor="@color/LimeGreen"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/edit_new"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:orientation="vertical"
-                        android:layout_gravity="center">
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center" >
-                            <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:src="@drawable/circular_shape_none"/>
-                            <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:src="@drawable/edit_new"
-                                app:tint="@color/LimeGreen"
-                                android:layout_centerInParent="true"/>
-                        </RelativeLayout>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="edit/new"
-                            android:gravity="center"
-                            android:textStyle="bold"
-                            android:textColor="@color/LimeGreen"/>
-                    </LinearLayout>
-                </TableRow>
-            </TableLayout>
+                android:layout_marginTop="20dp"
+                android:horizontalSpacing="5dp"
+                android:numColumns="5"
+                android:verticalSpacing="5dp"/>
 
             <LinearLayout
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Note"
-                    android:textStyle="bold"
-                    android:drawableLeft="@drawable/ic_baseline_event_note"
                     android:layout_marginTop="20dp"
-                    android:textColor="@color/Green"
-                    android:drawableTint="@color/Green"/>
+                    android:drawableLeft="@drawable/ic_baseline_event_note"
+                    android:drawablePadding="7dp"
+                    android:drawableTint="@color/main2"
+                    android:text="Note"
+                    android:textColor="@color/main2"
+                    android:textSize="16sp"/>
 
                 <EditText
                     android:id="@+id/edtxt_Notes"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:background="#F2F2F7"
+                    android:layout_height="100dp"
                     android:layout_marginTop="5dp"
-                    android:inputType="text|textMultiLine"
+                    android:background="#F2F2F7"
                     android:gravity="top"
-                    android:hint="  Add note..."/>
+                    android:hint="How was your day going?"
+                    android:inputType="text|textMultiLine"
+                    android:padding="5dp"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp">
+
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="7dp"
                         android:src="@drawable/camera"
-                        app:tint="@color/Green" />
+                        app:tint="@color/main2"/>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Photo"
-                        android:textStyle="bold"
                         android:layout_marginStart="3dp"
-                        android:textColor="@color/Green"/>
+                        android:text="Photo"
+                        android:textColor="@color/main2"
+                        android:textSize="16sp"/>
                 </LinearLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <Button
                         android:id="@+id/btnAddPhoto"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
-                        android:text="Tap to Add Photo..."
-                        android:backgroundTint="@color/LimeGreen"/>
+                        android:backgroundTint="@color/main2"
+                        android:text="Tap to Add Photo..."/>
+
                     <ImageView
                         android:id="@+id/selectedImage"
                         android:layout_width="110dp"
@@ -658,32 +365,55 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp">
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="150dp"
                     android:gravity="bottom|center"
                     android:orientation="vertical"
-                    android:layout_marginLeft="150dp">
+                    android:id="@+id/linearLayout6">
+
                     <ImageButton
-                        android:id="@+id/btnSave"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:id="@+id/btnUpdate"
+                        android:layout_width="88dp"
+                        android:layout_height="88dp"
+                        android:background="@drawable/circular_shape"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="15dp"
                         android:scaleType="centerInside"
-                        android:src="@drawable/tick"
-                        app:tint="@color/Green"
-                        android:background="@drawable/circular_shape" />
+                        android:src="@drawable/save"
+                        app:tint="?attr/colorControlNormal"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:gravity="bottom|right"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/btnEditActivities"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="18dp"
+                        android:background="@drawable/circular_shape_none"
+                        android:scaleType="centerInside"
+                        app:srcCompat="@drawable/ic_baseline_edit"/>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Save"
-                        android:textStyle="bold"
-                        android:textColor="@color/LimeGreen"/>
+                        android:text="Edit activities"
+                        android:textColor="@color/main2"
+                        android:textSize="15sp"/>
                 </LinearLayout>
-
             </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 

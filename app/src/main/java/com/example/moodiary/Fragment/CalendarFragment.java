@@ -49,8 +49,7 @@ public class CalendarFragment extends Fragment {
             public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
                 // Do something here
                 selectedDate  = date.getMonth() + 1;
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Entry");
-                ref = FirebaseDatabase.getInstance().getReference("Entry");
+                DatabaseReference ref =  FirebaseDatabase.getInstance().getReference("Entry");
 //                Get entry from Firebase
                 listEntry=new ArrayList<String>();
                 ref.addValueEventListener(new ValueEventListener() {
