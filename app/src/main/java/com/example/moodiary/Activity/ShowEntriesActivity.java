@@ -1,7 +1,6 @@
 package com.example.moodiary.Activity;
 
-import android.app.Activity;
-import android.app.Fragment;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -9,14 +8,16 @@ import android.view.View;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
-import com.example.moodiary.Fragment.CalendarFragment;
 import com.example.moodiary.CustomEntriesList;
-import com.example.moodiary.Fragment.EntriesFragment;
 import com.example.moodiary.Entry;
-import com.example.moodiary.R;
+import com.example.moodiary.Fragment.CalendarFragment;
+import com.example.moodiary.Fragment.EntriesFragment;
 import com.example.moodiary.Fragment.SettingsFragment;
 import com.example.moodiary.Fragment.StatsFragment;
+import com.example.moodiary.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
@@ -33,7 +34,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 
-public class ShowEntriesActivity extends Activity {
+public class ShowEntriesActivity extends AppCompatActivity {
 
 
     public Integer[]                    mood_thumbnails={R.drawable.mood_amazing,R.drawable.mood_happy, R.drawable.mood_ok, R.drawable.mood_sad,
@@ -146,7 +147,7 @@ public class ShowEntriesActivity extends Activity {
                             break;
                     }
 
-                    getFragmentManager().beginTransaction().replace(R.id.navDisplay,selectedFragment).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.navDisplay,selectedFragment).commit();
                     return true;
                 }
 

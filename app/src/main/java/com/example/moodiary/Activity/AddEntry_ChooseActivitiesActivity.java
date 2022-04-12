@@ -78,17 +78,6 @@ public class AddEntry_ChooseActivitiesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_entry_choose_activities);
 
-//        LinearLayout activity1 = findViewById(R.id.activity1);
-//        LinearLayout activity2 = findViewById(R.id.activity2);
-//        LinearLayout activity3 = findViewById(R.id.activity3);
-//        LinearLayout activity4 = findViewById(R.id.activity4);
-//        LinearLayout activity5 = findViewById(R.id.activity5);
-//        LinearLayout activity6 = findViewById(R.id.activity6);
-//        LinearLayout activity7 = findViewById(R.id.activity7);
-//        LinearLayout activity8 = findViewById(R.id.activity8);
-//        LinearLayout activity9 = findViewById(R.id.activity9);
-//        LinearLayout edit_new  = findViewById(R.id.edit_new);
-
         activitiesGridView = findViewById(R.id.activitiesGridView);
         notes              = findViewById(R.id.edtxt_Notes);
         btnAddPhoto        = findViewById(R.id.btnAddPhoto);
@@ -108,7 +97,6 @@ public class AddEntry_ChooseActivitiesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), AddEntry_ChooseMoodsActivity.class));
-
             }
         });
 
@@ -117,19 +105,6 @@ public class AddEntry_ChooseActivitiesActivity extends AppCompatActivity {
         timeOfMood  = getIntent().getStringExtra("timeOfMood").toString();
 
         chosenMood.setImageResource(MoodInfo.moods_thumbnail[currentMood[0]][currentMood[1]]);
-
-//        if(currentMood.equals("Amazing"))
-//            chosenMood.setImageResource(R.drawable.mood_amazing);
-//        if(currentMood.equals("Happy"))
-//            chosenMood.setImageResource(R.drawable.mood_happy);
-//        if(currentMood.equals("Ok"))
-//            chosenMood.setImageResource(R.drawable.mood_ok);
-//        if(currentMood.equals("Sad"))
-//            chosenMood.setImageResource(R.drawable.mood_sad);
-//        if(currentMood.equals("Awful"))
-//            chosenMood.setImageResource(R.drawable.mood_awful);
-
-        
 
         btnAddPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
