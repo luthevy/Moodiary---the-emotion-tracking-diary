@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import android.app.Fragment;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,7 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.DefaultValueFormatter;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.firebase.database.DataSnapshot;
@@ -50,6 +52,7 @@ public class StatsFragment extends Fragment {
     private PieChart pieChartCountMood;
     private TextView currentMonthStatic;
     private Button toYearStatics;
+    ImageButton backMonth, nextMonth;
 
     private ArrayList<Entry>listEntry;
     private HashMap<String,Integer> countMood;
@@ -62,9 +65,11 @@ public class StatsFragment extends Fragment {
         pieChartCountMood = v.findViewById(R.id.pieChartCountMood);
         currentMonthStatic = v.findViewById(R.id.currentMonthStatistic);
         toYearStatics = v.findViewById(R.id.toYearStatic);
+        backMonth = v.findViewById(R.id.button_back_month);
+        nextMonth = v.findViewById(R.id.button_next_month);
 
-        listEntry = new ArrayList<>();
-        countMood = new HashMap<>();
+
+
         Date nowdate = new Date();
         currentMonth = nowdate.getMonth()+1;
         currentYear = nowdate.getYear()+1900;
@@ -77,12 +82,43 @@ public class StatsFragment extends Fragment {
             }
         });
 
-        getChart(currentMonth);
+        backMonth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(currentMonth == 1){
+                    currentMonth=12;
+                    currentYear--;
+                }
+                else
+                    currentMonth--;
+                currentMonthStatic.setText(currentMonth+"/"+currentYear);
+                getChart(currentMonth, currentYear);
+            }
+        });
+
+        nextMonth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(currentMonth == 12){
+                    currentMonth=1;
+                    currentYear++;
+                }
+                else
+                    currentMonth++;
+                currentMonthStatic.setText(currentMonth+"/"+currentYear);
+                getChart(currentMonth, currentYear);
+            }
+        });
+
+
+        getChart(currentMonth, currentYear);
 
         return v;
     }
 
-    private void getChart(int month){
+    private void getChart(int month, int year){
+        listEntry = new ArrayList<>();
+        countMood = new HashMap<>();
         DatabaseReference dtb = FirebaseDatabase.getInstance().getReference("Entry");
         dtb.addValueEventListener(new ValueEventListener() {
             @Override
@@ -96,7 +132,7 @@ public class StatsFragment extends Fragment {
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
-                    if (date.getMonth()+1 == currentMonth)
+                    if (date.getMonth()+1 == month && date.getYear()+1900 == year)
                         listEntry.add(entry);
                 }
 
@@ -133,15 +169,10 @@ public class StatsFragment extends Fragment {
                         }
 
                 //------------------Add data to line chart--------------
-                LineDataSet lineDataSet = new LineDataSet(lineChartDataSet(),"data set");
 
-                ArrayList<ILineDataSet> iLineDataSets=new ArrayList<>();
-                iLineDataSets.add(lineDataSet);
+                loadLineChartData();
 
-                LineData lineData = new LineData(iLineDataSets);
-                moodLineChart.setData(lineData);
-                moodLineChart.invalidate();
-
+                //-----------------Load pie chart---------------------------
                 loadPieChartData();
             }
 
@@ -152,26 +183,59 @@ public class StatsFragment extends Fragment {
         });
     }
 
-    private ArrayList<com.github.mikephil.charting.data.Entry>lineChartDataSet(){
-        ArrayList<com.github.mikephil.charting.data.Entry> dataSet = new ArrayList<>();
-//        for (Entry e:listEntry){
-//            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-//            try {
-//                Date date = formatter.parse(e.getDateOfMood());
-//                System.out.println(date.getDate()+" "+getMoodNum(e));
-//                dataSet.add(new com.github.mikephil.charting.data.Entry(date.getDate(),getMoodNum(e)));
-//            } catch (ParseException parseException) {
-//                parseException.printStackTrace();
-//            }
-//
-//        }
-        dataSet.add(new com.github.mikephil.charting.data.Entry(0,10));
-        dataSet.add(new com.github.mikephil.charting.data.Entry(1,20));
-        dataSet.add(new com.github.mikephil.charting.data.Entry(2,30));
-        dataSet.add(new com.github.mikephil.charting.data.Entry(4,40));
+    private void loadLineChartData() {
+        ArrayList<com.github.mikephil.charting.data.Entry> lineEntries = new ArrayList<>();
+        for (Entry e : listEntry) {
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+            try {
+                Date date = formatter.parse(e.getDateOfMood());
+                System.out.println(date.getDate() + " " + getMoodNum(e));
+                lineEntries.add(new com.github.mikephil.charting.data.Entry(date.getDate(), getMoodNum(e)));
+            } catch (ParseException parseException) {
+                parseException.printStackTrace();
+            }
+        }
 
-        return dataSet;
+
+            Collections.reverse(lineEntries);
+
+            LineDataSet dataSet = new LineDataSet(lineEntries, "Mood Statics");
+            dataSet.setFillAlpha(110);
+            dataSet.isDrawCircleHoleEnabled();
+            ArrayList colorlist = getColorChart(listEntry);
+            Collections.reverse(colorlist);
+            dataSet.setColors(colorlist);
+
+
+            ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+            dataSets.add(dataSet);
+
+            LineData data = new LineData(dataSets);
+            data.setValueFormatter(new ValueFormatter() {
+                @Override
+                public String getFormattedValue(float value) {
+                    return ""+((int)value);
+                }
+            });
+
+            Legend l = moodLineChart.getLegend();
+            l.setEnabled(false);
+
+            moodLineChart.setData(data);
+
+            moodLineChart.getAxisLeft().setEnabled(false);
+            moodLineChart.getAxisRight().setEnabled(false);
+            moodLineChart.getAxisRight().setStartAtZero(true);
+            moodLineChart.getAxisLeft().setStartAtZero(true);
+            moodLineChart.getDescription().setEnabled(false);
+            moodLineChart.setVisibleXRangeMaximum(31);
+            moodLineChart.setScrollX(15);
+            moodLineChart.invalidate();
+            moodLineChart.animateX(1300, Easing.EaseInBounce);
+
     }
+
+
 
     private void loadPieChartData (){
         ArrayList<PieEntry> entries = new ArrayList<>();
@@ -180,29 +244,31 @@ public class StatsFragment extends Fragment {
 
 
         PieDataSet dataSet = new PieDataSet(entries,"Moods");
-        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        dataSet.setColors(getColorChart(listEntry));
         dataSet.setValueTextSize(12);
+        dataSet.setSliceSpace(5);
+        dataSet.setValueLineColor(Color.RED);
 
         PieData data = new PieData(dataSet);
-        //data.setDrawValues(true);
         data.setValueTextSize(10);
         data.setValueTextColor(Color.WHITE);
 
-        //data.setValueTextColors(spam);
 
 
         pieChartCountMood.setDrawHoleEnabled(true);
         pieChartCountMood.setEntryLabelTextSize(12);
         pieChartCountMood.setEntryLabelColor(Color.WHITE);
+
         pieChartCountMood.getDescription().setEnabled(false);
 
         Legend l = pieChartCountMood.getLegend();
-        l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
-        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
-        l.setOrientation(Legend.LegendOrientation.VERTICAL);
+        l.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
+        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+        l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
         l.setTextSize(12);
         l.setDrawInside(false);
         l.setEnabled(true);
+
 
         pieChartCountMood.setData(data);
         pieChartCountMood.invalidate();
@@ -226,13 +292,12 @@ public class StatsFragment extends Fragment {
         for(Entry e: a){
             for (int i = 0; i < MoodInfo.moods_type.length; i++) {
                 for (int j = 0; j < MoodInfo.moods_type[i].length; j++) {
-                    if (a.equals(MoodInfo.moods_type[i][j])) {
+                    if (e.getMoodType().equals(MoodInfo.moods_type[i][j])) {
                         colors.add(Color.parseColor(MoodInfo.moods_color[i]));
                     }
                 }
             }
         }
-
         return colors;
     }
 }

@@ -226,6 +226,7 @@ public class YearStatistic extends Activity {
                 barChartCountMood.getXAxis().setDrawAxisLine(false);
                 barChartCountMood.getXAxis().setGranularity(1);
                 barChartCountMood.getXAxis().setLabelCount(xVals.size());
+                barChartCountMood.invalidate();
 
 
             }
