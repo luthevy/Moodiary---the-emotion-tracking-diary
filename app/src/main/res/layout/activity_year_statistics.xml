@@ -1,156 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
+    android:layout_height="fill_parent">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <ImageButton
-            android:id="@+id/backBtnInYear"
-            android:layout_width="30dp"
-            android:layout_height="40dp"
-            android:scaleType="centerCrop"
-            android:background="@color/white"
-            android:src="@drawable/button_back"/>
-
-        <TextView
-            android:id="@+id/currentYearStatistic"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="2022"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:textSize="24sp"
-            android:background="@drawable/box"
-            android:layout_marginHorizontal="100sp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Year in Pixels"
-            android:textStyle="bold"
-            android:textSize="24sp"
-            android:layout_marginLeft="10dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:background="@drawable/entries_box">
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/backBtnInYear"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                android:scaleType="centerCrop"
+                android:src="@drawable/button_back" />
+
+            <TextView
+                android:id="@+id/currentYearStatistic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="100sp"
+                android:background="@drawable/box"
+                android:gravity="center"
+                android:text="2022"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Year in Pixels"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <LinearLayout
-                android:id="@+id/maxDayInMonth"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="10dp"/>
-
-            <LinearLayout
-                android:id="@+id/Month1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginRight="10dp"/>
-            <LinearLayout
-                android:id="@+id/Month2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginRight="10dp"/>
-            <LinearLayout
-                android:id="@+id/Month3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginRight="10dp"/>
-            <LinearLayout
-                android:id="@+id/Month4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginRight="10dp"/>
-            <LinearLayout
-                android:id="@+id/Month5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginRight="10dp"/>
-            <LinearLayout
-                android:id="@+id/Month6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginRight="10dp"/>
-            <LinearLayout
-                android:id="@+id/Month7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginRight="10dp"/>
-            <LinearLayout
-                android:id="@+id/Month8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginRight="10dp"/>
-            <LinearLayout
-                android:id="@+id/Month9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginRight="10dp"/>
-            <LinearLayout
-                android:id="@+id/Month10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginRight="10dp"/>
-            <LinearLayout
-                android:id="@+id/Month11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginRight="10dp"/>
-            <LinearLayout
-                android:id="@+id/Month12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginRight="10dp"/>
-
-
-        </LinearLayout>
-
-
-        <TextView
-            android:id="@+id/hello"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Mood Counts"
-            android:textStyle="bold"
-            android:textSize="24sp"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="@drawable/entries_box">
-
-            <com.github.mikephil.charting.charts.BarChart
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/barChartCountMood"
-                android:layout_marginLeft="18dp"/>
-        </LinearLayout>
+                android:background="@drawable/entries_box"
+                android:orientation="horizontal">
 
-    </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/maxDayInMonth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical" />
+
+                <LinearLayout
+                    android:id="@+id/Month1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical" />
+
+                <LinearLayout
+                    android:id="@+id/Month2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical" />
+
+                <LinearLayout
+                    android:id="@+id/Month3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical" />
+
+                <LinearLayout
+                    android:id="@+id/Month4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical" />
+
+                <LinearLayout
+                    android:id="@+id/Month5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical" />
+
+                <LinearLayout
+                    android:id="@+id/Month6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical" />
+
+                <LinearLayout
+                    android:id="@+id/Month7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical" />
+
+                <LinearLayout
+                    android:id="@+id/Month8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical" />
+
+                <LinearLayout
+                    android:id="@+id/Month9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical" />
+
+                <LinearLayout
+                    android:id="@+id/Month10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical" />
+
+                <LinearLayout
+                    android:id="@+id/Month11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical" />
+
+                <LinearLayout
+                    android:id="@+id/Month12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical" />
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/hello"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Mood Counts"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/entries_box">
+
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/barChartCountMood"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="18dp" />
+            </LinearLayout>
+
+        </LinearLayout>
     </ScrollView>
 </LinearLayout>

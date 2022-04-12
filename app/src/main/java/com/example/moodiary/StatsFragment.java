@@ -54,9 +54,10 @@ public class StatsFragment extends Fragment {
     private Button toYearStatics;
     ImageButton backMonth, nextMonth;
 
-    private ArrayList<Entry>listEntry;
-    private HashMap<String,Integer> countMood;
+    private ArrayList<Entry> listEntry;
+    private HashMap<String, Integer> countMood;
     private int currentMonth, currentYear;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -69,29 +70,27 @@ public class StatsFragment extends Fragment {
         nextMonth = v.findViewById(R.id.button_next_month);
 
 
-
         Date nowdate = new Date();
-        currentMonth = nowdate.getMonth()+1;
-        currentYear = nowdate.getYear()+1900;
-        currentMonthStatic.setText(currentMonth+"/"+currentYear);
+        currentMonth = nowdate.getMonth() + 1;
+        currentYear = nowdate.getYear() + 1900;
+        currentMonthStatic.setText(currentMonth + "/" + currentYear);
 
         toYearStatics.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getContext(),YearStatistic.class));
+                startActivity(new Intent(getContext(), YearStatistic.class));
             }
         });
 
         backMonth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(currentMonth == 1){
-                    currentMonth=12;
+                if (currentMonth == 1) {
+                    currentMonth = 12;
                     currentYear--;
-                }
-                else
+                } else
                     currentMonth--;
-                currentMonthStatic.setText(currentMonth+"/"+currentYear);
+                currentMonthStatic.setText(currentMonth + "/" + currentYear);
                 getChart(currentMonth, currentYear);
             }
         });
@@ -99,13 +98,12 @@ public class StatsFragment extends Fragment {
         nextMonth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(currentMonth == 12){
-                    currentMonth=1;
+                if (currentMonth == 12) {
+                    currentMonth = 1;
                     currentYear++;
-                }
-                else
+                } else
                     currentMonth++;
-                currentMonthStatic.setText(currentMonth+"/"+currentYear);
+                currentMonthStatic.setText(currentMonth + "/" + currentYear);
                 getChart(currentMonth, currentYear);
             }
         });
@@ -116,7 +114,7 @@ public class StatsFragment extends Fragment {
         return v;
     }
 
-    private void getChart(int month, int year){
+    private void getChart(int month, int year) {
         listEntry = new ArrayList<>();
         countMood = new HashMap<>();
         DatabaseReference dtb = FirebaseDatabase.getInstance().getReference("Entry");
@@ -132,7 +130,7 @@ public class StatsFragment extends Fragment {
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
-                    if (date.getMonth()+1 == month && date.getYear()+1900 == year)
+                    if (date.getMonth() + 1 == month && date.getYear() + 1900 == year)
                         listEntry.add(entry);
                 }
 
@@ -161,9 +159,9 @@ public class StatsFragment extends Fragment {
                 }
 
                 //---------- Get last mood if a day has >1 mood
-                for(int first = 0; first < listEntry.size()-1; first++)
-                    for(int second = first + 1; second < listEntry.size(); second++)
-                        if(listEntry.get(first).getDayOfmood().equals(listEntry.get(second).getDayOfmood())) {
+                for (int first = 0; first < listEntry.size() - 1; first++)
+                    for (int second = first + 1; second < listEntry.size(); second++)
+                        if (listEntry.get(first).getDayOfmood().equals(listEntry.get(second).getDayOfmood())) {
                             listEntry.remove(second);
                             second--;
                         }
@@ -197,53 +195,52 @@ public class StatsFragment extends Fragment {
         }
 
 
-            Collections.reverse(lineEntries);
+        Collections.reverse(lineEntries);
 
-            LineDataSet dataSet = new LineDataSet(lineEntries, "Mood Statics");
-            dataSet.setFillAlpha(110);
-            dataSet.isDrawCircleHoleEnabled();
-            ArrayList colorlist = getColorChart(listEntry);
-            Collections.reverse(colorlist);
-            dataSet.setColors(colorlist);
+        LineDataSet dataSet = new LineDataSet(lineEntries, "Mood Statics");
+        dataSet.setFillAlpha(110);
+        dataSet.isDrawCircleHoleEnabled();
+        ArrayList colorlist = getColorChart(listEntry);
+        Collections.reverse(colorlist);
+        dataSet.setColors(colorlist);
 
 
-            ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-            dataSets.add(dataSet);
+        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+        dataSets.add(dataSet);
 
-            LineData data = new LineData(dataSets);
-            data.setValueFormatter(new ValueFormatter() {
-                @Override
-                public String getFormattedValue(float value) {
-                    return ""+((int)value);
-                }
-            });
+        LineData data = new LineData(dataSets);
+        data.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value) {
+                return "" + ((int) value);
+            }
+        });
 
-            Legend l = moodLineChart.getLegend();
-            l.setEnabled(false);
+        Legend l = moodLineChart.getLegend();
+        l.setEnabled(false);
 
-            moodLineChart.setData(data);
+        moodLineChart.setData(data);
 
-            moodLineChart.getAxisLeft().setEnabled(false);
-            moodLineChart.getAxisRight().setEnabled(false);
-            moodLineChart.getAxisRight().setStartAtZero(true);
-            moodLineChart.getAxisLeft().setStartAtZero(true);
-            moodLineChart.getDescription().setEnabled(false);
-            moodLineChart.setVisibleXRangeMaximum(31);
-            moodLineChart.setScrollX(15);
-            moodLineChart.invalidate();
-            moodLineChart.animateX(1300, Easing.EaseInBounce);
+        moodLineChart.getAxisLeft().setEnabled(false);
+        moodLineChart.getAxisRight().setEnabled(false);
+        moodLineChart.getAxisRight().setStartAtZero(true);
+        moodLineChart.getAxisLeft().setStartAtZero(true);
+        moodLineChart.getDescription().setEnabled(false);
+        moodLineChart.setVisibleXRangeMaximum(31);
+        moodLineChart.setScrollX(15);
+        moodLineChart.invalidate();
+        moodLineChart.animateX(1300, Easing.EaseInBounce);
 
     }
 
 
-
-    private void loadPieChartData (){
+    private void loadPieChartData() {
         ArrayList<PieEntry> entries = new ArrayList<>();
-        for (String key: countMood.keySet() )
-            entries.add(new PieEntry(countMood.get(key),key));
+        for (String key : countMood.keySet())
+            entries.add(new PieEntry(countMood.get(key), key));
 
 
-        PieDataSet dataSet = new PieDataSet(entries,"Moods");
+        PieDataSet dataSet = new PieDataSet(entries, "Moods");
         dataSet.setColors(getColorChart(listEntry));
         dataSet.setValueTextSize(12);
         dataSet.setSliceSpace(5);
@@ -252,7 +249,6 @@ public class StatsFragment extends Fragment {
         PieData data = new PieData(dataSet);
         data.setValueTextSize(10);
         data.setValueTextColor(Color.WHITE);
-
 
 
         pieChartCountMood.setDrawHoleEnabled(true);
@@ -280,16 +276,16 @@ public class StatsFragment extends Fragment {
         for (int i = 0; i < MoodInfo.moods_type.length; i++) {
             for (int j = 0; j < MoodInfo.moods_type[i].length; j++) {
                 if (e.getMoodType().equals(MoodInfo.moods_type[i][j])) {
-                    return 5-i;
+                    return 5 - i;
                 }
             }
         }
         return 0;
     }
 
-    private ArrayList<Integer>getColorChart(ArrayList<Entry> a){
-        ArrayList<Integer>colors = new ArrayList<>();
-        for(Entry e: a){
+    private ArrayList<Integer> getColorChart(ArrayList<Entry> a) {
+        ArrayList<Integer> colors = new ArrayList<>();
+        for (Entry e : a) {
             for (int i = 0; i < MoodInfo.moods_type.length; i++) {
                 for (int j = 0; j < MoodInfo.moods_type[i].length; j++) {
                     if (e.getMoodType().equals(MoodInfo.moods_type[i][j])) {
