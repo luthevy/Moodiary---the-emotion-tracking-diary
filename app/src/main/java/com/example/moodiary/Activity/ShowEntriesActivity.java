@@ -1,4 +1,4 @@
-package com.example.moodiary;
+package com.example.moodiary.Activity;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -6,11 +6,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 
+import com.example.moodiary.Fragment.CalendarFragment;
+import com.example.moodiary.CustomEntriesList;
+import com.example.moodiary.Fragment.EntriesFragment;
+import com.example.moodiary.Entry;
+import com.example.moodiary.R;
+import com.example.moodiary.Fragment.SettingsFragment;
+import com.example.moodiary.Fragment.StatsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
@@ -30,7 +36,7 @@ import java.util.HashMap;
 public class ShowEntriesActivity extends Activity {
 
 
-    public Integer[] mood_thumbnails={R.drawable.mood_amazing,R.drawable.mood_happy, R.drawable.mood_ok, R.drawable.mood_sad,
+    public Integer[]                    mood_thumbnails={R.drawable.mood_amazing,R.drawable.mood_happy, R.drawable.mood_ok, R.drawable.mood_sad,
                             R.drawable.mood_awful};
     public static HashMap<Entry,String> keyOfEntry;
 
@@ -48,7 +54,7 @@ public class ShowEntriesActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_showentries);
+        setContentView(R.layout.activity_show_entries);
         bottom_navigation_menu= findViewById(R.id.bottom_navigation_menu);
         bottom_navigation_menu.setBackground(null);
         bottom_navigation_menu.setItemIconTintList(null);
@@ -60,7 +66,7 @@ public class ShowEntriesActivity extends Activity {
         fabMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), InitiateMood.class));
+                startActivity(new Intent(getApplicationContext(), AddEntry_ChooseMoodsActivity.class));
                 //Test screen year statistic
                 //startActivity(new Intent(getApplicationContext(),YearStatistic.class ));
 
@@ -105,7 +111,7 @@ public class ShowEntriesActivity extends Activity {
                 listbyDate = findViewById(R.id.list_different_date);
                 //listsameDate = findViewById(R.id.list_different_date);
 
-                CustomEntriesList aa=new CustomEntriesList(ShowEntriesActivity.this, R.layout.custom_row_entries, listOfEntryInDate, mood_thumbnails);
+                CustomEntriesList aa =new CustomEntriesList(ShowEntriesActivity.this, R.layout.custom_row_entries, listOfEntryInDate, mood_thumbnails);
                 //CustomOneEntry aa=new CustomOneEntry(ShowEntriesActivity.this, R.layout.custom_show_one_entries, listEntry, mood_thumbnails);
 
                 listbyDate.setAdapter(aa);

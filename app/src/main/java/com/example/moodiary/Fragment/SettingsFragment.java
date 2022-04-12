@@ -1,4 +1,4 @@
-package com.example.moodiary;
+package com.example.moodiary.Fragment;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.moodiary.Activity.LoginActivity;
+import com.example.moodiary.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -18,7 +20,7 @@ public class SettingsFragment extends Fragment {
     private TextView     btnExit;
     private FirebaseUser fbaseUser;
     private TextView     userName;
-    
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_settings, container, false);

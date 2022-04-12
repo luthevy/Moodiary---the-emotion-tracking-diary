@@ -1,4 +1,4 @@
-package com.example.moodiary;
+package com.example.moodiary.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.moodiary.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ForgotPwActivity extends AppCompatActivity {
@@ -18,7 +19,7 @@ public class ForgotPwActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forgotpw);
+        setContentView(R.layout.activity_forgot_password);
         auth = FirebaseAuth.getInstance();
 
         txtEmail=findViewById(R.id.edtxt_ForgotPwEmail);
@@ -40,7 +41,7 @@ public class ForgotPwActivity extends AppCompatActivity {
                 .addOnCompleteListener(task -> {
                     if(task.isSuccessful()){
                         Toast.makeText(ForgotPwActivity.this, "Check your email", Toast.LENGTH_LONG).show();
-                        startActivity(new Intent(ForgotPwActivity.this,LoginActivity.class));
+                        startActivity(new Intent(ForgotPwActivity.this, LoginActivity.class));
                         finish();
                     }
                     else{

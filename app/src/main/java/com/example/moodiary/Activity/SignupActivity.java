@@ -1,4 +1,4 @@
-package com.example.moodiary;
+package com.example.moodiary.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.moodiary.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
@@ -20,7 +21,7 @@ public class SignupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
+        setContentView(R.layout.activity_register);
         editFullname = findViewById(R.id.edtxt_SignupUsername);
         editEmail = findViewById(R.id.edtxt_SignupEmail);
         editPw = findViewById(R.id.edtxt_SignupPassword);
@@ -30,7 +31,7 @@ public class SignupActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         btnTurnback.setOnClickListener(view -> {
-            startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
         });
         btnRegister.setOnClickListener(view -> {
             if (editFullname.getText().length()>0 &&

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Moodiary">
         <activity
-            android:name=".LoginActivity"
+            android:name=".Activity.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,22 +18,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SignupActivity"
+            android:name=".Activity.SignupActivity"
             android:exported="true"/>
         <activity
-            android:name=".ShowEntriesActivity"
+            android:name=".Activity.ShowEntriesActivity"
             android:exported="true"/>
         <activity
-            android:name=".ForgotPwActivity"
+            android:name=".Activity.ForgotPwActivity"
             android:exported="true"/>
         <activity
-            android:name=".InitiateMood"
+            android:name=".Activity.AddEntry_ChooseMoodsActivity"
             android:exported="true"/>
         <activity
-            android:name=".AddEntryActivity"
+            android:name=".Activity.AddEntry_ChooseActivitiesActivity"
             android:exported="true"/>
         <activity
-            android:name=".UpdateEntry"
+            android:name=".Activity.UpdateEntryActivity"
             android:exported="true"/>
         <activity
             android:name=".YearStatistic"

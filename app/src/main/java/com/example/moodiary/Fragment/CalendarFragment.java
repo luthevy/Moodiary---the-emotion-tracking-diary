@@ -1,4 +1,4 @@
-package com.example.moodiary;
+package com.example.moodiary.Fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.example.moodiary.Entry;
+import com.example.moodiary.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -56,7 +58,7 @@ public class CalendarFragment extends Fragment {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         listEntry.clear();
                         for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-                            Entry entry = dataSnapshot.getValue(Entry.class);
+                            Entry            entry     = dataSnapshot.getValue(Entry.class);
                             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
                             Date date1 = null;
                             try {

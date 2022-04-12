@@ -1,4 +1,4 @@
-package com.example.moodiary;
+package com.example.moodiary.Activity;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -19,7 +19,6 @@ import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,8 +26,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.ImageViewCompat;
-import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.moodiary.Database;
+import com.example.moodiary.Entry;
+import com.example.moodiary.MoodInfo;
+import com.example.moodiary.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -38,10 +40,9 @@ import com.google.firebase.storage.UploadTask;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 
-public class AddEntryActivity extends AppCompatActivity {
+public class AddEntry_ChooseActivitiesActivity extends AppCompatActivity {
     private String[] activityDefault_type = {
             "cleaning", "cook", "date", "drawing",
             "eat", "family", "festival", "friend",
@@ -75,7 +76,7 @@ public class AddEntryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_addentry);
+        setContentView(R.layout.activity_add_entry_choose_activities);
 
 //        LinearLayout activity1 = findViewById(R.id.activity1);
 //        LinearLayout activity2 = findViewById(R.id.activity2);
@@ -106,7 +107,7 @@ public class AddEntryActivity extends AppCompatActivity {
         btnMoodBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), InitiateMood.class));
+                startActivity(new Intent(getApplicationContext(), AddEntry_ChooseMoodsActivity.class));
 
             }
         });
@@ -171,14 +172,14 @@ public class AddEntryActivity extends AppCompatActivity {
                                     dtb.add(newEntry1).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void unused) {
-                                            Toast.makeText(AddEntryActivity.this, "Add Success", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(AddEntry_ChooseActivitiesActivity.this, "Add Success", Toast.LENGTH_SHORT).show();
                                             startActivity(new Intent(getApplicationContext(), ShowEntriesActivity.class));
 
                                         }
                                     }).addOnFailureListener(new OnFailureListener() {
                                         @Override
                                         public void onFailure(@NonNull @NotNull Exception e) {
-                                            Toast.makeText(AddEntryActivity.this, "Add Unsuccess", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(AddEntry_ChooseActivitiesActivity.this, "Add Unsuccess", Toast.LENGTH_SHORT).show();
                                         }
                                     });
                                 }
@@ -190,14 +191,14 @@ public class AddEntryActivity extends AppCompatActivity {
                     dtb.add(newEntry).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
-                            Toast.makeText(AddEntryActivity.this, "Add Success", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AddEntry_ChooseActivitiesActivity.this, "Add Success", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), ShowEntriesActivity.class));
 
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull @NotNull Exception e) {
-                            Toast.makeText(AddEntryActivity.this, "Add Unsuccess", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AddEntry_ChooseActivitiesActivity.this, "Add Unsuccess", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }

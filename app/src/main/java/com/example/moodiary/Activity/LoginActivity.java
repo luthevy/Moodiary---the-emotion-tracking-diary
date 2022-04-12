@@ -1,4 +1,4 @@
-package com.example.moodiary;
+package com.example.moodiary.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.moodiary.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -39,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), ForgotPwActivity.class));
         });
         btnRegister.setOnClickListener(view -> {
-            startActivity(new Intent(getApplicationContext(),SignupActivity.class));
+            startActivity(new Intent(getApplicationContext(), SignupActivity.class));
         });
         btnSignin.setOnClickListener(view -> {
             if(editEmail.getText().length()>0 && editPw.getText().length()>0) {

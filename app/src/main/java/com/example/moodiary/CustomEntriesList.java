@@ -16,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.moodiary.Activity.ShowEntriesActivity;
+import com.example.moodiary.Activity.UpdateEntryActivity;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
@@ -84,7 +86,7 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
             editEntry.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    context.startActivity(new Intent(context.getApplicationContext(), UpdateEntry.class));
+                    context.startActivity(new Intent(context.getApplicationContext(), UpdateEntryActivity.class));
                 }
             });
 

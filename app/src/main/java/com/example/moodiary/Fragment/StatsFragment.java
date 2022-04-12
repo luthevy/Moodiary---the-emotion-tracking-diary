@@ -1,4 +1,4 @@
-package com.example.moodiary;
+package com.example.moodiary.Fragment;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -14,6 +14,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.example.moodiary.Entry;
+import com.example.moodiary.MoodInfo;
+import com.example.moodiary.R;
+import com.example.moodiary.YearStatistic;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
@@ -54,7 +58,7 @@ public class StatsFragment extends Fragment {
     private Button toYearStatics;
     ImageButton backMonth, nextMonth;
 
-    private ArrayList<Entry> listEntry;
+    private ArrayList<Entry>         listEntry;
     private HashMap<String, Integer> countMood;
     private int currentMonth, currentYear;
 
