@@ -28,31 +28,15 @@ public class UpdateEntryActivity extends AppCompatActivity {
 
         btnBack.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), ShowEntriesActivity.class)));
 
-
-        String e = getIntent().getStringExtra("EntryKey");
-        System.out.println(e);
-
         thisEntryRef = FirebaseDatabase
                 .getInstance()
                 .getReference("Entry")
-                .child(e);
+                .child(getIntent().getStringExtra("EntryKey"));
 
-        thisEntry = thisEntryRef.get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
-            @Override
-            public void onSuccess(DataSnapshot dataSnapshot) {
-
-            }
-        })
-                .getResult()
-                .getValue(Entry.class);
+        thisEntryRef.get().addOnSuccessListener(dataSnapshot -> thisEntry = dataSnapshot.getValue(Entry.class));
 
         btnUpdate.setOnClickListener(view -> {
-            thisEntryRef.setValue(thisEntry).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void unused) {
-                    startActivity(new Intent(getApplicationContext(), ShowEntriesActivity.class));
-                }
-            });
+            thisEntryRef.setValue(thisEntry).addOnSuccessListener(unused -> startActivity(new Intent(getApplicationContext(), ShowEntriesActivity.class)));
         });
     }
 }

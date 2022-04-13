@@ -93,7 +93,6 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
             });
 
             deleteEntry.setOnClickListener(view -> {
-                System.out.println(ShowEntriesActivity.keyOfEntry.get(e));
                 AlertDialog dialog = new AlertDialog.Builder(context)
                         .setTitle("Delete")
                         .setMessage("Are you sure?")
