@@ -14,7 +14,6 @@ import androidx.fragment.app.Fragment;
 import com.example.moodiary.CustomEntriesList;
 import com.example.moodiary.Entry;
 import com.example.moodiary.Fragment.CalendarFragment;
-import com.example.moodiary.Fragment.EntriesFragment;
 import com.example.moodiary.Fragment.SettingsFragment;
 import com.example.moodiary.Fragment.StatsFragment;
 import com.example.moodiary.R;
@@ -139,7 +138,7 @@ public class ShowEntriesActivity extends AppCompatActivity {
                             selectedFragment = new SettingsFragment();
                             break;
                         case R.id.navEntries:
-                            selectedFragment = new EntriesFragment();
+                            selectedFragment = new Fragment();
                             break;
                         case R.id.navCalendar:
                             selectedFragment = new CalendarFragment();
