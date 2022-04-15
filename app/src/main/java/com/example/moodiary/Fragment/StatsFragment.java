@@ -253,6 +253,12 @@ public class StatsFragment extends Fragment {
         PieData data = new PieData(dataSet);
         data.setValueTextSize(10);
         data.setValueTextColor(Color.WHITE);
+        data.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value) {
+                return "" + ((int) value);
+            }
+        });
 
 
         pieChartCountMood.setDrawHoleEnabled(true);

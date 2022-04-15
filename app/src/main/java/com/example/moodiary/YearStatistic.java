@@ -14,11 +14,13 @@ import androidx.annotation.NonNull;
 
 import com.example.moodiary.Activity.ShowEntriesActivity;
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -210,12 +212,21 @@ public class YearStatistic extends Activity {
 
                 BarDataSet barDataSet = new BarDataSet(barList, "");
                 BarData barData = new BarData(barDataSet);
+                barData.setValueFormatter(new ValueFormatter() {
+                    @Override
+                    public String getFormattedValue(float value) {
+                        return "" + ((int) value);
+                    }
+                });
                 barChartCountMood.setData(barData);
 
                 //barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
                 barDataSet.setColors(barColor);
                 barDataSet.setValueTextColors(barColor);
                 barDataSet.setValueTextSize(16f);
+
+                Legend l = barChartCountMood.getLegend(); l.setEnabled(false);
+
                 barChartCountMood.getDescription().setEnabled(false);
                 barChartCountMood.getXAxis().setValueFormatter(new IndexAxisValueFormatter(xVals));
                 barChartCountMood.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
@@ -223,6 +234,8 @@ public class YearStatistic extends Activity {
                 barChartCountMood.getXAxis().setDrawAxisLine(false);
                 barChartCountMood.getXAxis().setGranularity(1);
                 barChartCountMood.getXAxis().setLabelCount(xVals.size());
+                barChartCountMood.getAxisLeft().setEnabled(false);
+                barChartCountMood.getAxisRight().setEnabled(false);
                 barChartCountMood.invalidate();
             }
 
