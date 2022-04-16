@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
-import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -23,7 +22,7 @@ import android.widget.TimePicker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.moodiary.CustomExtraMoods;
+import com.example.moodiary.MoodsAdapter;
 import com.example.moodiary.MoodInfo;
 import com.example.moodiary.R;
 
@@ -37,17 +36,14 @@ public class AddEntry_ChooseMoodsActivity extends AppCompatActivity {
 
     private TextView chooseDay, chooseTime;
     DatePickerDialog.OnDateSetListener SetDate;
-    TimePickerDialog.OnTimeSetListener SetTime;
     int                                tHour, tMinute;
     private ImageButton btnNext, btnBack;
 
-    private final String[]    mtypes = {"Amazing", "Happy", "Ok", "Sad", "Awful"};
     private       ImageView[] ms, mbgs;
     private TextView[]       mtexts;
     private RelativeLayout[] mrls;
 
     private int[] chosenMood = {0, 0};
-
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,29 +103,15 @@ public class AddEntry_ChooseMoodsActivity extends AppCompatActivity {
         chooseDay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatePickerDialog datePicker = new DatePickerDialog(AddEntry_ChooseMoodsActivity.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth, SetDate, year, month, day);
-                datePicker.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                DatePickerDialog datePicker = new DatePickerDialog(AddEntry_ChooseMoodsActivity.this,
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth, SetDate, year, month, day);
+                datePicker.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
                 datePicker.show();
             }
         });
-        SetDate = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                month += 1;
-                String date   = "";
-                String newDay = "";
-                if (day < 10)
-                    newDay = "0" + day;
-                else
-                    newDay = "" + day;
-                if (month >= 10)
-                    date = newDay + "/" + month + "/" + year;
-                else
-                    date = newDay + "/0" + month + "/" + year;
-                chooseDay.setText(date);
-            }
-        };
 
+        SetDate = (datePicker, year1, month1, day1) ->
+                chooseDay.setText(String.format("%02d/%02d/%d", day1, month1 + 1, year1));
 
         chooseTime.setOnClickListener(view -> {
             TimePickerDialog timePicker = new TimePickerDialog(AddEntry_ChooseMoodsActivity.this, android.R.style.Theme_Holo_Dialog_MinWidth,
@@ -185,7 +167,7 @@ public class AddEntry_ChooseMoodsActivity extends AppCompatActivity {
                     RelativeLayout rl         = mrls[i];
                     View           extra_list = inflater.inflate(R.layout.list_view_layout, null);
                     ListView       extra_mood = extra_list.findViewById(R.id.extra_mood);
-                    CustomExtraMoods adapter = new CustomExtraMoods(
+                    MoodsAdapter adapter = new MoodsAdapter(
                             AddEntry_ChooseMoodsActivity.this,
                             R.layout.custom_extra_mood,
                             MoodInfo.moods_thumbnail[i],

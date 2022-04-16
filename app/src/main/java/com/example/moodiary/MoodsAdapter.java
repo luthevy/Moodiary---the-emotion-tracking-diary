@@ -11,13 +11,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class CustomExtraMoods extends ArrayAdapter<String> {
+public class MoodsAdapter extends ArrayAdapter<String> {
     Context context;
     Integer[] thumbnails;
     String[] names;
     String color;
 
-    public CustomExtraMoods(Context context, int layoutToBeInflated, Integer[] thumbnails, String[] names, String color) {
+    public MoodsAdapter(Context context, int layoutToBeInflated, Integer[] thumbnails, String[] names, String color) {
         super(context, R.layout.custom_extra_mood, names);
         this.context = context;
         this.thumbnails = thumbnails;

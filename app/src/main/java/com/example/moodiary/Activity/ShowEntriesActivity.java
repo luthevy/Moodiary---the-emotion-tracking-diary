@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.example.moodiary.CustomEntriesList;
+import com.example.moodiary.EntriesAdapter;
 import com.example.moodiary.Entry;
 import com.example.moodiary.Fragment.CalendarFragment;
 import com.example.moodiary.Fragment.SettingsFragment;
@@ -111,7 +111,7 @@ public class ShowEntriesActivity extends AppCompatActivity {
                 listbyDate = findViewById(R.id.list_different_date);
                 //listsameDate = findViewById(R.id.list_different_date);
 
-                CustomEntriesList aa = new CustomEntriesList(ShowEntriesActivity.this, R.layout.custom_row_entries, listOfEntryInDate, mood_thumbnails);
+                EntriesAdapter aa = new EntriesAdapter(ShowEntriesActivity.this, R.layout.custom_row_entries, listOfEntryInDate, mood_thumbnails);
                 //CustomOneEntry aa=new CustomOneEntry(ShowEntriesActivity.this, R.layout.custom_show_one_entries, listEntry, mood_thumbnails);
 
                 listbyDate.setAdapter(aa);

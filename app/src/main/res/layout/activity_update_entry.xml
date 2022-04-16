@@ -12,41 +12,191 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:orientation="vertical"
+            android:gravity="center"
             android:paddingTop="15dp">
 
             <ImageButton
                 android:id="@+id/btnBack1"
                 android:layout_width="30dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="15dp"
                 android:background="@color/white"
                 android:scaleType="centerCrop"
                 android:src="@drawable/button_back"
-                app:layout_constraintStart_toStartOf="@+id/linearLayout"
+                app:layout_constraintStart_toStartOf="@+id/frameLayout"
                 app:layout_constraintTop_toTopOf="parent"
                 app:tint="#777777"/>
 
+            <GridView
+                android:id="@+id/activitiesGridView"
+                android:layout_width="350dp"
+                android:layout_height="400dp"
+                android:layout_below="@id/frameLayout"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:horizontalSpacing="5dp"
+                android:numColumns="5"
+                android:verticalSpacing="5dp"/>
+
             <LinearLayout
-                android:id="@+id/linearLayout"
+                android:id="@id/linearLayout3"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/activitiesGridView"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:drawableLeft="@drawable/ic_baseline_event_note"
+                    android:drawablePadding="7dp"
+                    android:drawableTint="@color/main2"
+                    android:text="Note"
+                    android:textColor="@color/main2"
+                    android:textSize="16sp"/>
+
+                <EditText
+                    android:id="@+id/edtxt_Notes"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#F2F2F7"
+                    android:gravity="top"
+                    android:hint="How was your day going?"
+                    android:inputType="text|textMultiLine"
+                    android:padding="5dp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="7dp"
+                        android:src="@drawable/camera"
+                        app:tint="@color/main2"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3dp"
+                        android:text="Photo"
+                        android:textColor="@color/main2"
+                        android:textSize="16sp"/>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/btnAddPhoto"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:backgroundTint="@color/main2"
+                        android:text="Tap to Add Photo..."/>
+
+                    <ImageView
+                        android:id="@+id/selectedImage"
+                        android:layout_width="110dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="5dp"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/linearLayout3"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="20dp"
+
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/linearLayout6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="160dp"
+                    android:gravity="bottom|center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/btnUpdate"
+                        android:layout_width="88dp"
+                        android:layout_height="88dp"
+                        android:background="@drawable/circular_shape"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="15dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/save"
+                        app:tint="?attr/colorControlNormal"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:gravity="bottom|right"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/btnEditActivities"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="18dp"
+                        android:background="@drawable/circular_shape_none"
+                        android:scaleType="centerInside"
+                        app:srcCompat="@drawable/ic_baseline_edit"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Edit activities"
+                        android:textColor="@color/main2"
+                        android:textSize="15sp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/fullWhiteRec"
+                android:layout_width="match_parent"
+                android:layout_height="980dp"
+                android:alpha="0.5"
+                android:background="@color/white"
+                android:clickable="false"
+                android:visibility="invisible"/>
+
+            <FrameLayout
+                android:id="@+id/frameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnBack1"
                 android:layout_marginTop="20dp"
                 android:gravity="center_horizontal"
-                android:orientation="vertical"
-                app:layout_constraintTop_toTopOf="@+id/btnBack1">
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:id="@+id/linearLayout2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/linearLayout"
+                    android:layout_below="@+id/frameLayout"
                     android:gravity="center"
+
                     android:orientation="horizontal">
 
                     <TextView
@@ -55,7 +205,6 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
 
-                        android:layout_marginLeft="-10dp"
                         android:clickable="true"
                         android:drawableLeft="@drawable/ic_baseline_calendar"
                         android:drawableRight="@drawable/ic_baseline_arrow_drop_down"
@@ -85,7 +234,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/linearLayout"
                     android:layout_marginTop="20dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingStart="5dp">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -113,7 +263,6 @@
                                 android:layout_height="80dp"
                                 android:src="@drawable/mood_amazing"
                                 app:tint="@color/mc1"/>
-
                         </RelativeLayout>
 
                         <TextView
@@ -280,141 +429,8 @@
                             android:textSize="15sp"/>
                     </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
-
-            <GridView
-                android:id="@+id/activitiesGridView"
-                android:layout_width="350dp"
-                android:layout_height="400dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:horizontalSpacing="5dp"
-                android:numColumns="5"
-                android:verticalSpacing="5dp"/>
-
-            <LinearLayout
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:drawableLeft="@drawable/ic_baseline_event_note"
-                    android:drawablePadding="7dp"
-                    android:drawableTint="@color/main2"
-                    android:text="Note"
-                    android:textColor="@color/main2"
-                    android:textSize="16sp"/>
-
-                <EditText
-                    android:id="@+id/edtxt_Notes"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="5dp"
-                    android:background="#F2F2F7"
-                    android:gravity="top"
-                    android:hint="How was your day going?"
-                    android:inputType="text|textMultiLine"
-                    android:padding="5dp"/>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp">
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginLeft="3dp"
-                        android:layout_marginRight="7dp"
-                        android:src="@drawable/camera"
-                        app:tint="@color/main2"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="3dp"
-                        android:text="Photo"
-                        android:textColor="@color/main2"
-                        android:textSize="16sp"/>
-                </LinearLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <Button
-                        android:id="@+id/btnAddPhoto"
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:backgroundTint="@color/main2"
-                        android:text="Tap to Add Photo..."/>
-
-                    <ImageView
-                        android:id="@+id/selectedImage"
-                        android:layout_width="110dp"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="5dp"/>
-                </RelativeLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="150dp"
-                    android:gravity="bottom|center"
-                    android:orientation="vertical"
-                    android:id="@+id/linearLayout6">
-
-                    <ImageButton
-                        android:id="@+id/btnUpdate"
-                        android:layout_width="88dp"
-                        android:layout_height="88dp"
-                        android:background="@drawable/circular_shape"
-                        android:paddingTop="15dp"
-                        android:paddingBottom="15dp"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/save"
-                        app:tint="?attr/colorControlNormal"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="10dp"
-                    android:gravity="bottom|right"
-                    android:orientation="vertical">
-
-                    <ImageButton
-                        android:id="@+id/btnEditActivities"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="18dp"
-                        android:background="@drawable/circular_shape_none"
-                        android:scaleType="centerInside"
-                        app:srcCompat="@drawable/ic_baseline_edit"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Edit activities"
-                        android:textColor="@color/main2"
-                        android:textSize="15sp"/>
-                </LinearLayout>
-            </LinearLayout>
-
-        </LinearLayout>
+            </FrameLayout>
+        </RelativeLayout>
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

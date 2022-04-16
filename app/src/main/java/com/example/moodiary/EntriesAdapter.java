@@ -23,7 +23,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
+public class EntriesAdapter extends ArrayAdapter<ArrayList<Entry>> {
     Context                     context;
     Integer[]                   thumbnails;
     ArrayList<ArrayList<Entry>> items;
@@ -40,7 +40,7 @@ public class CustomEntriesList extends ArrayAdapter<ArrayList<Entry>> {
 //    String [] activity_type ={"drawing", "TV", "eat", "sleep", "walk", "date", "swim", "friend", "work"};
 //-----------------------------------------
 
-    public CustomEntriesList(Context context, int layoutToBeInflated, ArrayList<ArrayList<Entry>> items, Integer[] thumbnails) {
+    public EntriesAdapter(Context context, int layoutToBeInflated, ArrayList<ArrayList<Entry>> items, Integer[] thumbnails) {
         super(context, R.layout.custom_row_entries, items);
         this.context    = context;
         this.thumbnails = thumbnails;

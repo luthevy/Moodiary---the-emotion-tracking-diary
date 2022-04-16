@@ -1,34 +1,26 @@
 package com.example.moodiary.Activity;
 
 import android.content.ContentResolver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.widget.ImageViewCompat;
 
+import com.example.moodiary.EntryActivitiesAdapter;
 import com.example.moodiary.Database;
 import com.example.moodiary.Entry;
+import com.example.moodiary.EntryActivity;
 import com.example.moodiary.MoodInfo;
 import com.example.moodiary.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -43,7 +35,7 @@ import java.util.ArrayList;
 
 
 public class AddEntry_ChooseActivitiesActivity extends AppCompatActivity {
-    private String[] activityDefault_type = {
+    private String[]  activityDefault_type      = {
             "cleaning", "cook", "date", "drawing",
             "eat", "family", "festival", "friend",
             "game", "gift", "music", "party",
@@ -59,7 +51,7 @@ public class AddEntry_ChooseActivitiesActivity extends AppCompatActivity {
             R.drawable.activity_sport, R.drawable.activity_study, R.drawable.activity_swim, R.drawable.activity_tv,
             R.drawable.activity_walk, R.drawable.activity_work
     };
-    private int[]       chooseStatus = new int[activityDefault_type.length];
+    private int[]     chooseStatus              = new int[activityDefault_type.length];
 
     private GridView    activitiesGridView;
     private EditText    notes;
@@ -86,11 +78,11 @@ public class AddEntry_ChooseActivitiesActivity extends AppCompatActivity {
         chosenMood         = findViewById(R.id.chosenMood);
 
         //-----------------------Show all activities-------------------------
-        ArrayList<Activity> activityArrayList = new ArrayList<Activity>();
+        ArrayList<EntryActivity> activityArrayList = new ArrayList<EntryActivity>();
         for (int i = 0; i < activityDefault_type.length; i++) {
-            activityArrayList.add(new Activity(activityDefault_type[i], activityDefault_thumbnail[i]));
+            activityArrayList.add(new EntryActivity(activityDefault_type[i], activityDefault_thumbnail[i]));
         }
-        ActivityGVAdapter adapter = new ActivityGVAdapter(this, activityArrayList);
+        EntryActivitiesAdapter adapter = new EntryActivitiesAdapter(this, activityArrayList, new int[activityDefault_type.length]);
         activitiesGridView.setAdapter(adapter);
 
         btnMoodBack.setOnClickListener(new View.OnClickListener() {
@@ -124,13 +116,15 @@ public class AddEntry_ChooseActivitiesActivity extends AppCompatActivity {
                         listAct += i + 1 + " ";
                 }
 
-                Entry newEntry = new Entry(listAct, notes.getText().toString(), dayOfMood, timeOfMood, MoodInfo.moods_type[currentMood[0]][currentMood[1]]);
+                Entry newEntry = new Entry(
+                        listAct,
+                        notes.getText().toString(),
+                        dayOfMood,
+                        timeOfMood,
+                        MoodInfo.moods_type[currentMood[0]][currentMood[1]]);
 
                 // get date of entry to name for image
-                String imgName = newEntry.getDateOfMood();
-                imgName = imgName.replace("/", "");
-                imgName = imgName.replace(":", "");
-                imgName = imgName.replace(" ", "");
+                String imgName = newEntry.getDateOfMood().replace("[ :/]", "");
 
                 //UPLOAD IMAGE
                 if (selectedImage != null) {
@@ -154,7 +148,7 @@ public class AddEntry_ChooseActivitiesActivity extends AppCompatActivity {
                                     }).addOnFailureListener(new OnFailureListener() {
                                         @Override
                                         public void onFailure(@NonNull @NotNull Exception e) {
-                                            Toast.makeText(AddEntry_ChooseActivitiesActivity.this, "Add Unsuccess", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(AddEntry_ChooseActivitiesActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                                         }
                                     });
                                 }
@@ -168,12 +162,11 @@ public class AddEntry_ChooseActivitiesActivity extends AppCompatActivity {
                         public void onSuccess(Void unused) {
                             Toast.makeText(AddEntry_ChooseActivitiesActivity.this, "Add Success", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), ShowEntriesActivity.class));
-
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull @NotNull Exception e) {
-                            Toast.makeText(AddEntry_ChooseActivitiesActivity.this, "Add Unsuccess", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AddEntry_ChooseActivitiesActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -214,59 +207,6 @@ public class AddEntry_ChooseActivitiesActivity extends AppCompatActivity {
         ContentResolver cR   = getContentResolver();
         MimeTypeMap     mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(cR.getType(uri));
-    }
-
-    public class Activity {
-        private String act_name;
-        private Integer act_icon;
-        public Activity(String act_name, Integer act_icon) {
-            this.act_name = act_name;
-            this.act_icon = act_icon;
-        }
-        public String getAct_name() {
-            return act_name;
-        }
-        public Integer getAct_icon() {
-            return act_icon;
-        }
-    }
-
-    public class ActivityGVAdapter extends ArrayAdapter<Activity> {
-        public ActivityGVAdapter(@NonNull Context context, ArrayList<Activity> activityArrayList) {
-            super(context, 0, activityArrayList);
-        }
-        @NonNull
-        @Override
-        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-            View listitemView = convertView;
-            if (listitemView == null) {
-                // Layout Inflater inflates each item to be displayed in GridView.
-                listitemView = LayoutInflater.from(getContext()).inflate(R.layout.custom_activity_layout, parent, false);
-            }
-
-            Activity actModel = getItem(position);
-            LinearLayout actLayout = listitemView.findViewById(R.id.activity_layout);
-            ImageView actIcon = listitemView.findViewById(R.id.activity_icon);
-            ImageView circularShape = listitemView.findViewById(R.id.activity_circular);
-            TextView actTxt = listitemView.findViewById(R.id.activity_label);
-            actLayout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (chooseStatus[position] == 0) {
-                        chooseStatus[position] = 1;
-                        circularShape.setImageResource(R.drawable.circular_shape);
-                        ImageViewCompat.setImageTintList(actIcon, ColorStateList.valueOf(Color.parseColor("#FFFFFF")));
-                    } else if (chooseStatus[position] == 1) {
-                        chooseStatus[position] = 0;
-                        circularShape.setImageResource(R.drawable.circular_shape_none);
-                        ImageViewCompat.setImageTintList(actIcon, ColorStateList.valueOf(Color.parseColor("#97e0bb")));
-                    }
-                }
-            });
-            actIcon.setImageResource(actModel.getAct_icon());
-            actTxt.setText(actModel.getAct_name());
-            return listitemView;
-        }
     }
 }
 
