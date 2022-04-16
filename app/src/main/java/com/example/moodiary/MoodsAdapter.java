@@ -12,25 +12,25 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MoodsAdapter extends ArrayAdapter<String> {
-    Context context;
+    Context   context;
     Integer[] thumbnails;
-    String[] names;
-    String color;
+    String[]  names;
+    String    color;
 
     public MoodsAdapter(Context context, int layoutToBeInflated, Integer[] thumbnails, String[] names, String color) {
         super(context, R.layout.custom_extra_mood, names);
-        this.context = context;
+        this.context    = context;
         this.thumbnails = thumbnails;
-        this.names = names;
-        this.color = color;
+        this.names      = names;
+        this.color      = color;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-        View row = inflater.inflate(R.layout.custom_extra_mood, null);
-        ImageView chooseMoodExtra = row.findViewById(R.id.chooseMoodExtra);
-        TextView textMoodExtra = row.findViewById(R.id.textMoodExtra);
+        LayoutInflater inflater        = ((Activity) context).getLayoutInflater();
+        View           row             = inflater.inflate(R.layout.custom_extra_mood, null);
+        ImageView      chooseMoodExtra = row.findViewById(R.id.chooseMoodExtra);
+        TextView       textMoodExtra   = row.findViewById(R.id.textMoodExtra);
         chooseMoodExtra.setImageResource(thumbnails[position]);
         chooseMoodExtra.setImageTintList(ColorStateList.valueOf(Color.parseColor(color)));
         textMoodExtra.setText(names[position]);

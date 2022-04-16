@@ -8,14 +8,18 @@ import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -23,11 +27,11 @@ import android.widget.TimePicker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.moodiary.EntryActivitiesAdapter;
-import com.example.moodiary.MoodsAdapter;
 import com.example.moodiary.Entry;
+import com.example.moodiary.EntryActivitiesAdapter;
 import com.example.moodiary.EntryActivity;
 import com.example.moodiary.MoodInfo;
+import com.example.moodiary.MoodsAdapter;
 import com.example.moodiary.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -52,11 +56,11 @@ public class UpdateEntryActivity extends AppCompatActivity {
     private TextView[]       mtexts;
     private RelativeLayout[] mrls;
 
-    private ImageView rec;
+    //private ImageView rec;
 
     private int[] chosenMood = {0, 0};
 
-    private String[] activityDefault_type = {
+    private String[]  activityDefault_type      = {
             "cleaning", "cook", "date", "drawing",
             "eat", "family", "festival", "friend",
             "game", "gift", "music", "party",
@@ -72,16 +76,13 @@ public class UpdateEntryActivity extends AppCompatActivity {
             R.drawable.activity_sport, R.drawable.activity_study, R.drawable.activity_swim, R.drawable.activity_tv,
             R.drawable.activity_walk, R.drawable.activity_work
     };
-    private int[]       chooseStatus = new int[activityDefault_type.length];
+    private boolean[] chooseStatus              = new boolean[activityDefault_type.length];
 
-    private GridView    activitiesGridView;
-    private EditText    notes;
-    private Button      btnAddPhoto;
-    private Uri   selectedImage;
-    private int[] currentMood;
-    private String dayOfMood, timeOfMood;
-    String linkimg = "", listAct;
-    int completeupload = 0;
+    private GridView activitiesGridView;
+    private EditText notes;
+    private Button   btnAddPhoto;
+    private Uri      selectedImage;
+    String listAct = "";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,7 +126,7 @@ public class UpdateEntryActivity extends AppCompatActivity {
         btnBack   = findViewById(R.id.btnBack1);
         btnUpdate = findViewById(R.id.btnUpdate);
 
-        rec = findViewById(R.id.fullWhiteRec);
+        //rec = findViewById(R.id.fullWhiteRec);
 
         activitiesGridView = findViewById(R.id.activitiesGridView);
         notes              = findViewById(R.id.edtxt_Notes);
@@ -139,8 +140,46 @@ public class UpdateEntryActivity extends AppCompatActivity {
         thisEntryRef.get().addOnSuccessListener(dataSnapshot -> {
 
             thisEntry = dataSnapshot.getValue(Entry.class);
+
+            // SET DAY AND TIME
             chooseDay.setText(thisEntry.getDayOfmood());
             chooseTime.setText(thisEntry.getTimeOfmood());
+
+            String thisEntryMoodType = thisEntry.getMoodType();
+
+            // SET MOOD
+            for (int i = 0; i < MoodInfo.moods_type.length; i++) {
+                for (int j = 0; j < MoodInfo.moods_type[i].length; j++) {
+                    if (thisEntryMoodType.equals(MoodInfo.moods_type[i][j])) {
+
+                        mbgs[i].setVisibility(View.VISIBLE);
+                        ms[i].setImageResource(MoodInfo.moods_thumbnail[i][j]);
+                        mtexts[i].setText(MoodInfo.moods_type[i][j]);
+                        mtexts[i].setTextSize(15);
+                        mtexts[i].setTypeface(null, Typeface.NORMAL);
+                        mtexts[i].setPaddingRelative(0, 0, 0, 0);
+
+                        chosenMood[0] = i;
+                        chosenMood[1] = j;
+                    }
+                }
+            }
+
+            // SET ACTIVITIES
+            for (String activity : thisEntry.getActivity().split(" "))
+                chooseStatus[Integer.parseInt(activity) - 1] = true;
+
+            // SET NOTE
+            notes.setText(thisEntry.getNote());
+
+            // SET IMAGE
+            if (!thisEntry.getImgLink().isEmpty()) {
+                btnAddPhoto.setText("Edit Photo");
+
+                //show or change selected image
+                ((ImageView) findViewById(R.id.selectedImage)).setImageURI(
+                        Uri.parse(thisEntry.getImgLink()));
+            }
 
         });
 
@@ -222,6 +261,8 @@ public class UpdateEntryActivity extends AppCompatActivity {
                             MoodInfo.moods_color[i]);
 
                     extra_mood.setAdapter(adapter);
+                    setListViewHeightBasedOnItems(extra_mood);
+
                     extra_mood.setOnItemClickListener((AdapterView<?> adapterView, View view_, int position, long id) -> {
 
                         resetBackground();
@@ -248,19 +289,81 @@ public class UpdateEntryActivity extends AppCompatActivity {
         for (int i = 0; i < activityDefault_type.length; i++) {
             activityArrayList.add(new EntryActivity(activityDefault_type[i], activityDefault_thumbnail[i]));
         }
-        EntryActivitiesAdapter adapter = new EntryActivitiesAdapter(this, activityArrayList, new int[activityDefault_type.length]);
+        EntryActivitiesAdapter adapter = new EntryActivitiesAdapter(this, activityArrayList, chooseStatus);
         activitiesGridView.setAdapter(adapter);
+
+        btnAddPhoto.setOnClickListener(view -> {
+            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            startActivityForResult(intent, 3);
+        });
 
         btnBack.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), ShowEntriesActivity.class)));
 
         btnUpdate.setOnClickListener(view -> {
-            thisEntryRef.setValue(thisEntry).addOnSuccessListener(unused -> startActivity(new Intent(getApplicationContext(), ShowEntriesActivity.class)));
+
+            for (int i = 0; i < chooseStatus.length; i++) {
+                if (chooseStatus[i])
+                    listAct += i + 1 + " ";
+            }
+
+            thisEntry.setActivity(listAct);
+            thisEntry.setNote(notes.getText().toString());
+            thisEntry.setDayOfmood(chooseDay.getText().toString());
+            thisEntry.setTimeOfmood(chooseTime.getText().toString());
+            thisEntry.setMoodType(MoodInfo.moods_type[chosenMood[0]][chosenMood[1]]);
+
+            thisEntryRef.setValue(thisEntry)
+                    .addOnSuccessListener(unused ->
+                            startActivity(new Intent(getApplicationContext(), ShowEntriesActivity.class)));
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && data != null) {
+            btnAddPhoto.setText("Edit Photo");
+
+            //show or change selected image
+            selectedImage = data.getData();
+            ((ImageView) findViewById(R.id.selectedImage)).setImageURI(selectedImage);
+        }
     }
 
     public void resetBackground() {
         for (int i = 0; i < ms.length; ++i) {
             mbgs[i].setVisibility(View.INVISIBLE);
+        }
+    }
+    public static boolean setListViewHeightBasedOnItems(ListView listView) {
+
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter != null) {
+
+            int numberOfItems = listAdapter.getCount();
+
+            // Get total height of all items.
+            int totalItemsHeight = 0;
+            for (int itemPos = 0; itemPos < numberOfItems; itemPos++) {
+                View item = listAdapter.getView(itemPos, null, listView);
+                item.measure(0, 0);
+                totalItemsHeight += item.getMeasuredHeight();
+            }
+
+            // Get total height of all item dividers.
+            int totalDividersHeight = listView.getDividerHeight() *
+                    (numberOfItems - 1);
+
+            // Set list height.
+            ViewGroup.LayoutParams params = listView.getLayoutParams();
+            params.height = totalItemsHeight + totalDividersHeight;
+            listView.setLayoutParams(params);
+            listView.requestLayout();
+
+            return true;
+
+        } else {
+            return false;
         }
     }
 }

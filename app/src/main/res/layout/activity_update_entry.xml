@@ -27,7 +27,7 @@
                 android:background="@color/white"
                 android:scaleType="centerCrop"
                 android:src="@drawable/button_back"
-                app:layout_constraintStart_toStartOf="@+id/frameLayout"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout"
                 app:layout_constraintTop_toTopOf="parent"
                 app:tint="#777777"/>
 
@@ -35,13 +35,23 @@
                 android:id="@+id/activitiesGridView"
                 android:layout_width="350dp"
                 android:layout_height="400dp"
-                android:layout_below="@id/frameLayout"
+                android:layout_below="@id/linearLayout"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
                 android:horizontalSpacing="5dp"
                 android:numColumns="5"
-                android:verticalSpacing="5dp"/>
+                android:verticalSpacing="5dp">
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/fullWhiteRec"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="980dp"-->
+<!--                    android:alpha="0.5"-->
+<!--                    android:background="@color/white"-->
+<!--                    android:clickable="false"-->
+<!--                    android:visibility="invisible"/>-->
+            </GridView>
 
             <LinearLayout
                 android:id="@id/linearLayout3"
@@ -106,7 +116,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:backgroundTint="@color/main2"
-                        android:text="Tap to Add Photo..."/>
+                        android:text="Add Photo"/>
 
                     <ImageView
                         android:id="@+id/selectedImage"
@@ -172,17 +182,8 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/fullWhiteRec"
-                android:layout_width="match_parent"
-                android:layout_height="980dp"
-                android:alpha="0.5"
-                android:background="@color/white"
-                android:clickable="false"
-                android:visibility="invisible"/>
-
-            <FrameLayout
-                android:id="@+id/frameLayout"
+            <LinearLayout
+                android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/btnBack1"
@@ -194,7 +195,7 @@
                     android:id="@+id/linearLayout2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/frameLayout"
+                    android:layout_below="@+id/linearLayout"
                     android:gravity="center"
 
                     android:orientation="horizontal">
@@ -429,7 +430,7 @@
                             android:textSize="15sp"/>
                     </LinearLayout>
                 </LinearLayout>
-            </FrameLayout>
+            </LinearLayout>
         </RelativeLayout>
     </ScrollView>
 

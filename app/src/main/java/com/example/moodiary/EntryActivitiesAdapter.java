@@ -20,9 +20,9 @@ import java.util.ArrayList;
 public class EntryActivitiesAdapter extends ArrayAdapter<EntryActivity> {
 
 
-    private final int[] chooseStatus;
+    protected final boolean[] chooseStatus;
 
-    public EntryActivitiesAdapter(@NonNull Context context, ArrayList<EntryActivity> activityArrayList, int[] chooseStatus) {
+    public EntryActivitiesAdapter(@NonNull Context context, ArrayList<EntryActivity> activityArrayList, boolean[] chooseStatus) {
         super(context, 0, activityArrayList);
         this.chooseStatus = chooseStatus;
     }
@@ -36,25 +36,29 @@ public class EntryActivitiesAdapter extends ArrayAdapter<EntryActivity> {
             listitemView = LayoutInflater.from(getContext()).inflate(R.layout.custom_activity_layout, parent, false);
         }
 
-        EntryActivity     actModel      = getItem(position);
-        LinearLayout actLayout     = listitemView.findViewById(R.id.activity_layout);
-        ImageView    actIcon       = listitemView.findViewById(R.id.activity_icon);
-        ImageView    circularShape = listitemView.findViewById(R.id.activity_circular);
-        TextView     actTxt        = listitemView.findViewById(R.id.activity_label);
-        actLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (chooseStatus[position] == 0) {
-                    chooseStatus[position] = 1;
-                    circularShape.setImageResource(R.drawable.circular_shape);
-                    ImageViewCompat.setImageTintList(actIcon, ColorStateList.valueOf(Color.parseColor("#FFFFFF")));
-                } else if (chooseStatus[position] == 1) {
-                    chooseStatus[position] = 0;
-                    circularShape.setImageResource(R.drawable.circular_shape_none);
-                    ImageViewCompat.setImageTintList(actIcon, ColorStateList.valueOf(Color.parseColor("#97e0bb")));
-                }
+        EntryActivity actModel      = getItem(position);
+        LinearLayout  actLayout     = listitemView.findViewById(R.id.activity_layout);
+        ImageView     actIcon       = listitemView.findViewById(R.id.activity_icon);
+        ImageView     circularShape = listitemView.findViewById(R.id.activity_circular);
+        TextView      actTxt        = listitemView.findViewById(R.id.activity_label);
+
+        if (chooseStatus[position]) {
+            circularShape.setImageResource(R.drawable.circular_shape);
+            ImageViewCompat.setImageTintList(actIcon, ColorStateList.valueOf(Color.parseColor("#FFFFFF")));
+        }
+
+        actLayout.setOnClickListener(view -> {
+            if (!chooseStatus[position]) {
+                chooseStatus[position] = true;
+                circularShape.setImageResource(R.drawable.circular_shape);
+                ImageViewCompat.setImageTintList(actIcon, ColorStateList.valueOf(Color.parseColor("#FFFFFF")));
+            } else {
+                chooseStatus[position] = false;
+                circularShape.setImageResource(R.drawable.circular_shape_none);
+                ImageViewCompat.setImageTintList(actIcon, ColorStateList.valueOf(Color.parseColor("#97e0bb")));
             }
         });
+
         actIcon.setImageResource(actModel.getAct_icon());
         actTxt.setText(actModel.getAct_name());
         return listitemView;

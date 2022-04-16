@@ -10,7 +10,7 @@ public class Entry {
     private String timeOfmood;
     private String moodType;
     private String dateOfMood;
-    private String imgLink;
+    private String imgLink = "";
 
     // FOR FIREBASE
     public Entry(){}
@@ -25,25 +25,10 @@ public class Entry {
         timeOfmood = time;
         moodType = type;
         dateOfMood = dayOfmood + " " +timeOfmood;
-        imgLink="";
-    }
-
-    public Entry(String activities, String noteSth, String day, String time, String type, String linkImg){
-
-        activity = activities;
-        note = noteSth;
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        Date date = new Date();
-        dayOfmood = day;
-        timeOfmood = time;
-        moodType = type;
-        dateOfMood = dayOfmood + " " +timeOfmood;
-        imgLink=linkImg;
     }
 
     public String getActivity() {
-        return activity;
-    }
+        return activity;}
 
     public String getNote() {
         return note;

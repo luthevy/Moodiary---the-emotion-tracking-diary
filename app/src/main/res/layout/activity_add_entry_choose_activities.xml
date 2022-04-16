@@ -113,7 +113,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:backgroundTint="@color/main2"
-                        android:text="Tap to Add Photo..."/>
+                        android:text="Add Photo"/>
                     <ImageView
                         android:id="@+id/selectedImage"
                         android:layout_width="110dp"

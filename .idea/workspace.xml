@@ -3,7 +3,10 @@
   <component name="AndroidLayouts">
     <shared>
       <config>
+        <device id="_device_class_phone" />
         <device id="Nexus 5X" />
+        <option name="nonWearDeviceLastStateName" value="Portrait" />
+        <target>android-31</target>
       </config>
     </shared>
   </component>
@@ -15,20 +18,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da699d9d-720a-47fa-9e1a-ddcb9b06019d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/EntryActivitiesAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/EntryActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/Activity/AddEntry_ChooseActivitiesActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/Activity/AddEntry_ChooseActivitiesActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/Activity/AddEntry_ChooseMoodsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/Activity/AddEntry_ChooseMoodsActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/Activity/ShowEntriesActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/Activity/ShowEntriesActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/Activity/UpdateEntryActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/Activity/UpdateEntryActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/CustomEntriesList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/EntriesAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/CustomExtraMoods.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/MoodsAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/CustomOneEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/CustomOneEntry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/YearStatistic.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/YearStatistic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/Entry.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/Entry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/EntryActivitiesAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/EntryActivitiesAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/MoodsAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodiary/MoodsAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_entry_choose_activities.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_entry_choose_activities.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_entry_choose_moods.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_entry_choose_moods.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_calendar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_calendar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_show_entries.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_show_entries.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_update_entry.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_update_entry.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/custom_show_one_entries.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/custom_show_one_entries.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,10 +64,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="layoutResourceFile" />
         <option value="valueResourceFile" />
         <option value="resourceFile" />
         <option value="Class" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>
@@ -105,7 +105,7 @@
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="project.propDebugger" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -306,5 +306,16 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/moodiary/Activity/ShowEntriesActivity.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
