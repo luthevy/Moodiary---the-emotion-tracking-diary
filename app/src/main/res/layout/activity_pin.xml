@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.hanks.passcodeview.PasscodeView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main1"
+        app:numberTextColor="@color/DarkGray">
+
+    </com.hanks.passcodeview.PasscodeView>
+</RelativeLayout>
