@@ -2,7 +2,6 @@ package com.example.moodiary.Fragment;
 
 import androidx.fragment.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.example.moodiary.DayViewFacade;
 import com.example.moodiary.Entry;
+import com.example.moodiary.EventDecorator;
 import com.example.moodiary.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,14 +29,12 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 
-
 public class CalendarFragment extends Fragment {
     private MaterialCalendarView calendarView;
     private ArrayList<String> listEntry;
     DatabaseReference ref;
     TextView amazing,happy,ok,sad,awful;
     Calendar c;
-
     int selectedMonth = 0;
 
     @Override
@@ -55,8 +54,6 @@ public class CalendarFragment extends Fragment {
         listEntry=new ArrayList<String>();
 
         countMoodinMonth(ref, selectedMonth, listEntry);
-
-
         calendarView.setOnMonthChangedListener(new OnMonthChangedListener() {
             @Override
             public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
@@ -67,8 +64,13 @@ public class CalendarFragment extends Fragment {
         });
         return v;
     }
+
     private void countMoodinMonth(DatabaseReference ref, int selectedMonth, ArrayList<String> listEntry){
-        //                Get entry from Firebase
+//        Get entry from Firebase
+        CalendarDay eventDay = CalendarDay.from(2022, 4, 17);
+        EventDecorator eventDec = new EventDecorator(1, Collections.singleton(eventDay));
+
+
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -85,7 +87,6 @@ public class CalendarFragment extends Fragment {
                     if (currentMonth == selectedMonth) {
                         listEntry.add(entry.getMoodType());
                     }
-
                 }
                 int setAmazingStat = Collections.frequency(listEntry,"Amazing") +
                         Collections.frequency(listEntry,"Medium") +
