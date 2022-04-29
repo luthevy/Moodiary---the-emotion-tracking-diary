@@ -23,45 +23,43 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         editFullname = findViewById(R.id.edtxt_SignupUsername);
-        editEmail = findViewById(R.id.edtxt_SignupEmail);
-        editPw = findViewById(R.id.edtxt_SignupPassword);
+        editEmail    = findViewById(R.id.edtxt_SignupEmail);
+        editPw       = findViewById(R.id.edtxt_SignupPassword);
         editRetypePw = findViewById(R.id.edtxt_SignupRetypePw);
-        btnRegister = findViewById(R.id.btnRegister);
-        btnTurnback = findViewById(R.id.btnRegisterBack);
-        mAuth = FirebaseAuth.getInstance();
+        btnRegister  = findViewById(R.id.btnRegister);
+        btnTurnback  = findViewById(R.id.btnRegisterBack);
+        mAuth        = FirebaseAuth.getInstance();
 
         btnTurnback.setOnClickListener(view -> {
             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
         });
         btnRegister.setOnClickListener(view -> {
-            if (editFullname.getText().length()>0 &&
-                editEmail.getText().length()>0 &&
-                editPw.getText().length()>0 &&
-                editRetypePw.getText().length()>0) {
-                if (editPw.getText().toString().equals(editRetypePw.getText().toString())){
-                    register(editFullname.getText().toString(),editEmail.getText().toString(),editPw.getText().toString());
+            if (editFullname.getText().length() > 0 &&
+                    editEmail.getText().length() > 0 &&
+                    editPw.getText().length() > 0 &&
+                    editRetypePw.getText().length() > 0) {
+                if (editPw.getText().toString().equals(editRetypePw.getText().toString())) {
+                    register(editFullname.getText().toString(), editEmail.getText().toString(), editPw.getText().toString());
                     startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                }
-                else{
+                } else {
                     Toast.makeText(this, "Invalid retype password", Toast.LENGTH_SHORT).show();
                 }
-            }
-            else{
+            } else {
                 Toast.makeText(this, "Fill in the blank!", Toast.LENGTH_SHORT).show();
             }
         });
     }
+
     private void register(String name, String email, String password) {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
-                    if (task.isSuccessful() && task.getResult()!=null) {
+                    if (task.isSuccessful() && task.getResult() != null) {
                         FirebaseUser fbaseUser = task.getResult().getUser();
                         fbaseUser.sendEmailVerification();
-                        if (fbaseUser!=null){
+                        if (fbaseUser != null) {
                             UserProfileChangeRequest request = new UserProfileChangeRequest.Builder().setDisplayName(name).build();
                             fbaseUser.updateProfile(request).addOnCompleteListener(task1 -> reload());
-                        }
-                        else{
+                        } else {
                             Toast.makeText(getApplicationContext(), "Register failed", Toast.LENGTH_SHORT).show();
                         }
                     } else {
@@ -70,7 +68,8 @@ public class SignupActivity extends AppCompatActivity {
                     }
                 });
     }
-    private void reload(){
+
+    private void reload() {
         startActivity(new Intent(getApplicationContext(), LoginActivity.class));
     }
 //    @Override

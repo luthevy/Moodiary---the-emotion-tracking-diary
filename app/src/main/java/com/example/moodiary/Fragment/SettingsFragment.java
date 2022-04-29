@@ -2,7 +2,6 @@ package com.example.moodiary.Fragment;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import androidx.fragment.app.Fragment;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -11,13 +10,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+
 import com.example.moodiary.Activity.LoginActivity;
+import com.example.moodiary.Activity.PasscodeActivity;
+import com.example.moodiary.Activity.UpdatePasscodeActivity;
 import com.example.moodiary.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class SettingsFragment extends Fragment {
-    private TextView     btnExit;
+    private TextView btnSetGoal, btnEditMoods, btnEditActivities, btnSetPin, btnChangePassword, btnLogout;
     private FirebaseUser fbaseUser;
     private TextView     userName;
 
@@ -25,8 +28,18 @@ public class SettingsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_settings, container, false);
         userName = v.findViewById(R.id.name);
-        btnExit  = v.findViewById(R.id.btnLogout);
-        btnExit.setOnClickListener(view -> {
+
+        btnSetGoal        = v.findViewById(R.id.btnSetGoal);
+        btnEditMoods      = v.findViewById(R.id.btnSettingEditMoods);
+        btnEditActivities = v.findViewById(R.id.btnSettingEditActivities);
+        btnSetPin         = v.findViewById(R.id.btnSetPin);
+        btnChangePassword = v.findViewById(R.id.btnChangePassword);
+        btnLogout         = v.findViewById(R.id.btnLogout);
+
+        btnSetPin.setOnClickListener(view ->
+                startActivity(new Intent(v.getContext(), UpdatePasscodeActivity.class)));
+
+        btnLogout.setOnClickListener(view -> {
             AlertDialog dialog = new AlertDialog.Builder(v.getContext())
                     .setTitle("Logout")
                     .setMessage("Are you sure?")

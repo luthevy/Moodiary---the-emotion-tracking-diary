@@ -30,7 +30,7 @@ public class ForgotPwActivity extends AppCompatActivity {
     private void validateData(){
         email = txtEmail.getText().toString();
         if (email.isEmpty()){
-            Toast.makeText(this, "Fill in email", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please fill in email", Toast.LENGTH_SHORT).show();
         }
         else{
             forgetPass();
