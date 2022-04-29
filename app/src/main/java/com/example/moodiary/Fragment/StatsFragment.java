@@ -1,5 +1,6 @@
 package com.example.moodiary.Fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -8,12 +9,21 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.ListAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.example.moodiary.Activity.ShowEntriesActivity;
+import com.example.moodiary.CustomActivitiesOT;
+import com.example.moodiary.CustomSpinner;
 import com.example.moodiary.Entry;
 import com.example.moodiary.MoodInfo;
 import com.example.moodiary.R;
@@ -41,6 +51,7 @@ import com.google.firebase.database.ValueEventListener;
 import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.Text;
 
+import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -56,15 +67,21 @@ public class StatsFragment extends Fragment {
     private PieChart pieChartCountMood;
     private TextView currentMonthStatic;
     private Button toYearStatics;
+    private Spinner moodOT;
+    private GridView moodGV, activityGV;
+    Context thisContext;
     ImageButton backMonth, nextMonth;
 
-    private ArrayList<Entry>         listEntry;
+    private ArrayList<Entry> listEntry;
     private HashMap<String, Integer> countMood;
+    private HashMap<Integer, Integer> countMoodActivities;
+    private HashMap<Integer, Integer> countAllActivities;
+
     private int currentMonth, currentYear;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
+        thisContext = this.getActivity();
         View v = inflater.inflate(R.layout.activity_month_statistics, container, false);
         moodLineChart = v.findViewById(R.id.moodLineChart);
         pieChartCountMood = v.findViewById(R.id.pieChartCountMood);
@@ -72,6 +89,9 @@ public class StatsFragment extends Fragment {
         toYearStatics = v.findViewById(R.id.toYearStatic);
         backMonth = v.findViewById(R.id.button_back_month);
         nextMonth = v.findViewById(R.id.button_next_month);
+        moodOT = (Spinner) v.findViewById(R.id.moodOT);
+        moodGV = v.findViewById(R.id.moodGV);
+        activityGV = v.findViewById(R.id.activityGV);
 
 
         Date nowdate = new Date();
@@ -95,7 +115,7 @@ public class StatsFragment extends Fragment {
                 } else
                     currentMonth--;
                 currentMonthStatic.setText(currentMonth + "/" + currentYear);
-                getChart(currentMonth, currentYear);
+                getMoodStatics(currentMonth, currentYear);
             }
         });
 
@@ -108,17 +128,17 @@ public class StatsFragment extends Fragment {
                 } else
                     currentMonth++;
                 currentMonthStatic.setText(currentMonth + "/" + currentYear);
-                getChart(currentMonth, currentYear);
+                getMoodStatics(currentMonth, currentYear);
             }
         });
 
 
-        getChart(currentMonth, currentYear);
+        getMoodStatics(currentMonth, currentYear);
 
         return v;
     }
 
-    private void getChart(int month, int year) {
+    private void getMoodStatics(int month, int year) {
         listEntry = new ArrayList<>();
         countMood = new HashMap<>();
         DatabaseReference dtb = FirebaseDatabase.getInstance().getReference("Entry");
@@ -176,6 +196,11 @@ public class StatsFragment extends Fragment {
 
                 //-----------------Load pie chart---------------------------
                 loadPieChartData();
+
+                //------------------- Load statics -------------------
+                loadOftenTogether();
+                loadActivityCount();
+
             }
 
             @Override
@@ -237,7 +262,6 @@ public class StatsFragment extends Fragment {
 
     }
 
-
     private void loadPieChartData() {
         ArrayList<PieEntry> entries = new ArrayList<>();
         for (String key : countMood.keySet())
@@ -280,6 +304,71 @@ public class StatsFragment extends Fragment {
         pieChartCountMood.invalidate();
         pieChartCountMood.animateY(1300, Easing.EaseInOutQuad);
 
+
+    }
+
+
+    private void loadOftenTogether() {
+        ArrayList<String> listCurMood = new ArrayList<>();
+        ArrayList<Integer> moodNum = new ArrayList<>();
+        for (String key : countMood.keySet()) {
+            listCurMood.add(key);
+            moodNum.add(countMood.get(key));
+        }
+
+        CustomSpinner adapter = new CustomSpinner(this.getActivity(), listCurMood, moodNum);
+        moodOT.setAdapter(adapter);
+
+        moodOT.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                getMonthMoodAcitivies(listCurMood.get(i));
+                setDynamicHeight(moodGV);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                getMonthMoodAcitivies(listCurMood.get(0));
+                setDynamicHeight(moodGV);
+            }
+        });
+    }
+
+    private void loadActivityCount() {
+        getAllMonthAcitivies();
+        setDynamicHeight(activityGV);
+    }
+
+
+    private void getMonthMoodAcitivies(String mood) {
+        countMoodActivities = new HashMap<>();
+        for (Entry e : listEntry) {
+            if (e.getMoodType().equals(mood)) {
+                String[] parts = e.getActivity().split(" ");
+                for (String i : parts) {
+                    int numAct = Integer.parseInt(i);
+                    if (countMoodActivities.containsKey(numAct))
+                        countMoodActivities.put(numAct, countMoodActivities.get(numAct) + 1);
+                    else
+                        countMoodActivities.put(numAct, 1);
+                }
+            }
+        }
+        ArrayList<Integer> listCurAct = new ArrayList<>();
+        ArrayList<Integer> actNum = new ArrayList<>();
+        for (Integer key : countMoodActivities.keySet()) {
+            listCurAct.add(key);
+            actNum.add(countMoodActivities.get(key));
+        }
+        CustomActivitiesOT OTadapter = new CustomActivitiesOT(thisContext, listCurAct, actNum);
+        moodGV.setAdapter(OTadapter);
+    }
+
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        thisContext = context;
     }
 
     private int getMoodNum(Entry e) {
@@ -305,5 +394,55 @@ public class StatsFragment extends Fragment {
             }
         }
         return colors;
+    }
+
+    private void getAllMonthAcitivies() {
+        countAllActivities = new HashMap<>();
+        for (Entry e : listEntry) {
+            String[] parts = e.getActivity().split(" ");
+            for (String i : parts) {
+                int numAct = Integer.parseInt(i);
+                if (countAllActivities.containsKey(numAct))
+                    countAllActivities.put(numAct, countAllActivities.get(numAct) + 1);
+                else
+                    countAllActivities.put(numAct, 1);
+            }
+        }
+        ArrayList<Integer> listCurAct = new ArrayList<>();
+        ArrayList<Integer> actNum = new ArrayList<>();
+        for (Integer key : countAllActivities.keySet()) {
+            listCurAct.add(key);
+            actNum.add(countAllActivities.get(key));
+        }
+        CustomActivitiesOT OTadapter = new CustomActivitiesOT(thisContext, listCurAct, actNum);
+        activityGV.setAdapter(OTadapter);
+    }
+
+    private void setDynamicHeight(GridView gridView) {
+        ListAdapter gridViewAdapter = gridView.getAdapter();
+        if (gridViewAdapter == null) {
+            // pre-condition
+            return;
+        }
+
+        int totalHeight = 0;
+        int items = gridViewAdapter.getCount();
+        int rows = 0;
+
+        View listItem = gridViewAdapter.getView(0, null, gridView);
+        listItem.measure(0, 0);
+        totalHeight = listItem.getMeasuredHeight() + 30;
+
+        float x = 1;
+        if (items > 5) {
+            x = items / 5;
+            rows = (int) (x + 1);
+            totalHeight *= rows;
+        }
+
+        ViewGroup.LayoutParams params = gridView.getLayoutParams();
+        params.height = totalHeight;
+        gridView.setLayoutParams(params);
+
     }
 }

@@ -8,9 +8,11 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -59,6 +61,8 @@ public class YearStatistic extends Activity {
         setContentView(R.layout.activity_year_statistics);
         currentYearStatistic = findViewById(R.id.currentYearStatistic);
         currentYear = Integer.parseInt(currentYearStatistic.getText().toString());
+
+
 
         maxDayInMonth = findViewById(R.id.maxDayInMonth);
         MonthOfYear = new LinearLayout[13];

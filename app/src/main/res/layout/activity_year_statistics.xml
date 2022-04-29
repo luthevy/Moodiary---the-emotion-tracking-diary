@@ -154,7 +154,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:background="@drawable/entries_box">
+                android:background="@drawable/entries_box"
+                android:layout_marginBottom="20dp">
 
                 <com.github.mikephil.charting.charts.BarChart
                     android:id="@+id/barChartCountMood"
@@ -162,6 +163,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="18dp" />
             </LinearLayout>
+
+
 
         </LinearLayout>
     </ScrollView>
