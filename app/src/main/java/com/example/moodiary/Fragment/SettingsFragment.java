@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import com.example.moodiary.Activity.LoginActivity;
 import com.example.moodiary.Activity.PasscodeActivity;
 import com.example.moodiary.Activity.UpdatePasscodeActivity;
+import com.example.moodiary.Activity.UpdatePasswordActivity;
 import com.example.moodiary.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -35,6 +36,10 @@ public class SettingsFragment extends Fragment {
         btnSetPin         = v.findViewById(R.id.btnSetPin);
         btnChangePassword = v.findViewById(R.id.btnChangePassword);
         btnLogout         = v.findViewById(R.id.btnLogout);
+
+
+        btnChangePassword.setOnClickListener(view ->
+                startActivity(new Intent(v.getContext(), UpdatePasswordActivity.class)));
 
         btnSetPin.setOnClickListener(view ->
                 startActivity(new Intent(v.getContext(), UpdatePasscodeActivity.class)));

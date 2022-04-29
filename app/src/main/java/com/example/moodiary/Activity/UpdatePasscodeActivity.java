@@ -10,7 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.moodiary.R;
 
 
@@ -69,20 +71,15 @@ public class UpdatePasscodeActivity extends AppCompatActivity {
                     npr = newPINRetype.getText().toString(),
                     oldPassword = prefs.getString("PIN", "");
 
-            System.out.println("a");
-
-            if ((!oldPassword.equals("")) && (!cp.equals(oldPassword))) {
+            if ((!oldPassword.equals("")) && (!cp.equals(oldPassword)))
                 Toast.makeText(getApplicationContext(), "Current PIN is incorrect", Toast.LENGTH_SHORT).show();
-                System.out.println("b");
-            } else if (np.length() != 4) {
+            else if (np.length() != 4)
                 Toast.makeText(getApplicationContext(), "New PIN must be 4 numbers only", Toast.LENGTH_SHORT).show();
-                System.out.println("c");
-            } else if (!npr.equals(np)) {
+            else if (!npr.equals(np))
                 Toast.makeText(getApplicationContext(), "Retyped New PIN does not match with New PIN", Toast.LENGTH_SHORT).show();
-                System.out.println("d");
-            } else {
+            else {
                 prefsEdit.putString("PIN", np).apply();
-                Toast.makeText(getApplicationContext(), "Updated Successful!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Updated Successfully!", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getApplicationContext(), ShowEntriesActivity.class));
                 finish();
             }
