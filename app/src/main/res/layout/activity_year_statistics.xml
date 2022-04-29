@@ -154,8 +154,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:background="@drawable/entries_box"
-                android:layout_marginBottom="20dp">
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/entries_box">
 
                 <com.github.mikephil.charting.charts.BarChart
                     android:id="@+id/barChartCountMood"
@@ -164,6 +164,80 @@
                     android:layout_marginLeft="18dp" />
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/oftentogether"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="Often Together"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/entries_box"
+                android:orientation="vertical">
+
+                <Spinner
+                    android:id="@+id/moodYearOT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="center_horizontal" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="You often do this"
+                    android:layout_marginBottom="10dp"/>
+
+                <GridView
+                    android:id="@+id/moodYearGV"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:horizontalSpacing="15dp"
+                    android:numColumns="4"
+                    android:verticalSpacing="15dp"
+                    android:layout_marginBottom="15dp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="Activity Count"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="50dp"
+                android:background="@drawable/entries_box"
+                android:orientation="vertical">
+
+                <GridView
+                    android:id="@+id/activityYearGV"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:horizontalSpacing="15dp"
+                    android:numColumns="4"
+                    android:stretchMode="columnWidth"
+                    android:verticalSpacing="15dp"
+                    android:layout_marginBottom="25dp"
+                    />
+
+            </LinearLayout>
 
 
         </LinearLayout>

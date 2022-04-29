@@ -8,10 +8,13 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -48,20 +51,30 @@ public class YearStatistic extends Activity {
     String[] month_brief = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
     TextView currentYearStatistic;
     ImageButton backBtn;
-    int currentYear;
+    Context thisContext;
+    private int currentYear;
     private BarChart barChartCountMood;
+
+    private Spinner moodYearOT;
+    private GridView moodYearGV, activityYearGV;
     private ArrayList<Entry> listEntry;
     private HashMap<String, Integer> countMood;
+
+
     ArrayList barList = new ArrayList();
     private Context context = this;
+    private HashMap<Integer, Integer> countYearMoodActivities;
+    private HashMap<Integer, Integer> countAllYearActivities;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_year_statistics);
         currentYearStatistic = findViewById(R.id.currentYearStatistic);
-        currentYear = Integer.parseInt(currentYearStatistic.getText().toString());
-
+        Date tDate = new Date();
+        currentYear = Integer.parseInt(String.valueOf(tDate.getYear()+1900));
+        currentYearStatistic.setText(String.valueOf(tDate.getYear()+1900));
+        thisContext = this;
 
 
         maxDayInMonth = findViewById(R.id.maxDayInMonth);
@@ -79,6 +92,9 @@ public class YearStatistic extends Activity {
         MonthOfYear[11] = findViewById(R.id.Month11);
         MonthOfYear[12] = findViewById(R.id.Month12);
         backBtn = findViewById(R.id.backBtnInYear);
+        moodYearOT = findViewById(R.id.moodYearOT);
+        moodYearGV = findViewById(R.id.moodYearGV);
+        activityYearGV = findViewById(R.id.activityYearGV);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,7 +102,10 @@ public class YearStatistic extends Activity {
             }
         });
         listEntry = new ArrayList<>();
+        getYearStatistic();
+    }
 
+    private void getYearStatistic(){
         DatabaseReference dtb = FirebaseDatabase.getInstance().getReference("Entry");
         dtb.addValueEventListener(new ValueEventListener() {
             @Override
@@ -244,6 +263,12 @@ public class YearStatistic extends Activity {
                 barChartCountMood.getAxisLeft().setEnabled(false);
                 barChartCountMood.getAxisRight().setEnabled(false);
                 barChartCountMood.invalidate();
+
+                //-----------------
+                loadOftenTogether();
+
+                loadActivityCount();
+
             }
 
             @Override
@@ -273,4 +298,111 @@ public class YearStatistic extends Activity {
             }
         }
     }
+
+    private void loadOftenTogether() {
+        ArrayList<String> listCurMood = new ArrayList<>();
+        ArrayList<Integer> moodNum = new ArrayList<>();
+        for (String key : countMood.keySet()) {
+            listCurMood.add(key);
+            moodNum.add(countMood.get(key));
+        }
+
+        CustomSpinner adapter = new CustomSpinner(this, listCurMood, moodNum);
+        moodYearOT.setAdapter(adapter);
+
+        moodYearOT.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                getMonthMoodAcitivies(listCurMood.get(i));
+                setDynamicHeight(moodYearGV);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                getMonthMoodAcitivies(listCurMood.get(0));
+                setDynamicHeight(moodYearGV);
+            }
+        });
+    }
+
+    private void getMonthMoodAcitivies(String mood) {
+        countYearMoodActivities = new HashMap<>();
+        for (Entry e : listEntry) {
+            if (e.getMoodType().equals(mood)) {
+                String[] parts = e.getActivity().split(" ");
+                for (String i : parts) {
+                    int numAct = Integer.parseInt(i);
+                    if (countYearMoodActivities.containsKey(numAct))
+                        countYearMoodActivities.put(numAct, countYearMoodActivities.get(numAct) + 1);
+                    else
+                        countYearMoodActivities.put(numAct, 1);
+                }
+            }
+        }
+        ArrayList<Integer> listCurAct = new ArrayList<>();
+        ArrayList<Integer> actNum = new ArrayList<>();
+        for (Integer key : countYearMoodActivities.keySet()) {
+            listCurAct.add(key);
+            actNum.add(countYearMoodActivities.get(key));
+        }
+        CustomActivitiesOT OTadapter = new CustomActivitiesOT(thisContext, listCurAct, actNum);
+        moodYearGV.setAdapter(OTadapter);
+    }
+
+    private void loadActivityCount() {
+        getAllYearActivities();
+        setDynamicHeight(activityYearGV);
+    }
+
+    private void getAllYearActivities() {
+        countAllYearActivities = new HashMap<>();
+        for (Entry e : listEntry) {
+            String[] parts = e.getActivity().split(" ");
+            for (String i : parts) {
+                int numAct = Integer.parseInt(i);
+                if (countAllYearActivities.containsKey(numAct))
+                    countAllYearActivities.put(numAct, countAllYearActivities.get(numAct) + 1);
+                else
+                    countAllYearActivities.put(numAct, 1);
+            }
+        }
+        ArrayList<Integer> listCurAct = new ArrayList<>();
+        ArrayList<Integer> actNum = new ArrayList<>();
+        for (Integer key : countAllYearActivities.keySet()) {
+            listCurAct.add(key);
+            actNum.add(countAllYearActivities.get(key));
+        }
+        CustomActivitiesOT OTadapter = new CustomActivitiesOT(thisContext, listCurAct, actNum);
+        activityYearGV.setAdapter(OTadapter);
+    }
+
+
+    private void setDynamicHeight(GridView gridView) {
+        ListAdapter gridViewAdapter = gridView.getAdapter();
+        if (gridViewAdapter == null) {
+            // pre-condition
+            return;
+        }
+
+        int totalHeight = 0;
+        int items = gridViewAdapter.getCount();
+        int rows = 0;
+
+        View listItem = gridViewAdapter.getView(0, null, gridView);
+        listItem.measure(0, 0);
+        totalHeight = listItem.getMeasuredHeight() + 40;
+
+        float x = 1;
+        if (items > 5) {
+            x = items / 5;
+            rows = (int) (x + 1);
+            totalHeight *= rows;
+        }
+
+        ViewGroup.LayoutParams params = gridView.getLayoutParams();
+        params.height = totalHeight;
+        gridView.setLayoutParams(params);
+
+    }
+
 }

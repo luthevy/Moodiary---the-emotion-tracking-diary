@@ -50,7 +50,7 @@ public class CustomSpinner extends BaseAdapter{
         TextView moodMultiply = row.findViewById(R.id.moodMultiply);
 
         setMoodThumb(moodImg, items.get(position), moodName);
-        moodMultiply.setText("x"+count.get(position));
+        moodMultiply.setText("(x"+count.get(position)+")");
 
         return(row);
     }

@@ -335,7 +335,7 @@ public class StatsFragment extends Fragment {
     }
 
     private void loadActivityCount() {
-        getAllMonthAcitivies();
+        getAllMonthActivities();
         setDynamicHeight(activityGV);
     }
 
@@ -396,7 +396,7 @@ public class StatsFragment extends Fragment {
         return colors;
     }
 
-    private void getAllMonthAcitivies() {
+    private void getAllMonthActivities() {
         countAllActivities = new HashMap<>();
         for (Entry e : listEntry) {
             String[] parts = e.getActivity().split(" ");
@@ -431,7 +431,7 @@ public class StatsFragment extends Fragment {
 
         View listItem = gridViewAdapter.getView(0, null, gridView);
         listItem.measure(0, 0);
-        totalHeight = listItem.getMeasuredHeight() + 30;
+        totalHeight = listItem.getMeasuredHeight() + 40;
 
         float x = 1;
         if (items > 5) {
