@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.moodiary">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo_moodiary"
@@ -11,44 +14,46 @@
         android:theme="@style/Theme.Moodiary">
         <activity
             android:name=".Activity.LoginActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".Activity.SignupActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".Activity.ShowEntriesActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".Activity.ForgotPwActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".Activity.AddEntry_ChooseMoodsActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".Activity.AddEntry_ChooseActivitiesActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".Activity.UpdateEntryActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".YearStatistic"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".Activity.PasscodeActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".Activity.UpdatePasscodeActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".Activity.UpdatePasswordActivity"
-            android:exported="true"/>
+            android:exported="true" />
+        <activity
+            android:name=".Activity.AddNewMood"
+            android:exported="true" />
     </application>
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 </manifest>
