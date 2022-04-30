@@ -16,6 +16,7 @@ import com.example.moodiary.Entry;
 import com.example.moodiary.Fragment.CalendarFragment;
 import com.example.moodiary.Fragment.SettingsFragment;
 import com.example.moodiary.Fragment.StatsFragment;
+import com.example.moodiary.MoodInfo;
 import com.example.moodiary.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -44,7 +45,6 @@ public class ShowEntriesActivity extends AppCompatActivity {
     private       BottomNavigationView bottom_navigation_menu;
     private       FloatingActionButton fabMain;
     private final Boolean              isFabOpen = false;
-
     private FirebaseDatabase database;
     DatabaseReference ref;
     private ArrayList<Entry> listEntry;
@@ -59,19 +59,20 @@ public class ShowEntriesActivity extends AppCompatActivity {
         bottom_navigation_menu.setBackground(null);
         bottom_navigation_menu.setItemIconTintList(null);
         bottom_navigation_menu.setOnNavigationItemSelectedListener(navListener);
-
 //---------------------Decor Sub Menu-------------------------------
         fabMain = findViewById(R.id.fabMain);
-
         fabMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), AddEntry_ChooseMoodsActivity.class));
                 //Test screen year statistic
                 //startActivity(new Intent(getApplicationContext(),YearStatistic.class ));
-
             }
         });
+
+        //reset data
+        //MoodInfo.addToDatabase();
+        MoodInfo.retrieveData();
 
 
 //--------------------------------Get infor from database-------

@@ -1,7 +1,5 @@
 package com.example.moodiary.Activity;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
@@ -23,7 +21,6 @@ import com.example.moodiary.CustomMoodInAdding;
 import com.example.moodiary.MoodInfo;
 import com.example.moodiary.R;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class AddNewMood extends AppCompatActivity implements View.OnClickListener {
 
@@ -96,7 +93,7 @@ public class AddNewMood extends AppCompatActivity implements View.OnClickListene
                             .setTitle("Add Mood")
                             .setMessage("Add Success")
                             .setPositiveButton("OK", (dialogInterface, i) -> {
-                                startActivity(new Intent(AddNewMood.this, AddEntry_ChooseMoodsActivity.class));
+                                startActivity(new Intent(AddNewMood.this, ShowEntriesActivity.class));
                             })
                             .show();
 

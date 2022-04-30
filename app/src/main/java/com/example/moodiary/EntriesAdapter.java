@@ -160,7 +160,6 @@ public class EntriesAdapter extends ArrayAdapter<ArrayList<Entry>> {
         for (int i = 0; i < MoodInfo.moods_type.length; i++) {
             for (int j = 0; j < MoodInfo.moods_type[i].length; j++) {
                 if (mood.equals(MoodInfo.moods_type[i][j])) {
-
                     img.setImageResource(MoodInfo.moods_thumbnail[i][j]);
                     img.setImageTintList(ColorStateList.valueOf(Color.parseColor(MoodInfo.moods_color[i])));
                     actColor = MoodInfo.moods_color[i];
