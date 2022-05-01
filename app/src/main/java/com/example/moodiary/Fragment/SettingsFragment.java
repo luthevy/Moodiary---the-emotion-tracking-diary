@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.example.moodiary.Activity.AddNewMood;
+import com.example.moodiary.Activity.EditMood;
 import com.example.moodiary.Activity.LoginActivity;
 import com.example.moodiary.Activity.PasscodeActivity;
 import com.example.moodiary.Activity.UpdatePasscodeActivity;
@@ -39,7 +40,7 @@ public class SettingsFragment extends Fragment {
         btnLogout         = v.findViewById(R.id.btnLogout);
 
         btnEditMoods.setOnClickListener(view ->
-                startActivity(new Intent((v.getContext()), AddNewMood.class)));
+                startActivity(new Intent((v.getContext()), EditMood.class)));
 
         btnChangePassword.setOnClickListener(view ->
                 startActivity(new Intent(v.getContext(), UpdatePasswordActivity.class)));

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/editIconMood"
+        android:layout_width="0dp"
+        android:layout_height="92dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="38dp"
+        android:tint="@color/mc2"
+        app:layout_constraintEnd_toStartOf="@+id/nameEditMood"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/mood_10" />
+
+    <TextView
+        android:id="@+id/nameEditMood"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="68dp"
+        android:text="Happy"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/editIconMood"
+        app:layout_constraintEnd_toStartOf="@+id/editMoodBtn"
+        app:layout_constraintStart_toEndOf="@+id/editIconMood"
+        app:layout_constraintTop_toTopOf="@+id/editIconMood" />
+
+    <ImageView
+        android:id="@+id/editMoodBtn"
+        android:layout_width="32dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="31dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/nameEditMood"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/edit" />
+</androidx.constraintlayout.widget.ConstraintLayout>

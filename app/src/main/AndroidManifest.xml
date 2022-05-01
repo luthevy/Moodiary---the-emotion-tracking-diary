@@ -52,8 +52,16 @@
             android:name=".Activity.UpdatePasswordActivity"
             android:exported="true" />
         <activity
+            android:name=".Activity.EditMood"
+            android:exported="true" />
+        <activity
+            android:name=".Activity.UpdateMood"
+            android:exported="true" />
+        <activity
             android:name=".Activity.AddNewMood"
             android:exported="true" />
+        <service android:name=".UploaddtbService"
+            android:exported="true"/>
     </application>
 
 </manifest>

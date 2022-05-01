@@ -1,9 +1,17 @@
 package com.example.moodiary;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
 
 import androidx.annotation.NonNull;
 
+import com.example.moodiary.Activity.AddNewMood;
+import com.example.moodiary.Activity.ShowEntriesActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,7 +27,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MoodInfo {
+    public static int needUpload = 0;
+    public static int retrieveEntry = 0;
+    public static String[] new_old={" ", ""};
 
+    public static int hasRetrieveData = 0;
     public static Integer[][] moods_thumbnail = {
             {R.drawable.mood_amazing, R.drawable.mood_02, R.drawable.mood_14},
             {R.drawable.mood_happy, R.drawable.mood_00},
@@ -45,6 +57,8 @@ public class MoodInfo {
 
     public static int[] moods_base_color = {R.color.mc1, R.color.mc2, R.color.mc3, R.color.mc4, R.color.mc5};
 
+    public static String[] mood_base_colors ={"R.color.mc1", "R.color.mc2", "R.color.mc3", "R.color.mc4", "R.color.mc5"};
+
     public static String[] activity_type = {"cleaning", "cook", "date", "drawing",
             "eat", "family", "festival", "friend",
             "game", "gift", "music", "party",
@@ -63,13 +77,14 @@ public class MoodInfo {
     public static void addToDatabase() {
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference arrayRef = rootRef.child("moods_thumbnails");
-        for (int i = 0; i < moods_thumbnail.length; i++) {
+        for (int i = 0; i < 5; i++) {
             DatabaseReference arraySend = arrayRef.child(String.valueOf(i));
             arraySend.setValue(Arrays.asList(moods_thumbnail[i]));
         }
 
+
         arrayRef = rootRef.child("moods_type");
-        for (int i = 0; i < moods_type.length; i++) {
+        for (int i = 0; i < 5; i++) {
             DatabaseReference arraySend = arrayRef.child(String.valueOf(i));
             arraySend.setValue(Arrays.asList(moods_type[i]));
         }
@@ -84,6 +99,7 @@ public class MoodInfo {
 
         arrayRef = rootRef.child("activity_thumbnail");
         arrayRef.setValue(Arrays.asList(activity_thumbnail));
+
     }
 
 
@@ -187,7 +203,6 @@ public class MoodInfo {
                     moods_type_list.add((String[]) temp.toArray(foo));
                 }
                 for (int i = 0; i < moods_type_list.size(); i++) {
-                    System.out.println(moods_type_list.get(i) + "--------");
                 }
                 moods_type = new String[4][];
                 moods_type = moods_type_list.toArray(moods_type);
@@ -215,14 +230,43 @@ public class MoodInfo {
         moods_thumbnail[type] = arrList.toArray(moods_thumbnail[type]);
 
 
-        removeCur(new_mood_index);
-        addToDatabase();
-
-
+        removeIconInNew(new_mood_index);
+        //addToDatabase();
     }
 
+    public static void updateMood(String currentMood, int new_mood_index, int color, String new_name) {
+        for (int i = 0; i<moods_type.length; i++){
+            for(int j=0; j<moods_type[i].length;j++){
+                if(moods_type[i][j].equals(currentMood)){
+                    int new_icons;
 
-    private static void removeCur(int new_mood_index) {
+                    if(new_mood_index != -1) {
+                        new_icons = new_moods[new_mood_index];
+                        removeIconInNew(new_mood_index);
+                        addIconToNew(moods_thumbnail[i][j]);
+                    }
+                    else
+                        new_icons = moods_thumbnail[i][j];
+
+                    if(i==color){
+                        moods_type[i][j] = new_name;
+                        moods_thumbnail[i][j] = new_icons;
+                    }
+                    else{
+                        removeOldMood(i, moods_thumbnail[i][j], currentMood);
+                        updateNewEditMood(color, new_icons, new_name);
+                    }
+                }
+            }
+        }
+
+        new_old[0] = currentMood;
+        new_old[1] = new_name;
+//        updateEntryAfterEditMood(currentMood, new_name);
+//        addToDatabase();
+    }
+
+    private static void removeIconInNew(int new_mood_index) {
         Integer[] list = new Integer[new_moods.length - 1];
         int j = 0;
         for (int i = 0; i < new_moods.length; i++) {
@@ -232,5 +276,62 @@ public class MoodInfo {
             }
         }
         new_moods = list;
+    }
+
+    private static void addIconToNew(int icon) {
+        Integer[] iconlist = new Integer[new_moods.length + 1];
+        for(int i = 0; i<new_moods.length;i++)
+            iconlist[i] = new_moods[i];
+        iconlist[new_moods.length]=icon;
+        new_moods = iconlist;
+    }
+
+    private static void updateNewEditMood(int color, int thumbnail, String name) {
+        String[]name_list = new String[moods_type[color].length+1];
+        for(int i = 0; i<moods_type[color].length;i++)
+            name_list[i] = moods_type[color][i];
+        name_list[moods_type[color].length] = name;
+        moods_type[color] = new String[name_list.length];
+        moods_type[color] = name_list;
+
+        Integer[]thumb_list = new Integer[moods_thumbnail[color].length+1];
+        for(int i = 0; i<moods_thumbnail[color].length;i++)
+            thumb_list[i] = moods_thumbnail[color][i];
+        thumb_list[moods_thumbnail[color].length]=thumbnail;
+        moods_thumbnail[color] = new Integer[thumb_list.length];
+        moods_thumbnail[color] = thumb_list;
+    }
+
+    private static void removeOldMood(int color, int thumbnail, String name) {
+        String[]name_list = new String[moods_type[color].length-1];
+        int j = 0;
+        for (int i = 0; i < moods_type[color].length; i++) {
+            if (!moods_type[color][i].equals(name)) {
+                name_list[j] = moods_type[color][i];
+                j++;
+            }
+        }
+        moods_type[color] = name_list;
+
+        Integer[]thumb_list = new Integer[moods_thumbnail[color].length-1];
+        int n = 0;
+        for (int i = 0; i < moods_thumbnail[color].length; i++) {
+            if (moods_thumbnail[color][i] != thumbnail ) {
+                thumb_list[n] = moods_thumbnail[color][i];
+                n++;
+            }
+        }
+        moods_thumbnail[color] = thumb_list;
+    }
+
+    public static void updateEntryAfterEditMood(String oldname, String newname){
+        DatabaseReference dtb = FirebaseDatabase.getInstance().getReference();
+        for (Entry key: ShowEntriesActivity.keyOfEntry.keySet()){
+            if(key.getMoodType().equals(oldname)){
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Entry");
+                ref.child(ShowEntriesActivity.keyOfEntry.get(key)).child("moodType").setValue(newname);
+            }
+        }
+        dtb.onDisconnect();
     }
 }

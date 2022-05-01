@@ -64,6 +64,8 @@ public class StatsFragment extends Fragment {
     ImageButton backMonth, nextMonth;
 
     private ArrayList<Entry> listEntry;
+    private ArrayList<Entry> listAllEntry;
+
     private HashMap<String, Integer> countMood;
     private HashMap<Integer, Integer> countMoodActivities;
     private HashMap<Integer, Integer> countAllActivities;
@@ -164,6 +166,7 @@ public class StatsFragment extends Fragment {
                     }
                 });
                 Collections.reverse(listEntry);
+                listAllEntry = (ArrayList)listEntry.clone();
 
                 countMood = new HashMap<>();
                 for (Entry e : listEntry) {
@@ -333,11 +336,12 @@ public class StatsFragment extends Fragment {
 
     private void getMonthMoodAcitivies(String mood) {
         countMoodActivities = new HashMap<>();
-        for (Entry e : listEntry) {
+        for (Entry e : listAllEntry) {
             if (e.getMoodType().equals(mood)) {
                 String[] parts = e.getActivity().split(" ");
                 for (String i : parts) {
                     int numAct = Integer.parseInt(i);
+                    numAct--;
                     if (countMoodActivities.containsKey(numAct))
                         countMoodActivities.put(numAct, countMoodActivities.get(numAct) + 1);
                     else
@@ -389,10 +393,11 @@ public class StatsFragment extends Fragment {
 
     private void getAllMonthActivities() {
         countAllActivities = new HashMap<>();
-        for (Entry e : listEntry) {
+        for (Entry e : listAllEntry) {
             String[] parts = e.getActivity().split(" ");
             for (String i : parts) {
                 int numAct = Integer.parseInt(i);
+                numAct--;
                 if (countAllActivities.containsKey(numAct))
                     countAllActivities.put(numAct, countAllActivities.get(numAct) + 1);
                 else

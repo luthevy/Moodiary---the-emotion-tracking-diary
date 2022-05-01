@@ -42,14 +42,16 @@ public class CustomActivitiesOT extends BaseAdapter {
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
         View row = inflater.inflate(R.layout.custom_gridview_ot, null);
 
+
         ImageView actImg = row.findViewById(R.id.activityCurIcon);
         TextView actCount = row.findViewById(R.id.activitiesCurCount);
         TextView actName = row.findViewById(R.id.activityCurName);
 
-        actImg.setImageResource(MoodInfo.activity_thumbnail[items.get(position)]);
-        actCount.setText(String.valueOf(count.get(position)));
-        actName.setText(MoodInfo.activity_type[items.get(position)]);
-
+        if(items.size() > 0) {
+            actImg.setImageResource(MoodInfo.activity_thumbnail[items.get(position)]);
+            actCount.setText(String.valueOf(count.get(position)));
+            actName.setText(MoodInfo.activity_type[items.get(position)]);
+        }
         return(row);
     }
 

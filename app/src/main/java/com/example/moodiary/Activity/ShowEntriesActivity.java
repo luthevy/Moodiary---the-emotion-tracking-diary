@@ -18,6 +18,7 @@ import com.example.moodiary.Fragment.SettingsFragment;
 import com.example.moodiary.Fragment.StatsFragment;
 import com.example.moodiary.MoodInfo;
 import com.example.moodiary.R;
+import com.example.moodiary.UploaddtbService;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
@@ -65,14 +66,38 @@ public class ShowEntriesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), AddEntry_ChooseMoodsActivity.class));
-                //Test screen year statistic
-                //startActivity(new Intent(getApplicationContext(),YearStatistic.class ));
             }
         });
 
         //reset data
         //MoodInfo.addToDatabase();
-        MoodInfo.retrieveData();
+
+        if(MoodInfo.needUpload == 1) {
+            //startService(new Intent(this, UploaddtbService.class));
+            MoodInfo.addToDatabase();
+            MoodInfo.needUpload = 0;
+            MoodInfo.hasRetrieveData = 0;
+        }
+
+        int needdo = 0;
+        if(MoodInfo.retrieveEntry == 1){
+            //MoodInfo.updateEntryAfterEditMood(MoodInfo.new_old[0], MoodInfo.new_old[1]);
+            MoodInfo.addToDatabase();
+            needdo = 1;
+            MoodInfo.retrieveEntry = 0;
+            MoodInfo.hasRetrieveData = 0;
+        }
+
+        if(needdo == 1)
+        {
+            MoodInfo.updateEntryAfterEditMood(MoodInfo.new_old[0], MoodInfo.new_old[1]);
+        }
+
+        if(MoodInfo.hasRetrieveData == 0) {
+            MoodInfo.retrieveData();
+            MoodInfo.hasRetrieveData = 1;
+        }
+
 
 
 //--------------------------------Get infor from database-------

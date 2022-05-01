@@ -57,6 +57,8 @@ public class YearStatistic extends Activity {
     private Spinner moodYearOT;
     private GridView moodYearGV, activityYearGV;
     private ArrayList<Entry> listEntry;
+    private ArrayList<Entry> listAllEntry;
+
     private HashMap<String, Integer> countMood;
 
 
@@ -137,6 +139,7 @@ public class YearStatistic extends Activity {
                     }
                 });
                 Collections.reverse(listEntry);
+                listAllEntry = (ArrayList)listEntry.clone();
 
                 countMood = new HashMap<>();
                 for (Entry e : listEntry) {
@@ -326,7 +329,7 @@ public class YearStatistic extends Activity {
 
     private void getMonthMoodAcitivies(String mood) {
         countYearMoodActivities = new HashMap<>();
-        for (Entry e : listEntry) {
+        for (Entry e : listAllEntry) {
             if (e.getMoodType().equals(mood)) {
                 String[] parts = e.getActivity().split(" ");
                 for (String i : parts) {
@@ -355,7 +358,7 @@ public class YearStatistic extends Activity {
 
     private void getAllYearActivities() {
         countAllYearActivities = new HashMap<>();
-        for (Entry e : listEntry) {
+        for (Entry e : listAllEntry) {
             String[] parts = e.getActivity().split(" ");
             for (String i : parts) {
                 int numAct = Integer.parseInt(i);

@@ -22,20 +22,22 @@ import com.example.moodiary.MoodInfo;
 import com.example.moodiary.R;
 import com.google.android.material.textfield.TextInputEditText;
 
-public class AddNewMood extends AppCompatActivity implements View.OnClickListener {
+public class UpdateMood extends AppCompatActivity implements View.OnClickListener {
 
     private TextInputEditText newMoodName;
     private GridView extraIcons;
-    private ImageView color1, color2, color3, color4, color5;
+    private ImageView color1, color2, color3, color4, color5, currentMoodIcon;
     private ImageButton btnSave;
 
     private int chosenColor = -1;
     private int chosenIcon;
     private int hasSelectedmood, previousSelectedMoodPosition = -1;
+    private String mood_name;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_new_mood);
+        setContentView(R.layout.activity_update_mood);
+        mood_name= getIntent().getStringExtra("Mood_Edit_Name");
 
         hasSelectedmood = 0;
         newMoodName = findViewById(R.id.newMoodName);
@@ -45,6 +47,7 @@ public class AddNewMood extends AppCompatActivity implements View.OnClickListene
         color3 = findViewById(R.id.color3);
         color4 = findViewById(R.id.color4);
         color5 = findViewById(R.id.color5);
+        currentMoodIcon = findViewById(R.id.currentMoodInUpdate);
         btnSave = findViewById(R.id.btnSaveInAddMood);
 
         color1.setOnClickListener(this);
@@ -53,6 +56,19 @@ public class AddNewMood extends AppCompatActivity implements View.OnClickListene
         color4.setOnClickListener(this);
         color5.setOnClickListener(this);
         btnSave.setOnClickListener(this);
+
+        for(int i = 0; i<MoodInfo.moods_type.length; i++){
+            for(int j = 0; j<MoodInfo.moods_type[i].length; j++){
+                if(MoodInfo.moods_type[i][j].equals(mood_name)){
+                    if(i<5) {
+                        newMoodName.setText(mood_name);
+                        getClicked(i);
+                        currentMoodIcon.setImageResource(MoodInfo.moods_thumbnail[i][j]);
+                        currentMoodIcon.setImageTintList(ColorStateList.valueOf(Color.parseColor(MoodInfo.moods_color[i])));
+                    }
+                }
+            }
+        }
 
         CustomMoodInAdding aAdapter = new CustomMoodInAdding(this, MoodInfo.new_moods);
         extraIcons.setAdapter(aAdapter);
@@ -80,22 +96,19 @@ public class AddNewMood extends AppCompatActivity implements View.OnClickListene
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("HE:LLLL");
                 if (TextUtils.isEmpty(newMoodName.getText().toString()))
-                    Toast.makeText(AddNewMood.this, "Please enter NAME for new mood", Toast.LENGTH_LONG).show();
+                    Toast.makeText(UpdateMood.this, "Please enter NAME for new mood", Toast.LENGTH_LONG).show();
                 else if (chosenColor == -1)
-                    Toast.makeText(AddNewMood.this, "Please choose COLOR of new mood", Toast.LENGTH_LONG).show();
-                else if (previousSelectedMoodPosition == -1)
-                    Toast.makeText(AddNewMood.this, "Please choose ICON new mood", Toast.LENGTH_LONG).show();
+                    Toast.makeText(UpdateMood.this, "Please choose COLOR of new mood", Toast.LENGTH_LONG).show();
                 else {
-                    MoodInfo.addMood(previousSelectedMoodPosition, chosenColor - 1, newMoodName.getText().toString());
-
-                    AlertDialog dialog = new AlertDialog.Builder(AddNewMood.this)
-                            .setTitle("Add Mood")
-                            .setMessage("Add Success")
+                    MoodInfo.updateMood(mood_name, previousSelectedMoodPosition, chosenColor - 1, newMoodName.getText().toString());
+                    AlertDialog dialog = new AlertDialog.Builder(UpdateMood.this)
+                            .setTitle("Edit Mood")
+                            .setMessage("Update Success")
                             .setPositiveButton("OK", (dialogInterface, i) -> {
-                                MoodInfo.needUpload = 1;
-                                startActivity(new Intent(AddNewMood.this, ShowEntriesActivity.class));
+                                MoodInfo.retrieveEntry = 1;
+                                startActivity(new Intent(UpdateMood.this, ShowEntriesActivity.class));
+                                //finish();
                             })
                             .show();
 
@@ -136,19 +149,6 @@ public class AddNewMood extends AppCompatActivity implements View.OnClickListene
                 color5.setImageResource(R.drawable.circular_shape_5_clicked);
                 chosenColor = 5;
                 break;
-//            case R.id.btnSaveInAddMood:
-//                if(newMoodName.getText().equals(""))
-//                    Toast.makeText(this, "Please enter NAME for new mood", Toast.LENGTH_LONG);
-//                else if(chosenColor == -1)
-//                    Toast.makeText(this, "Please choose COLOR of new mood", Toast.LENGTH_LONG);
-//                else if (previousSelectedMoodPosition == -1)
-//                    Toast.makeText(this, "Please choose ICON new mood", Toast.LENGTH_LONG);
-//                else{
-//                    MoodInfo.addMood(previousSelectedMoodPosition, chosenColor-1);
-//                    Toast.makeText(this, "Add Success", Toast.LENGTH_LONG);
-//                }
-//
-//                break;
         }
     }
 
@@ -160,5 +160,34 @@ public class AddNewMood extends AppCompatActivity implements View.OnClickListene
         color5.setImageResource(R.drawable.circular_shape_5);
     }
 
+    private void getClicked(int color){
+        switch (color){
+            case 0:
+                refreshChoosenColor();
+                color1.setImageResource(R.drawable.circular_shape_1_clicked);
+                chosenColor = 1;
+                break;
+            case 1:
+                refreshChoosenColor();
+                color2.setImageResource(R.drawable.circular_shape_2_clicked);
+                chosenColor = 2;
+                break;
+            case 2:
+                refreshChoosenColor();
+                color3.setImageResource(R.drawable.circular_shape_3_clicked);
+                chosenColor = 3;
+                break;
+            case 3:
+                refreshChoosenColor();
+                color4.setImageResource(R.drawable.circular_shape_4_clicked);
+                chosenColor = 4;
+                break;
+            case 4:
+                refreshChoosenColor();
+                color5.setImageResource(R.drawable.circular_shape_5_clicked);
+                chosenColor = 5;
+                break;
+        }
+    }
 
 }
