@@ -43,11 +43,11 @@
         android:layout_height="0dp"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="2dp"
+        android:backgroundTint="@color/mc2"
         android:text="ADD NEW MOOD"
-        android:background="@drawable/box"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/box" />
+        android:layout_marginVertical="15dp"/>
 
     <ListView
         android:id="@+id/listEditMood"
