@@ -362,6 +362,7 @@ public class YearStatistic extends Activity {
             String[] parts = e.getActivity().split(" ");
             for (String i : parts) {
                 int numAct = Integer.parseInt(i);
+                numAct--;
                 if (countAllYearActivities.containsKey(numAct))
                     countAllYearActivities.put(numAct, countAllYearActivities.get(numAct) + 1);
                 else
