@@ -37,7 +37,7 @@ public class AddEntry_ChooseMoodsActivity extends AppCompatActivity {
     private TextView chooseDay, chooseTime;
     DatePickerDialog.OnDateSetListener SetDate;
     int                                tHour, tMinute;
-    private ImageButton btnNext, btnBack;
+    private ImageButton btnNext, btnBack, btnEditMood;
 
     private       ImageView[] ms, mbgs;
     private TextView[]       mtexts;
@@ -229,6 +229,9 @@ public class AddEntry_ChooseMoodsActivity extends AppCompatActivity {
         );
         btnBack = findViewById(R.id.btnBack1);
         btnBack.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), ShowEntriesActivity.class)));
+
+        btnEditMood = findViewById(R.id.btnEdit);
+        btnEditMood.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), EditMood.class)));
     }
 
     public void resetBackground() {

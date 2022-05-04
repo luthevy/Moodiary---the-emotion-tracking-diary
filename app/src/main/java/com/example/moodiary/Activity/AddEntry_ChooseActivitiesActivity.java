@@ -173,21 +173,6 @@ public class AddEntry_ChooseActivitiesActivity extends AppCompatActivity {
         }
     }
 
-//    private void clickActivity(LinearLayout activity, int pos) {
-//        RelativeLayout layout        = (RelativeLayout) activity.getChildAt(0);
-//        ImageView      circularShape = (ImageView) layout.getChildAt(0);
-//        ImageView      activityImage = (ImageView) layout.getChildAt(1);
-//        if (chooseStatus[pos] == 0) {
-//            chooseStatus[pos] = 1;
-//            circularShape.setImageResource(R.drawable.circular_shape);
-//            ImageViewCompat.setImageTintList(activityImage, ColorStateList.valueOf(Color.parseColor("#FFFFFF")));
-//        } else if (chooseStatus[pos] == 1) {
-//            chooseStatus[pos] = 0;
-//            circularShape.setImageResource(R.drawable.circular_shape_none);
-//            ImageViewCompat.setImageTintList(activityImage, ColorStateList.valueOf(Color.parseColor("#32CD32")));
-//        }
-//    }
-
     private String getFileExtension(Uri uri) {
         ContentResolver cR   = getContentResolver();
         MimeTypeMap     mime = MimeTypeMap.getSingleton();
