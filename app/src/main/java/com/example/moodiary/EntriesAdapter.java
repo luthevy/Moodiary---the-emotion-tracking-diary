@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.GridLayout;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -135,8 +137,15 @@ public class EntriesAdapter extends ArrayAdapter<ArrayList<Entry>> {
             }
 
             // --------------------SET LAYOUT CHO 1 BOX CUNG NGAY------------------------
-            LinearLayout act_linear = child.findViewById(R.id.act_linear);
-            String[]     parts      = e.getActivity().split(" ");
+            GridLayout act_grid_layout = child.findViewById(R.id.act_grid_layout);
+            String[]   parts           = e.getActivity().split(" ");
+            int total = parts.length;
+            int maxColumn = 3;
+//            int maxRow = total/maxColumn;
+            act_grid_layout.setColumnCount(maxColumn);
+//            act_grid_layout.setRowCount(maxRow);
+            int c = 0;
+            int r = 0;
             for (String part : parts) {
 
                 View      small_act_layout = inflater.inflate(R.layout.custom_action_row, null);
@@ -147,8 +156,36 @@ public class EntriesAdapter extends ArrayAdapter<ArrayList<Entry>> {
                 actIcon.setImageTintList(ColorStateList.valueOf(Color.parseColor(actColor)));
 
                 textView.setText(MoodInfo.activity_type[Integer.parseInt(part) - 1]);
-                act_linear.addView(small_act_layout);
+
+                GridLayout.LayoutParams param =new GridLayout.LayoutParams();
+                param.height = GridLayout.LayoutParams.WRAP_CONTENT;
+                param.width = GridLayout.LayoutParams.WRAP_CONTENT;
+                param.columnSpec = GridLayout.spec(c);
+                param.rowSpec = GridLayout.spec(r);
+                small_act_layout.setLayoutParams(param);
+
+                c++;
+                if(c == maxColumn) {
+                    c = 0;
+                    r++;
+                }
+                act_grid_layout.addView(small_act_layout);
             }
+
+//            LinearLayout act_linear = child.findViewById(R.id.act_linear);
+//            String[]     parts      = e.getActivity().split(" ");
+//            for (String part : parts) {
+//
+//                View      small_act_layout = inflater.inflate(R.layout.custom_action_row, null);
+//                ImageView actIcon          = small_act_layout.findViewById(R.id.actIcon);
+//                TextView  textView         = small_act_layout.findViewById(R.id.actText);
+//
+//                actIcon.setImageResource(MoodInfo.activity_thumbnail[Integer.parseInt(part) - 1]);
+//                actIcon.setImageTintList(ColorStateList.valueOf(Color.parseColor(actColor)));
+//
+//                textView.setText(MoodInfo.activity_type[Integer.parseInt(part) - 1]);
+//                act_linear.addView(small_act_layout);
+//            }
 
             row.addView(child);
         }
