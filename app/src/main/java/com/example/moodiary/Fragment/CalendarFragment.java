@@ -1,6 +1,8 @@
 package com.example.moodiary.Fragment;
 
 import androidx.fragment.app.Fragment;
+
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,8 +70,8 @@ public class CalendarFragment extends Fragment {
     private void countMoodinMonth(DatabaseReference ref, int selectedMonth, ArrayList<String> listEntry){
 //        Get entry from Firebase
         CalendarDay eventDay = CalendarDay.from(2022, 4, 17);
-        EventDecorator eventDec = new EventDecorator(1, Collections.singleton(eventDay));
-
+        EventDecorator ed = new EventDecorator(Color.BLUE, Collections.singleton(eventDay));
+        calendarView.addDecorator(ed);
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override

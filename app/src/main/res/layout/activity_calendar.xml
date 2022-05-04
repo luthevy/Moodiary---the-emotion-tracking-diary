@@ -22,7 +22,7 @@
             android:layout_width="390dp"
             android:layout_height="match_parent"
             android:background="@color/WhiteSmoke"
-            app:mcv_selectionColor="#777777"
+            app:mcv_selectionColor="@color/Gray"
             app:mcv_showOtherDates="all"/>
     </androidx.cardview.widget.CardView>
 
