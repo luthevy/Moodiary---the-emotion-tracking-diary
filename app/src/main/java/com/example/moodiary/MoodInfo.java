@@ -59,7 +59,8 @@ public class MoodInfo {
 
     public static String[] mood_base_colors ={"R.color.mc1", "R.color.mc2", "R.color.mc3", "R.color.mc4", "R.color.mc5"};
 
-    public static String[] activity_type = {"cleaning", "cook", "date", "drawing",
+    public static String[] activity_type = {
+            "cleaning", "cook", "date", "drawing",
             "eat", "family", "festival", "friend",
             "game", "gift", "music", "party",
             "reading", "relax", "shopping", "sleep",
@@ -73,6 +74,15 @@ public class MoodInfo {
             R.drawable.activity_reading, R.drawable.activity_relax, R.drawable.activity_shopping, R.drawable.activity_sleep,
             R.drawable.activity_sport, R.drawable.activity_study, R.drawable.activity_swim, R.drawable.activity_tv,
             R.drawable.activity_walk, R.drawable.activity_work};
+
+    public static boolean[] activity_active = {
+            true, true, true, true,
+            true, true, true, true,
+            true, true, true, true,
+            true, true, true, true,
+            true, true, true, true,
+            true, true
+    };
 
     public static void addToDatabase() {
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
@@ -333,5 +343,23 @@ public class MoodInfo {
             }
         }
         dtb.onDisconnect();
+    }
+
+    public static void updateActivities(int new_mood_index, int type, String name) {
+        ArrayList<Integer> arrList = new ArrayList<Integer>(Arrays.asList(moods_thumbnail[type]));
+        ArrayList<String> arrList2 = new ArrayList<String>(Arrays.asList(moods_type[type]));
+
+        arrList.add(new_moods[new_mood_index]);
+        arrList2.add(name);
+
+        moods_type[type] = new String[arrList2.size()];
+        moods_type[type] = arrList2.toArray(moods_type[type]);
+
+        moods_thumbnail[type] = new Integer[arrList.size()];
+        moods_thumbnail[type] = arrList.toArray(moods_thumbnail[type]);
+
+
+        removeIconInNew(new_mood_index);
+        //addToDatabase();
     }
 }

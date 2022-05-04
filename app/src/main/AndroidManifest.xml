@@ -60,6 +60,9 @@
         <activity
             android:name=".Activity.AddNewMood"
             android:exported="true" />
+        <activity
+            android:name=".Activity.EditActivities"
+            android:exported="true" />
         <service android:name=".UploaddtbService"
             android:exported="true"/>
     </application>
