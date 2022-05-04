@@ -139,7 +139,7 @@ public class EntriesAdapter extends ArrayAdapter<ArrayList<Entry>> {
             // --------------------SET LAYOUT CHO 1 BOX CUNG NGAY------------------------
             GridLayout act_grid_layout = child.findViewById(R.id.act_grid_layout);
             String[]   parts           = e.getActivity().split(" ");
-            int total = parts.length;
+//            int total = parts.length;
             int maxColumn = 3;
 //            int maxRow = total/maxColumn;
             act_grid_layout.setColumnCount(maxColumn);
