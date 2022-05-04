@@ -15,31 +15,39 @@
             android:id="@+id/addBoxLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="62dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="62dp"
             android:background="@drawable/box"
+            android:gravity="center"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/text1"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/addIconUpon"
+                android:layout_toEndOf="@+id/illuIcon"
                 android:background="@android:color/transparent"
                 android:maxLines="1"
+                android:gravity="center"
+                android:textStyle="bold"
                 android:padding="15dp"
-                android:text="Add your day, your story"
-                android:textSize="15sp"/>
+                android:text="Your days, your stories"
+                android:textSize="20sp"/>
 
             <ImageView
-                android:id="@+id/addIconUpon"
+                android:id="@+id/illuIcon"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_centerVertical="true"
-                android:layout_marginStart="17dp"
-                android:src="@drawable/ic_baseline_add_circle"/>
+                android:src="@drawable/mood_15"
+                android:tint="@color/BlueViolet"/>
+            <ImageView
+                android:id="@+id/illuIcon2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_toEndOf="@+id/text1"
+                android:layout_centerVertical="true"
+                android:src="@drawable/mood_06"
+                android:tint="@color/OrangeRed"/>
         </RelativeLayout>
 
         <ListView
